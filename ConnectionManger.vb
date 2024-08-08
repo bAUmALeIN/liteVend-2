@@ -1,0 +1,516 @@
+﻿Imports System.Data.SQLite
+Imports System.IO
+Imports System.Runtime.Remoting.Messaging
+Imports Getränke_Automat_V2.FormMainMenu
+
+
+Public Class ConnectionManger
+
+
+    Public connectionString As String = "Data Source=ProduktDatenbank.db;Version=3;"
+    Public connection As New SQLiteConnection(connectionString)
+    ' -> UpdateProdukt (ID, Bez, Volumen, Alkoholgehalt, Preis, Bild)
+
+
+    Public Function createDB()
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Dim createTableQueries As String() = {
+            Globals.createProductsTableQuery,
+            Globals.createTransactionsTableQuery,
+            Globals.createStatsTableQuery,
+            Globals.createPictureTableQuery
+            }
+            Try
+                Console.WriteLine("Versuche Datenbank Tabellen zu erstellen")
+                For Each query In createTableQueries
+                    Using cmd As New SQLiteCommand(query, connection)
+                        cmd.ExecuteNonQuery()
+                    End Using
+
+                Next
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return False
+            End Try
+            connection.Close()
+        End Using
+        Globals.DBpath = FormMainMenu.dbPath
+        Return True
+    End Function
+
+    Public Function ExecuteQuery(query As String) As DataTable
+        Dim dt As New DataTable()
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+
+                Using cmd As New SQLiteCommand(query, connection)
+                    Console.WriteLine("ConnectionManager.ExecuteQuery:" & query)
+                    Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                        dt.Load(reader)
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+
+            Console.WriteLine("Fehler beim Ausführen der Abfrage: " & ex.Message)
+        End Try
+
+        Return dt
+    End Function
+
+    Public Function GetStatsFromDB() As Stats
+        Dim stats As FormMainMenu.Stats
+
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "SELECT Version, VGZ, anzProdukte, GesUmsatz, Flaschen FROM Stats LIMIT 1"
+
+            Using cmd As New SQLiteCommand(query, connection)
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        stats.AnzVG = reader.GetInt32(1)
+                        stats.anzProdukte = reader.GetInt32(2)
+                        stats.GesUmsatz = reader.GetDouble(3)
+                        stats.anzVerkFalschen = reader.GetInt32(4)
+                    Else
+
+                    End If
+                    Console.WriteLine($"GetStatsFromDB = {stats.GesUmsatz.ToString}")
+                End Using
+            End Using
+            connection.Close()
+        End Using
+
+        Return stats
+    End Function
+
+    Public Sub UpdateStatsDB(stats As FormMainMenu.Stats)
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Try
+                ' Update-Query für die Statistiktabelle ohne ID
+                Dim query As String = "UPDATE Stats SET Version = @Version, VGZ = @VGZ, anzProdukte = @anzProdukte, GesUmsatz = @GesUmsatz, Flaschen = @Flaschen"
+                Using cmd As New SQLiteCommand(query, connection)
+                    ' Parameter hinzufügen
+                    cmd.Parameters.AddWithValue("@Version", 1)
+                    cmd.Parameters.AddWithValue("@VGZ", (Int(stats.AnzVG)))
+                    cmd.Parameters.AddWithValue("@anzProdukte", (Int(stats.anzProdukte)))
+                    cmd.Parameters.AddWithValue("@GesUmsatz", stats.GesUmsatz)
+                    cmd.Parameters.AddWithValue("@Flaschen", stats.anzVerkFalschen)
+
+                    ' Query ausführen
+                    cmd.ExecuteNonQuery()
+                End Using
+
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine("Fehler update stats")
+
+            End Try
+
+        End Using
+    End Sub
+
+
+    Public Function getProduktByID(ID As Integer) As Produkt
+        Dim produkt As New Produkt()
+        Dim query As String = "SELECT ID, Bezeichnung, Preis, Volumen, Alkoholgehalt FROM Produkte WHERE ID = @ProductID"
+
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Using cmd As New SQLiteCommand(query, connection)
+                cmd.Parameters.AddWithValue("@ProductID", ID)
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        produkt.ID = reader.GetInt32(0)
+                        produkt.Bezeichnung = reader.GetString(1)
+                        produkt.Preis = reader.GetDouble(2)
+                        produkt.Volumen = reader.GetDouble(3)
+                        produkt.Alkoholgehalt = reader.GetDouble(4)
+                    End If
+                End Using
+            End Using
+        End Using
+
+        Return produkt
+    End Function
+
+    Public Function InsertProdukt(Bezeichnung As String, Preis As Double, volumen As Double, alkohol As Double) As Boolean
+        Console.WriteLine("CM.Insert.Pordukt: Eintrag wird in die Datenbank geschrieben.....")
+        Dim success As Boolean = False
+        Dim nextID As Integer = GetNextFreeID()
+        Console.WriteLine("CM.InsertProdukt: Die nächste freie ID ist: " & nextID)
+        Try
+
+
+
+            Using connection As New SQLiteConnection(Globals.ConString)
+                connection.Open()
+
+
+
+                Using command As New SQLiteCommand(Globals.queryAddProduct, connection)
+                    command.Parameters.AddWithValue("@ID", nextID)
+                    command.Parameters.AddWithValue("@Bezeichnung", Bezeichnung)
+                    command.Parameters.AddWithValue("@Preis", Preis)
+                    command.Parameters.AddWithValue("@Volumen", volumen)
+                    command.Parameters.AddWithValue("@Alkoholgehalt", alkohol)
+
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+
+                    If rowsAffected > 0 Then
+                        Console.WriteLine("CM.InsertProdukt: Eintrag erfolgreich eingefügt.")
+                        success = True
+                    Else
+                        Console.WriteLine("CM.InsertProdukt: Fehler beim schreiben des Eintrags.")
+                        success = False
+                    End If
+                    If connection.State = ConnectionState.Open Then connection.Close()
+                End Using
+            End Using
+        Catch ex As SQLiteException
+            Console.WriteLine("CM.InsertProdukt: SQLite-Fehler: " & ex.Message)
+            success = False
+            Return False
+        Catch ex As Exception
+            Console.WriteLine("CM.InsertProdukt: Allgemeiner Fehler: " & ex.Message)
+            success = False
+            Return False
+        End Try
+        UpdateStatsAnzProd(GetProductCount)
+        Return success
+    End Function
+
+    Public Function InsertProduktAsProdukt(produkt As Produkt)
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+                Using command As New SQLiteCommand(Globals.queryAddProduct, connection)
+
+                    command.Parameters.AddWithValue("@ID", produkt.ID)
+                    command.Parameters.AddWithValue("@Bezeichnung", produkt.Bezeichnung)
+                    command.Parameters.AddWithValue("@Preis", produkt.Preis)
+                    command.Parameters.AddWithValue("@Volumen", produkt.Volumen)
+                    command.Parameters.AddWithValue("@Alkoholgehalt", produkt.Alkoholgehalt)
+
+
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+
+                    Return rowsAffected > 0
+                End Using
+            End Using
+        Catch ex As Exception
+
+            Console.WriteLine("ConnectionManager.InsertProduktAsProdukt: Fehler beim Einfügen des Produkts: " & ex.Message)
+            Return False
+        End Try
+        Console.WriteLine("ConnectionManager.InsertProduktAsProdukt: Eintrag erfolgreich erstellt.")
+    End Function
+
+    Public Function UpdateProdukt(produkt As Produkt) As Boolean
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+                Using command As New SQLiteCommand(Globals.queryUpdateProduct, connection)
+
+                    command.Parameters.AddWithValue("@ID", produkt.ID)
+                    command.Parameters.AddWithValue("@Bezeichnung", produkt.Bezeichnung)
+                    command.Parameters.AddWithValue("@Preis", produkt.Preis)
+                    command.Parameters.AddWithValue("@Volumen", produkt.Volumen)
+                    command.Parameters.AddWithValue("@Alkoholgehalt", produkt.Alkoholgehalt)
+
+
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+                    Console.WriteLine("ConnectionManager.UpdateProdukt: Eintrag erfolgreich aktualisiert.")
+                    Return rowsAffected > 0
+                End Using
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("ConnectionManager.UpdateProdukt: Fehler beim Aktualisieren des Produkts: " & ex.Message)
+            Return False
+        End Try
+
+    End Function
+
+    Public Function GetNextFreeID() As Integer
+
+        Dim IDs As New List(Of Integer)()
+
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Using cmd As New SQLiteCommand(Globals.queryNextFreeID, connection)
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        IDs.Add(reader.GetInt32(0))
+                    End While
+                End Using
+            End Using
+            connection.Close()
+        End Using
+
+        Dim nextID As Integer = 1
+        For Each id In IDs
+            If id <> nextID Then
+                Exit For
+            End If
+            nextID += 1
+            Console.WriteLine($"nextID = {nextID.ToString}")
+        Next
+
+        Return nextID
+    End Function
+
+    Public Function UpdateStatsAnzProd(anzProdukte As Integer) As Boolean
+        Console.WriteLine("ConnectionManager: Start Update Stats....")
+
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+                Using cmd As New SQLiteCommand(Globals.queryUpdateStatsAnzProd, connection)
+                    cmd.Parameters.AddWithValue("@anzProdukte", anzProdukte)
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                    If rowsAffected > 0 Then
+                        Console.WriteLine("ConnectionManager: Update erfolgreich.")
+                        Return True
+                    Else
+                        Console.WriteLine("ConnectionManager: Update fehlgeschlagen.")
+                        Return False
+                    End If
+                End Using
+                connection.Close()
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("ConnectionManager: Fehler beim Aktualisieren der Daten: " & ex.Message)
+            Return False
+        End Try
+    End Function
+
+    Public Function GetProductCount() As Integer
+
+        Dim count As Integer = 0
+
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+                Using cmd As New SQLiteCommand(Globals.querySelectProductCount, connection)
+                    count = Convert.ToInt32(cmd.ExecuteScalar())
+                End Using
+                connection.Close()
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("CM.GetProductCount: Fehler beim Abrufen der Produktanzahl: " & ex.Message)
+            count = -1
+        End Try
+
+        Return count
+    End Function
+
+    Public Function SaveImageToDatabase(image As Image, ID As Integer) As Boolean
+
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Using command As New SQLiteCommand(Globals.queryInsertPicture, connection)
+                command.Parameters.AddWithValue("@Bild", ImageToByteArray(image))
+                command.Parameters.AddWithValue("@ID", ID)
+                command.ExecuteNonQuery()
+            End Using
+            connection.Close()
+        End Using
+        Return True
+    End Function
+
+    Public Function UpdateImageInDatabase(image As Image, ID As Integer) As Boolean
+
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Using command As New SQLiteCommand(Globals.queryUpdatePicture, connection)
+                command.Parameters.AddWithValue("@Bild", Engine.ImageToByteArray(image))
+                command.Parameters.AddWithValue("@ID", ID)
+                command.ExecuteNonQuery()
+            End Using
+            connection.Close()
+        End Using
+        Return True
+    End Function
+
+    Public Function SaveOrUpdateImageInDatabase(image As Image, ID As Integer) As Boolean
+
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+
+            Using checkCommand As New SQLiteCommand(Globals.queryCheckIfPictureExists, connection)
+                checkCommand.Parameters.AddWithValue("@ID", ID)
+                Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
+
+                If count = 0 Then
+                    Using insertCommand As New SQLiteCommand(Globals.queryInsertPicture, connection)
+                        insertCommand.Parameters.AddWithValue("@ID", ID)
+                        insertCommand.Parameters.AddWithValue("@Bild", Engine.ImageToByteArray(image))
+                        insertCommand.ExecuteNonQuery()
+                    End Using
+                Else
+                    Using updateCommand As New SQLiteCommand(Globals.queryUpdatePicture, connection)
+                        updateCommand.Parameters.AddWithValue("@ID", ID)
+                        updateCommand.Parameters.AddWithValue("@Bild", Engine.ImageToByteArray(image))
+                        updateCommand.ExecuteNonQuery()
+                    End Using
+                End If
+            End Using
+
+            connection.Close()
+        End Using
+
+        Return True
+    End Function
+
+
+    Public Function GetImageFromDatabase(id As Integer) As Image
+        Dim query As String = "SELECT Image FROM Pictures WHERE ID = @ID"
+        Dim image As Image = Nothing
+
+        Using connection As New SQLiteConnection("Data Source=ProduktDatenbank.db;Version=3;")
+            connection.Open()
+            Using command As New SQLiteCommand(query, connection)
+                command.Parameters.AddWithValue("@ID", id)
+                Console.WriteLine("Try Get Picture from Database")
+                Dim result = command.ExecuteScalar()
+                If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                    image = ByteArrayToImage(DirectCast(result, Byte()))
+                End If
+            End Using
+            connection.Close()
+        End Using
+
+        Return image
+    End Function
+
+    Public Function GetProduktIDByName(bezeichnung As String) As Integer
+        Dim query As String = "SELECT ID FROM Produkte WHERE Bezeichnung = @Bezeichnung"
+        Dim productID As Integer = -1
+        Console.WriteLine("CM.GetProduktIDByName: Suche Produkt ID mit Bezeichnung: " & bezeichnung)
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+                Using cmd As New SQLiteCommand(query, connection)
+                    cmd.Parameters.AddWithValue("@Bezeichnung", bezeichnung)
+                    Dim result = cmd.ExecuteScalar()
+                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                        productID = Convert.ToInt32(result)
+                        Console.WriteLine("CM.GetProduktIDByName:    Produkt ID: " & productID)
+                    End If
+                End Using
+                connection.Close()
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("CM.GetProduktIDByName: Fehler beim Abrufen der ProduktID: " & ex.Message)
+        End Try
+
+        Return productID
+    End Function
+
+    Public Function loadDGV(query As String, DGV As DataGridView)
+        DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DGV.ColumnHeadersVisible = True
+        DGV.AutoResizeColumnHeadersHeight()
+        DGV.RowHeadersVisible = False
+        Console.WriteLine("CM.loadDGV: Try Fill DGV with DataTable")
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+
+                Using command As New SQLiteCommand(query, connection)
+                    Using adapter As New SQLiteDataAdapter(command)
+                        Dim table As New DataTable()
+                        adapter.Fill(table)
+
+                        ' Dem DataGridView die Datenquelle zuweisen
+                        DGV.DataSource = table
+                        Console.WriteLine("CM.loadDGV: DataTable DGV.DataSource zugewiesen")
+                    End Using
+                End Using
+                connection.Close()
+            End Using
+        Catch ex As SQLiteException
+            Console.WriteLine("CM.loadDGV: SQLite-Fehler: " & ex.Message)
+        Catch ex As Exception
+            Console.WriteLine("CM.loadDGV: Fehler beim Abrufen der Daten: " & ex.Message)
+        End Try
+
+    End Function
+
+    Public Function GetProduktPreisByID(productID As Integer) As Double
+        Dim preis As Double = 0.00
+        Dim query As String = "SELECT Preis FROM Produkte WHERE ID = @ProductID"
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+                Using command As New SQLiteCommand(query, connection)
+
+                    command.Parameters.AddWithValue("@ProductID", productID)
+                    Dim result As Object = command.ExecuteScalar()
+
+                    ' ergebnis Überprüfen und schreiben 
+                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                        Double.TryParse(result.ToString(), preis)
+                    End If
+                    Console.WriteLine("CM.GetProduktPreisByID: Produkt ID:" + productID.ToString)
+                    Console.WriteLine("CM.GetProduktPreisByID: Preis aus der Datenbank:" & preis.ToString)
+                End Using
+                If connection.State = ConnectionState.Open Then connection.Close()
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("CM.GetProduktPreisByID: Produkt ID:" + productID.ToString)
+            Console.WriteLine("CM.GetProduktPreisByID: Fehler beim Abrufen des Preises aus der Datenbank: " & ex.Message)
+        End Try
+        Return preis
+    End Function
+
+    Public Sub PreiseInLabelsSchreiben(panelProdukte As Panel)
+        Console.WriteLine("CM.PreiseInLabelsSchreiben: Start..")
+        Dim query As String = "SELECT ID, Preis FROM Produkte"
+        Try
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+                Console.WriteLine("CM.PreiseInLabelsSchreiben: connection.Open OK")
+                Using command As New SQLiteCommand(query, connection)
+                    Using reader As SQLiteDataReader = command.ExecuteReader()
+                        Dim count As Integer = 1
+                        While reader.Read()
+                            Dim productID As Integer = reader.GetInt32(0)
+                            Dim price As Double = reader.GetDouble(1)
+                            Console.WriteLine("CM.PreiseInLabelsSchreiben: Lese Preis " + price.ToString + "| schreibe Preis:" & count.ToString)
+                            Dim foundLabel As Label = Nothing
+                            ' Suchen Sie das Label in panelProdukte
+                            foundLabel = panelProdukte.Controls.OfType(Of Label).FirstOrDefault(Function(lbl) lbl.Name = "PreisTag" & productID.ToString())
+                            If foundLabel IsNot Nothing Then
+                                foundLabel.Text = price.ToString("C2")
+                            End If
+                            count += 1
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox("Fehler beim Abrufen der Preise aus der Datenbank: " & ex.Message)
+        End Try
+    End Sub
+
+    Public Function GetDataTableFromTable(tableName As String) As DataTable
+        Dim dt As New DataTable()
+
+        Using connection As New SQLiteConnection(Globals.ConString)
+            connection.Open()
+            Using command As New SQLiteCommand($"SELECT * FROM {tableName}", connection)
+                Using adapter As New SQLiteDataAdapter(command)
+                    adapter.Fill(dt)
+                End Using
+            End Using
+        End Using
+
+        Return dt
+    End Function
+
+End Class
