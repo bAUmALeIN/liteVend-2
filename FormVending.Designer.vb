@@ -250,7 +250,7 @@ Partial Class FormVending
         '
         Me.PreisTag30.AutoSize = True
         Me.PreisTag30.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag30.Location = New System.Drawing.Point(259, 299)
+        Me.PreisTag30.Location = New System.Drawing.Point(259, 298)
         Me.PreisTag30.Name = "PreisTag30"
         Me.PreisTag30.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag30.TabIndex = 11
@@ -270,7 +270,7 @@ Partial Class FormVending
         '
         Me.PreisTag29.AutoSize = True
         Me.PreisTag29.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag29.Location = New System.Drawing.Point(230, 299)
+        Me.PreisTag29.Location = New System.Drawing.Point(230, 298)
         Me.PreisTag29.Name = "PreisTag29"
         Me.PreisTag29.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag29.TabIndex = 10
@@ -290,7 +290,7 @@ Partial Class FormVending
         '
         Me.PreisTag28.AutoSize = True
         Me.PreisTag28.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag28.Location = New System.Drawing.Point(202, 299)
+        Me.PreisTag28.Location = New System.Drawing.Point(202, 298)
         Me.PreisTag28.Name = "PreisTag28"
         Me.PreisTag28.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag28.TabIndex = 9
@@ -310,7 +310,7 @@ Partial Class FormVending
         '
         Me.PreisTag27.AutoSize = True
         Me.PreisTag27.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag27.Location = New System.Drawing.Point(176, 299)
+        Me.PreisTag27.Location = New System.Drawing.Point(176, 298)
         Me.PreisTag27.Name = "PreisTag27"
         Me.PreisTag27.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag27.TabIndex = 8
@@ -320,7 +320,7 @@ Partial Class FormVending
         '
         Me.PreisTag26.AutoSize = True
         Me.PreisTag26.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag26.Location = New System.Drawing.Point(149, 299)
+        Me.PreisTag26.Location = New System.Drawing.Point(149, 298)
         Me.PreisTag26.Name = "PreisTag26"
         Me.PreisTag26.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag26.TabIndex = 7
@@ -340,7 +340,7 @@ Partial Class FormVending
         '
         Me.PreisTag25.AutoSize = True
         Me.PreisTag25.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag25.Location = New System.Drawing.Point(122, 299)
+        Me.PreisTag25.Location = New System.Drawing.Point(122, 298)
         Me.PreisTag25.Name = "PreisTag25"
         Me.PreisTag25.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag25.TabIndex = 6
@@ -360,7 +360,7 @@ Partial Class FormVending
         '
         Me.PreisTag24.AutoSize = True
         Me.PreisTag24.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag24.Location = New System.Drawing.Point(95, 299)
+        Me.PreisTag24.Location = New System.Drawing.Point(95, 298)
         Me.PreisTag24.Name = "PreisTag24"
         Me.PreisTag24.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag24.TabIndex = 5
@@ -380,7 +380,7 @@ Partial Class FormVending
         '
         Me.PreisTag23.AutoSize = True
         Me.PreisTag23.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag23.Location = New System.Drawing.Point(70, 299)
+        Me.PreisTag23.Location = New System.Drawing.Point(70, 298)
         Me.PreisTag23.Name = "PreisTag23"
         Me.PreisTag23.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag23.TabIndex = 4
@@ -400,7 +400,7 @@ Partial Class FormVending
         '
         Me.PreisTag22.AutoSize = True
         Me.PreisTag22.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag22.Location = New System.Drawing.Point(43, 299)
+        Me.PreisTag22.Location = New System.Drawing.Point(42, 298)
         Me.PreisTag22.Name = "PreisTag22"
         Me.PreisTag22.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag22.TabIndex = 3
@@ -410,7 +410,7 @@ Partial Class FormVending
         '
         Me.btnItem30.BackColor = System.Drawing.Color.Transparent
         Me.btnItem30.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem30.Location = New System.Drawing.Point(260, 216)
+        Me.btnItem30.Location = New System.Drawing.Point(260, 212)
         Me.btnItem30.Name = "btnItem30"
         Me.btnItem30.Size = New System.Drawing.Size(20, 56)
         Me.btnItem30.TabIndex = 35
@@ -421,7 +421,7 @@ Partial Class FormVending
         '
         Me.PreisTag21.AutoSize = True
         Me.PreisTag21.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PreisTag21.Location = New System.Drawing.Point(14, 299)
+        Me.PreisTag21.Location = New System.Drawing.Point(13, 298)
         Me.PreisTag21.Name = "PreisTag21"
         Me.PreisTag21.Size = New System.Drawing.Size(28, 10)
         Me.PreisTag21.TabIndex = 2
@@ -461,7 +461,7 @@ Partial Class FormVending
         '
         Me.btnItem29.BackColor = System.Drawing.Color.Transparent
         Me.btnItem29.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem29.Location = New System.Drawing.Point(233, 216)
+        Me.btnItem29.Location = New System.Drawing.Point(233, 212)
         Me.btnItem29.Name = "btnItem29"
         Me.btnItem29.Size = New System.Drawing.Size(20, 56)
         Me.btnItem29.TabIndex = 34
@@ -482,7 +482,7 @@ Partial Class FormVending
         '
         Me.btnItem28.BackColor = System.Drawing.Color.Transparent
         Me.btnItem28.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem28.Location = New System.Drawing.Point(205, 216)
+        Me.btnItem28.Location = New System.Drawing.Point(205, 212)
         Me.btnItem28.Name = "btnItem28"
         Me.btnItem28.Size = New System.Drawing.Size(20, 56)
         Me.btnItem28.TabIndex = 33
@@ -523,7 +523,7 @@ Partial Class FormVending
         '
         Me.btnItem27.BackColor = System.Drawing.Color.Transparent
         Me.btnItem27.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem27.Location = New System.Drawing.Point(179, 216)
+        Me.btnItem27.Location = New System.Drawing.Point(179, 212)
         Me.btnItem27.Name = "btnItem27"
         Me.btnItem27.Size = New System.Drawing.Size(20, 56)
         Me.btnItem27.TabIndex = 32
@@ -534,7 +534,7 @@ Partial Class FormVending
         '
         Me.btnItem26.BackColor = System.Drawing.Color.Transparent
         Me.btnItem26.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem26.Location = New System.Drawing.Point(152, 216)
+        Me.btnItem26.Location = New System.Drawing.Point(152, 212)
         Me.btnItem26.Name = "btnItem26"
         Me.btnItem26.Size = New System.Drawing.Size(20, 56)
         Me.btnItem26.TabIndex = 31
@@ -555,7 +555,7 @@ Partial Class FormVending
         '
         Me.btnItem25.BackColor = System.Drawing.Color.Transparent
         Me.btnItem25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem25.Location = New System.Drawing.Point(124, 216)
+        Me.btnItem25.Location = New System.Drawing.Point(124, 212)
         Me.btnItem25.Name = "btnItem25"
         Me.btnItem25.Size = New System.Drawing.Size(20, 56)
         Me.btnItem25.TabIndex = 30
@@ -566,7 +566,7 @@ Partial Class FormVending
         '
         Me.btnItem24.BackColor = System.Drawing.Color.Transparent
         Me.btnItem24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem24.Location = New System.Drawing.Point(97, 216)
+        Me.btnItem24.Location = New System.Drawing.Point(97, 212)
         Me.btnItem24.Name = "btnItem24"
         Me.btnItem24.Size = New System.Drawing.Size(20, 56)
         Me.btnItem24.TabIndex = 29
@@ -587,7 +587,7 @@ Partial Class FormVending
         '
         Me.btnItem23.BackColor = System.Drawing.Color.Transparent
         Me.btnItem23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem23.Location = New System.Drawing.Point(71, 216)
+        Me.btnItem23.Location = New System.Drawing.Point(71, 212)
         Me.btnItem23.Name = "btnItem23"
         Me.btnItem23.Size = New System.Drawing.Size(20, 56)
         Me.btnItem23.TabIndex = 28
@@ -598,7 +598,7 @@ Partial Class FormVending
         '
         Me.btnItem22.BackColor = System.Drawing.Color.Transparent
         Me.btnItem22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem22.Location = New System.Drawing.Point(44, 216)
+        Me.btnItem22.Location = New System.Drawing.Point(44, 212)
         Me.btnItem22.Name = "btnItem22"
         Me.btnItem22.Size = New System.Drawing.Size(20, 56)
         Me.btnItem22.TabIndex = 27
@@ -619,7 +619,7 @@ Partial Class FormVending
         '
         Me.btnItem21.BackColor = System.Drawing.Color.Transparent
         Me.btnItem21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem21.Location = New System.Drawing.Point(16, 216)
+        Me.btnItem21.Location = New System.Drawing.Point(16, 212)
         Me.btnItem21.Name = "btnItem21"
         Me.btnItem21.Size = New System.Drawing.Size(20, 56)
         Me.btnItem21.TabIndex = 26
@@ -889,7 +889,7 @@ Partial Class FormVending
         Me.Panel4.Controls.Add(Me.Label31)
         Me.Panel4.Controls.Add(Me.Label32)
         Me.Panel4.Controls.Add(Me.Label33)
-        Me.Panel4.Location = New System.Drawing.Point(-35, 273)
+        Me.Panel4.Location = New System.Drawing.Point(-35, 271)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(338, 23)
         Me.Panel4.TabIndex = 2

@@ -10,11 +10,11 @@ Public Class FormDBManager
     Dim mouseOffset As Point
     Dim DBM As New DatabaseManager
     Dim CM As New ConnectionManger
-    Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox2.MouseDown, Panel2.MouseDown, Label10.MouseDown, Label5.MouseDown, Label6.MouseDown, labelDBPath.MouseDown
+    Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox2.MouseDown, Panel2.MouseDown, Label10.MouseDown, Label6.MouseDown, labelDBPath.MouseDown
         mouseOffset = New Point(-e.X, -e.Y)
     End Sub
 
-    Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox2.MouseMove, Panel2.MouseMove, Label10.MouseMove, Label5.MouseMove, Label6.MouseMove, labelDBPath.MouseMove
+    Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox2.MouseMove, Panel2.MouseMove, Label10.MouseMove, Label6.MouseMove, labelDBPath.MouseMove
 
         If e.Button = MouseButtons.Left Then
             Dim mousePos = Control.MousePosition
@@ -24,7 +24,7 @@ Public Class FormDBManager
     End Sub
 
     Private Sub FormDBManager_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Console.WriteLine(Globals.DBpath)
+        Logger.WriteLine(Globals.DBpath)
         DBM.FillTreeView(TreeViewDatabase)
         DBM.FillControlWithQuery(ComboBoxTables, Globals.querySelectTables)
         Dim Img As Image = My.Resources.RunCode
@@ -183,7 +183,7 @@ Public Class FormDBManager
             Dim rtfSQL As RichTextBox = TryCast(selectedTab.Controls.OfType(Of RichTextBox).FirstOrDefault(), RichTextBox)
 
             If rtfSQL Is Nothing Then
-                Console.WriteLine("FormDBManager: Run SQL clicked")
+                Logger.WriteLine("FormDBManager: Run SQL clicked")
                 Return
             End If
 
@@ -196,7 +196,7 @@ Public Class FormDBManager
                     Using adapter As New SQLiteDataAdapter(command)
                         Dim dataTable As New DataTable()
                         adapter.Fill(dataTable)
-                        Console.WriteLine("DataAdapter gefüllt..  zeige im DGV an")
+                        Logger.WriteLine("DataAdapter gefüllt..  zeige im DGV an")
                         DataGridViewSQL.DataSource = dataTable
                         rtfSQLAusgabe.Clear()
                         rtfSQLAusgabe.AppendText(dataTable.Rows.Count & " Zeile(n) betroffen.")

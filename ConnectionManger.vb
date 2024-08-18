@@ -9,6 +9,7 @@ Public Class ConnectionManger
 
     Public connectionString As String = "Data Source=ProduktDatenbank.db;Version=3;"
     Public connection As New SQLiteConnection(connectionString)
+    Dim buttonTag As Object
     ' -> UpdateProdukt (ID, Bez, Volumen, Alkoholgehalt, Preis, Bild)
 
 
@@ -22,7 +23,7 @@ Public Class ConnectionManger
             Globals.createPictureTableQuery
             }
             Try
-                Console.WriteLine("Versuche Datenbank Tabellen zu erstellen")
+                Logger.WriteLine("Versuche Datenbank Tabellen zu erstellen")
                 For Each query In createTableQueries
                     Using cmd As New SQLiteCommand(query, connection)
                         cmd.ExecuteNonQuery()
@@ -46,7 +47,7 @@ Public Class ConnectionManger
                 connection.Open()
 
                 Using cmd As New SQLiteCommand(query, connection)
-                    Console.WriteLine("ConnectionManager.ExecuteQuery:" & query)
+                    Logger.WriteLine("ConnectionManager.ExecuteQuery:" & query)
                     Using reader As SQLiteDataReader = cmd.ExecuteReader()
                         dt.Load(reader)
                     End Using
@@ -54,7 +55,7 @@ Public Class ConnectionManger
             End Using
         Catch ex As Exception
 
-            Console.WriteLine("Fehler beim Ausführen der Abfrage: " & ex.Message)
+            Logger.WriteLine("Fehler beim Ausführen der Abfrage: " & ex.Message)
         End Try
 
         Return dt
@@ -78,7 +79,7 @@ Public Class ConnectionManger
                     Else
 
                     End If
-                    Console.WriteLine($"GetStatsFromDB = {stats.GesUmsatz.ToString}")
+                    Logger.WriteLine($"GetStatsFromDB = {stats.GesUmsatz.ToString}")
                 End Using
             End Using
             connection.Close()
@@ -107,7 +108,7 @@ Public Class ConnectionManger
 
                 connection.Close()
             Catch ex As Exception
-                Console.WriteLine("Fehler update stats")
+                Logger.WriteLine("Fehler update stats")
 
             End Try
 
@@ -139,10 +140,10 @@ Public Class ConnectionManger
     End Function
 
     Public Function InsertProdukt(Bezeichnung As String, Preis As Double, volumen As Double, alkohol As Double) As Boolean
-        Console.WriteLine("CM.Insert.Pordukt: Eintrag wird in die Datenbank geschrieben.....")
+        Logger.WriteLine("CM.Insert.Pordukt: Eintrag wird in die Datenbank geschrieben.....")
         Dim success As Boolean = False
         Dim nextID As Integer = GetNextFreeID()
-        Console.WriteLine("CM.InsertProdukt: Die nächste freie ID ist: " & nextID)
+        Logger.WriteLine("CM.InsertProdukt: Die nächste freie ID ist: " & nextID)
         Try
 
 
@@ -162,21 +163,21 @@ Public Class ConnectionManger
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
 
                     If rowsAffected > 0 Then
-                        Console.WriteLine("CM.InsertProdukt: Eintrag erfolgreich eingefügt.")
+                        Logger.WriteLine("CM.InsertProdukt: Eintrag erfolgreich eingefügt.")
                         success = True
                     Else
-                        Console.WriteLine("CM.InsertProdukt: Fehler beim schreiben des Eintrags.")
+                        Logger.WriteLine("CM.InsertProdukt: Fehler beim schreiben des Eintrags.")
                         success = False
                     End If
                     If connection.State = ConnectionState.Open Then connection.Close()
                 End Using
             End Using
         Catch ex As SQLiteException
-            Console.WriteLine("CM.InsertProdukt: SQLite-Fehler: " & ex.Message)
+            Logger.WriteLine("CM.InsertProdukt: SQLite-Fehler: " & ex.Message)
             success = False
             Return False
         Catch ex As Exception
-            Console.WriteLine("CM.InsertProdukt: Allgemeiner Fehler: " & ex.Message)
+            Logger.WriteLine("CM.InsertProdukt: Allgemeiner Fehler: " & ex.Message)
             success = False
             Return False
         End Try
@@ -204,10 +205,10 @@ Public Class ConnectionManger
             End Using
         Catch ex As Exception
 
-            Console.WriteLine("ConnectionManager.InsertProduktAsProdukt: Fehler beim Einfügen des Produkts: " & ex.Message)
+            Logger.WriteLine("ConnectionManager.InsertProduktAsProdukt: Fehler beim Einfügen des Produkts: " & ex.Message)
             Return False
         End Try
-        Console.WriteLine("ConnectionManager.InsertProduktAsProdukt: Eintrag erfolgreich erstellt.")
+        Logger.WriteLine("ConnectionManager.InsertProduktAsProdukt: Eintrag erfolgreich erstellt.")
     End Function
 
     Public Function UpdateProdukt(produkt As Produkt) As Boolean
@@ -224,12 +225,12 @@ Public Class ConnectionManger
 
 
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
-                    Console.WriteLine("ConnectionManager.UpdateProdukt: Eintrag erfolgreich aktualisiert.")
+                    Logger.WriteLine("ConnectionManager.UpdateProdukt: Eintrag erfolgreich aktualisiert.")
                     Return rowsAffected > 0
                 End Using
             End Using
         Catch ex As Exception
-            Console.WriteLine("ConnectionManager.UpdateProdukt: Fehler beim Aktualisieren des Produkts: " & ex.Message)
+            Logger.WriteLine("ConnectionManager.UpdateProdukt: Fehler beim Aktualisieren des Produkts: " & ex.Message)
             Return False
         End Try
 
@@ -257,14 +258,14 @@ Public Class ConnectionManger
                 Exit For
             End If
             nextID += 1
-            Console.WriteLine($"nextID = {nextID.ToString}")
+            'Logger.WriteLine($"nextID = {nextID.ToString}")
         Next
 
         Return nextID
     End Function
 
     Public Function UpdateStatsAnzProd(anzProdukte As Integer) As Boolean
-        Console.WriteLine("ConnectionManager: Start Update Stats....")
+        Logger.WriteLine("ConnectionManager: Start Update Stats....")
 
         Try
             Using connection As New SQLiteConnection(connectionString)
@@ -273,17 +274,17 @@ Public Class ConnectionManger
                     cmd.Parameters.AddWithValue("@anzProdukte", anzProdukte)
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     If rowsAffected > 0 Then
-                        Console.WriteLine("ConnectionManager: Update erfolgreich.")
+                        Logger.WriteLine("ConnectionManager: Update erfolgreich.")
                         Return True
                     Else
-                        Console.WriteLine("ConnectionManager: Update fehlgeschlagen.")
+                        Logger.WriteLine("ConnectionManager: Update fehlgeschlagen.")
                         Return False
                     End If
                 End Using
                 connection.Close()
             End Using
         Catch ex As Exception
-            Console.WriteLine("ConnectionManager: Fehler beim Aktualisieren der Daten: " & ex.Message)
+            Logger.WriteLine("ConnectionManager: Fehler beim Aktualisieren der Daten: " & ex.Message)
             Return False
         End Try
     End Function
@@ -301,7 +302,7 @@ Public Class ConnectionManger
                 connection.Close()
             End Using
         Catch ex As Exception
-            Console.WriteLine("CM.GetProductCount: Fehler beim Abrufen der Produktanzahl: " & ex.Message)
+            Logger.WriteLine("CM.GetProductCount: Fehler beim Abrufen der Produktanzahl: " & ex.Message)
             count = -1
         End Try
 
@@ -375,7 +376,7 @@ Public Class ConnectionManger
             connection.Open()
             Using command As New SQLiteCommand(query, connection)
                 command.Parameters.AddWithValue("@ID", id)
-                Console.WriteLine("Try Get Picture from Database")
+                Logger.WriteLine(" Get Picture from Database")
                 Dim result = command.ExecuteScalar()
                 If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
                     image = ByteArrayToImage(DirectCast(result, Byte()))
@@ -390,7 +391,7 @@ Public Class ConnectionManger
     Public Function GetProduktIDByName(bezeichnung As String) As Integer
         Dim query As String = "SELECT ID FROM Produkte WHERE Bezeichnung = @Bezeichnung"
         Dim productID As Integer = -1
-        Console.WriteLine("CM.GetProduktIDByName: Suche Produkt ID mit Bezeichnung: " & bezeichnung)
+        Logger.WriteLine("CM.GetProduktIDByName: Suche Produkt ID mit Bezeichnung: " & bezeichnung)
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()
@@ -399,13 +400,13 @@ Public Class ConnectionManger
                     Dim result = cmd.ExecuteScalar()
                     If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
                         productID = Convert.ToInt32(result)
-                        Console.WriteLine("CM.GetProduktIDByName:    Produkt ID: " & productID)
+                        Logger.WriteLine("CM.GetProduktIDByName:    Produkt ID: " & productID)
                     End If
                 End Using
                 connection.Close()
             End Using
         Catch ex As Exception
-            Console.WriteLine("CM.GetProduktIDByName: Fehler beim Abrufen der ProduktID: " & ex.Message)
+            Logger.WriteLine("CM.GetProduktIDByName: Fehler beim Abrufen der ProduktID: " & ex.Message)
         End Try
 
         Return productID
@@ -416,7 +417,7 @@ Public Class ConnectionManger
         DGV.ColumnHeadersVisible = True
         DGV.AutoResizeColumnHeadersHeight()
         DGV.RowHeadersVisible = False
-        Console.WriteLine("CM.loadDGV: Try Fill DGV with DataTable")
+        Logger.WriteLine("CM.loadDGV: Try Fill DGV with DataTable")
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()
@@ -428,15 +429,15 @@ Public Class ConnectionManger
 
                         ' Dem DataGridView die Datenquelle zuweisen
                         DGV.DataSource = table
-                        Console.WriteLine("CM.loadDGV: DataTable DGV.DataSource zugewiesen")
+                        Logger.WriteLine("CM.loadDGV: DataTable DGV.DataSource zugewiesen")
                     End Using
                 End Using
                 connection.Close()
             End Using
         Catch ex As SQLiteException
-            Console.WriteLine("CM.loadDGV: SQLite-Fehler: " & ex.Message)
+            Logger.WriteLine("CM.loadDGV: SQLite-Fehler: " & ex.Message)
         Catch ex As Exception
-            Console.WriteLine("CM.loadDGV: Fehler beim Abrufen der Daten: " & ex.Message)
+            Logger.WriteLine("CM.loadDGV: Fehler beim Abrufen der Daten: " & ex.Message)
         End Try
 
     End Function
@@ -456,34 +457,35 @@ Public Class ConnectionManger
                     If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
                         Double.TryParse(result.ToString(), preis)
                     End If
-                    Console.WriteLine("CM.GetProduktPreisByID: Produkt ID:" + productID.ToString)
-                    Console.WriteLine("CM.GetProduktPreisByID: Preis aus der Datenbank:" & preis.ToString)
+                    Logger.WriteLine("CM.GetProduktPreisByID: Produkt ID:" + productID.ToString)
+                    Logger.WriteLine("CM.GetProduktPreisByID: Preis aus der Datenbank:" & preis.ToString)
                 End Using
                 If connection.State = ConnectionState.Open Then connection.Close()
             End Using
         Catch ex As Exception
-            Console.WriteLine("CM.GetProduktPreisByID: Produkt ID:" + productID.ToString)
-            Console.WriteLine("CM.GetProduktPreisByID: Fehler beim Abrufen des Preises aus der Datenbank: " & ex.Message)
+            Logger.WriteLine("CM.GetProduktPreisByID: Produkt ID:" + productID.ToString)
+            Logger.WriteLine("CM.GetProduktPreisByID: Fehler beim Abrufen des Preises aus der Datenbank: " & ex.Message)
         End Try
         Return preis
     End Function
 
     Public Sub PreiseInLabelsSchreiben(panelProdukte As Panel)
-        Console.WriteLine("CM.PreiseInLabelsSchreiben: Start..")
+        Logger.WriteLine("CM.PreiseInLabelsSchreiben: Start..")
         Dim query As String = "SELECT ID, Preis FROM Produkte"
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()
-                Console.WriteLine("CM.PreiseInLabelsSchreiben: connection.Open OK")
+                Logger.WriteLine("CM.PreiseInLabelsSchreiben: connection.Open OK")
                 Using command As New SQLiteCommand(query, connection)
                     Using reader As SQLiteDataReader = command.ExecuteReader()
                         Dim count As Integer = 1
                         While reader.Read()
                             Dim productID As Integer = reader.GetInt32(0)
                             Dim price As Double = reader.GetDouble(1)
-                            Console.WriteLine("CM.PreiseInLabelsSchreiben: Lese Preis " + price.ToString + "| schreibe Preis:" & count.ToString)
+                            Logger.WriteLine("CM.PreiseInLabelsSchreiben: Lese Preis " + price.ToString + "| schreibe Preis:" & count.ToString)
+                            Globals.ActiveProductIDs.Add(productID)
                             Dim foundLabel As Label = Nothing
-                            ' Suchen Sie das Label in panelProdukte
+                            ' Suche Label in panelProdukte
                             foundLabel = panelProdukte.Controls.OfType(Of Label).FirstOrDefault(Function(lbl) lbl.Name = "PreisTag" & productID.ToString())
                             If foundLabel IsNot Nothing Then
                                 foundLabel.Text = price.ToString("C2")
@@ -512,5 +514,8 @@ Public Class ConnectionManger
 
         Return dt
     End Function
+
+
+
 
 End Class

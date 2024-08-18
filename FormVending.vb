@@ -33,7 +33,9 @@ Public Class FormVending
     Private Sub FormVending_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         rtfAusgabe.Text = WelcomeText
         CM.PreiseInLabelsSchreiben(PanelProdukte)
-        Console.WriteLine("------------------------------------------------- START VENDING -----------------------------------------------------------")
+        LoadImagesInButtons()
+        Logger.WriteLine("Anz. Produkte :" + Globals.ActiveProductIDs.Count.ToString)
+        Logger.WriteLine("------------------------------------------------- START VENDING -----------------------------------------------------------")
     End Sub
 
 
@@ -55,12 +57,12 @@ Public Class FormVending
         If clickedbtn IsNot Nothing Then
             For Each btn As Button In Globals.ProduktBtnList
                 If clickedbtn.Tag.ToString() = btn.Tag.ToString Then
-                    Console.WriteLine($" Produkt-Button mit Tag gefunden: {btn.Name}")
+                    Logger.WriteLine($" Produkt-Button mit Tag gefunden: {btn.Name}")
                     rtfAusgabe.Text = Nothing
                     Dim prodausgabe As FormMainMenu.Produkt = CM.getProduktByID(Int(btn.Tag))
                     If prodausgabe.Preis <> 0 Then
 
-                        Console.WriteLine($" Produkt mit Bez.:{prodausgabe.Bezeichnung} gefunden")
+                        Logger.WriteLine($" Produkt mit Bez.:{prodausgabe.Bezeichnung} gefunden")
                         rtfAusgabe.Text = "--------------------------------------" & vbNewLine & $" --> {prodausgabe.Bezeichnung}" & vbNewLine & $" --> Preis: {prodausgabe.Preis.ToString} €" & vbNewLine & $" --> Volumen: {prodausgabe.Volumen.ToString} Liter" & vbNewLine & $" --> Alkoholgehalt: {prodausgabe.Alkoholgehalt.ToString} %" & vbNewLine & "--------------------------------------"
                         TimerProduktInfo.Enabled = True
                         TimerProduktInfo.Start()
@@ -69,7 +71,7 @@ Public Class FormVending
                     rtfAusgabe.Text = ""    ' Fehler text
                     ' WAIT
                     rtfAusgabe.Text = lastText
-                    Console.WriteLine("Start Timer Panel Blinken...")
+                    Logger.WriteLine("Start Timer Panel Blinken...")
                     Globals.BlinkenPanelFarbe = 1
                     TimerPanelBlinken.Start()
                 End If
@@ -79,7 +81,7 @@ Public Class FormVending
 
 
 
-    '####################################### NUMBLOCK ###############################################
+    '########################################## NUMPAD ####################################################
 
     Private Sub btnEnter_Click(sender As Object, e As EventArgs) Handles btnEnter.Click
         VendingEngine.processEingabe(PanelProdukte.Controls, tbEingabe, rtfAusgabe, FlowLayoutPanelCoinValues, FlowLayoutPanelNumBlock)
@@ -131,7 +133,7 @@ Public Class FormVending
     End Sub
 
     Private Sub btnClearVG_Click(sender As Object, e As EventArgs) Handles btnClearVG.Click
-        Console.WriteLine("ButtonClearVG: Start clearing Vorgang")
+        Logger.WriteLine("ButtonClearVG: Start clearing Vorgang")
         TimerCBCoins.Enabled = False
         BlinkCoinInsert.Enabled = False
         PanelCoinInsert.BackColor = Color.Silver
@@ -145,14 +147,14 @@ Public Class FormVending
         rtfAusgabe.Text = WelcomeText
         FlowLayoutPanelNumBlock.Enabled = True
         Basket.Clear()
-        Console.WriteLine("AbortTimer: START")
+        'Logger.WriteLine("AbortTimer: START")
         If FlowLayoutPanelCoinValues.Visible Then
 
-            Console.WriteLine("FLPCoinValues Visible True")
+            'Logger.WriteLine("FLPCoinValues Visible True")
             Abort = True
             AbortTimer.Enabled = True
             AbortTimer.Start()
-            Engine.clearConsole(1)
+            Engine.clearLogger(1)
             Engine.cleanButtons(PanelProdukte.Controls)
             For Each ctrl As Control In FlowLayoutPanelCoinValues.Controls
                 If TypeOf ctrl Is CheckBox Then
@@ -164,11 +166,11 @@ Public Class FormVending
             FlowLayoutPanelCoinValues.Visible = False
             Exit Sub
         Else
-            Console.WriteLine("FLPCoinValues Visible FALSE")
+            'Logger.WriteLine("FLPCoinValues Visible FALSE")
             TimerPanelBlinken.Enabled = True
             TimerPanelBlinken.Start()
         End If
-        Engine.clearConsole(1)
+        Engine.clearLogger(1)
         Engine.cleanButtons(PanelProdukte.Controls)
         FlowLayoutPanelCoinValues.Visible = False
         BlinkOn = False
@@ -180,10 +182,10 @@ Public Class FormVending
         cb50Cent.Enabled = False
         cb1Euro.Enabled = False
         cb2Euro.Enabled = False
-        Console.WriteLine("Checked 20 Cent")
+        Logger.WriteLine("Checked 20 Cent")
         Globals.Zahlung = True
         Globals.CoinValue = 0.2
-        Console.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
+        Logger.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
         TimerCBCoins.Enabled = True
 
     End Sub
@@ -194,8 +196,8 @@ Public Class FormVending
         cb2Euro.Enabled = False
         Globals.Zahlung = True
         Globals.CoinValue = 1.0
-        Console.WriteLine("Checked 1 Euro")
-        Console.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
+        Logger.WriteLine("Checked 1 Euro")
+        Logger.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
         TimerCBCoins.Enabled = True
 
     End Sub
@@ -206,8 +208,8 @@ Public Class FormVending
         cb2Euro.Enabled = False
         Globals.Zahlung = True
         Globals.CoinValue = 0.5
-        Console.WriteLine("Checked 50 Cent")
-        Console.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
+        Logger.WriteLine("Checked 50 Cent")
+        Logger.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
         TimerCBCoins.Enabled = True
 
     End Sub
@@ -218,8 +220,8 @@ Public Class FormVending
         cb50Cent.Enabled = False
         Globals.Zahlung = True
         Globals.CoinValue = 2.0
-        Console.WriteLine("Checked 2 Euro")
-        Console.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
+        Logger.WriteLine("Checked 2 Euro")
+        Logger.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
         TimerCBCoins.Enabled = True
 
     End Sub
@@ -234,7 +236,7 @@ Public Class FormVending
                         Exit Sub
                     End If
                     checkedCB = True
-                    Console.WriteLine("CheckeBox checked: " & cb.Name)
+                    Logger.WriteLine("CheckeBox checked: " & cb.Name)
                     BlinkCoinInsert.Enabled = True
                     BlinkCoinInsert.Start()
                     Exit Sub
@@ -242,7 +244,7 @@ Public Class FormVending
 
             End If
         Next
-        Console.WriteLine("CheckeBox checked: NONE")
+        Logger.WriteLine("CheckeBox checked: NONE")
         BlinkCoinInsert.Enabled = False
         cb50Cent.Enabled = True
         cb1Euro.Enabled = True
@@ -253,18 +255,18 @@ Public Class FormVending
         PanelCoinInsert.BackColor = Color.Silver
         Globals.Zahlung = False
         Globals.CoinValue = 0.00
-        Console.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
+        Logger.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
     End Sub
 
     Private Sub BlinkCoinInsert_Tick(sender As Object, e As EventArgs) Handles BlinkCoinInsert.Tick
         If BlinkOn = False Then
             PanelCoinInsert.BackColor = Color.GreenYellow
-            ' Console.WriteLine("BlinkCoinInsert: Farbe Grün")
+            ' Logger.WriteLine("BlinkCoinInsert: Farbe Grün")
             BlinkOn = True
             Exit Sub
         Else
             PanelCoinInsert.BackColor = Color.Silver
-            'Console.WriteLine("BlinkCoinInsert: Farbe Silber")
+            'Logger.WriteLine("BlinkCoinInsert: Farbe Silber")
             BlinkOn = False
             Exit Sub
         End If
@@ -273,17 +275,17 @@ Public Class FormVending
     Private Sub AbortTimer_Tick(sender As Object, e As EventArgs) Handles AbortTimer.Tick
         If Abort Then
 
-            Console.WriteLine("ABortTimer: Farbe ROT")
+            'Logger.WriteLine("ABortTimer: Farbe ROT")
             PanelCoinInsert.BackColor = Color.Red
             Abort = False
             Exit Sub
 
         End If
-        Console.WriteLine("ABortTimer: Farbe Silber")
+        'Logger.WriteLine("ABortTimer: Farbe Silber")
         PanelCoinInsert.BackColor = Color.Silver
         AbortTimer.Enabled = False
         AbortTimer.Stop()
-        Console.WriteLine("ABortTimer: STOP")
+        'Logger.WriteLine("ABortTimer: STOP")
     End Sub
 
 
@@ -294,13 +296,13 @@ Public Class FormVending
             btnCheckout.Visible = True
             My.Settings.MultiVend = True
             My.Settings.Save()
-            Console.WriteLine("Engine.cbMultiVend_changed: " & My.Settings.MultiVend.ToString)
+            Logger.WriteLine("Engine.cbMultiVend_changed: " & My.Settings.MultiVend.ToString)
             Exit Sub
         End If
         btnCheckout.Visible = False
         My.Settings.MultiVend = False
         My.Settings.Save()
-        Console.WriteLine("Engine.cbMultiVend_changed: " & My.Settings.MultiVend.ToString)
+        Logger.WriteLine("Engine.cbMultiVend_changed: " & My.Settings.MultiVend.ToString)
     End Sub
 
     Private Sub TimerProduktInfo_Tick(sender As Object, e As EventArgs) Handles TimerProduktInfo.Tick
@@ -310,13 +312,13 @@ Public Class FormVending
     End Sub
 
     Private Sub TimerPanelBlinken_Tick(sender As Object, e As EventArgs) Handles TimerPanelBlinken.Tick
-        Console.WriteLine("Start Timer Panel Blinken Farbe...")
+        'Logger.WriteLine("Start Timer Panel Blinken Farbe...")
         TimerPanelBlinkenFarbe.Enabled = True
         TimerPanelBlinkenFarbe.Start()
     End Sub
 
     Private Sub TimerPanelBlinkenFarbe_Tick(sender As Object, e As EventArgs) Handles TimerPanelBlinkenFarbe.Tick
-        Console.WriteLine($"TimerPanelBlinkenFarbe_Tick: BlinkOn: {BlinkOn.ToString} | Durchlauf: {durchlauf.ToString} | ")
+        'Logger.WriteLine($"TimerPanelBlinkenFarbe_Tick: BlinkOn: {BlinkOn.ToString} | Durchlauf: {durchlauf.ToString} | ")
         If BlinkOn = False And durchlauf < 2 Then
             Select Case Globals.BlinkenPanelFarbe
                 Case 1
@@ -375,6 +377,9 @@ Public Class FormVending
 
         If VendingEngine.ProcessZahlung(selectedAmount, rtfAusgabe) Then
             MessageBox.Show("Zahlung erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Globals.Zahlung = False
+            '
+
 
         Else
             'MessageBox.Show("Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -399,7 +404,7 @@ Public Class FormVending
 
     Private Sub btnCheckout_Click(sender As Object, e As EventArgs) Handles btnCheckout.Click
         If My.Settings.MultiVend Then
-            Console.WriteLine("VendingEngine.btnCheckout_Click: MULTIVEND -> Start Zahlung")
+            Logger.WriteLine("VendingEngine.btnCheckout_Click: MULTIVEND -> Start Zahlung")
 
             Dim gesamtpreis As Double = Basket.Sum(Function(be) be.gesPreis)
 
@@ -420,11 +425,38 @@ Public Class FormVending
             Globals.Zahlung = True
 
             For Each be As basketEintrag In Basket
-                Console.WriteLine($"Basket Eintrag: {be.OrderNum} | Basket GesPreis: {be.gesPreis} | Basket Anz. {be.Menge}")
+                Logger.WriteLine($"Basket Eintrag: {be.OrderNum} | Basket GesPreis: {be.gesPreis} | Basket Anz. {be.Menge}")
             Next
         Else
-            Console.WriteLine("VendingEngine.btnCheckout_Click: MULTIVEND not enabled")
+            Logger.WriteLine("VendingEngine.btnCheckout_Click: MULTIVEND not enabled")
 
         End If
     End Sub
+
+    Private Sub LoadImagesInButtons()
+        For Each id As Integer In Globals.ActiveProductIDs
+            Logger.WriteLine("ID in Globals.ActiveProductIDs : " + id.ToString)
+            For Each button As Button In PanelProdukte.Controls.OfType(Of Button)
+
+                If button.Tag.ToString() = id.ToString() Then
+                    Logger.WriteLine("BTN.TAG:" + button.Tag.ToString() + "| ID:" + id.ToString)
+                    Dim img As Image = CM.GetImageFromDatabase(id)
+
+                    If img IsNot Nothing Then
+                        ' Bitmap erstellen und skalieren
+                        Dim bitmap As New Bitmap(img)
+                        Dim newBitmap As New Bitmap(bitmap, button.Width, button.Height)
+                        button.Image = newBitmap
+                    Else
+                        Logger.WriteLine("Bild für ID " + id.ToString() + " ist nicht vorhanden.")
+                    End If
+                End If
+
+            Next
+
+        Next
+    End Sub
+
+
+
 End Class

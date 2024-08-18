@@ -25,7 +25,6 @@ Partial Class FormStartUp
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.LabelDotNetVersion = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -44,7 +43,6 @@ Partial Class FormStartUp
         Me.Panel1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Location = New System.Drawing.Point(9, 10)
         Me.Panel1.Name = "Panel1"
@@ -55,27 +53,17 @@ Partial Class FormStartUp
         '
         Me.PictureBox1.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.litevend_high_resolution_logo_transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(127, 50)
+        Me.PictureBox1.Location = New System.Drawing.Point(156, 79)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(215, 66)
+        Me.PictureBox1.Size = New System.Drawing.Size(172, 53)
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(141, 127)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(193, 18)
-        Me.Label7.TabIndex = 4
-        Me.Label7.Text = "inkl. SQlite DB-Browser"
         '
         'Panel2
         '
         Me.Panel2.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.BBS_ME_4C_OBS
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel2.Location = New System.Drawing.Point(378, 9)
+        Me.Panel2.Location = New System.Drawing.Point(376, 3)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(95, 35)
         Me.Panel2.TabIndex = 0
@@ -164,7 +152,6 @@ Partial Class FormStartUp
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
@@ -181,6 +168,5 @@ Partial Class FormStartUp
     Friend WithEvents splashTimer As Timer
     Friend WithEvents LabelDotNetVersion As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
     Friend WithEvents PictureBox1 As PictureBox
 End Class

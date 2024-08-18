@@ -44,8 +44,13 @@ Public Class FormMainMenu
 
 
     Public Sub FormMainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If (Globals.logging = True) Then
+            Logger.Show()
+
+        End If
+        Logger.WriteLine("Mainmenu load....")
         If File.Exists(dbPath) Then
-            Console.WriteLine("Datenbank gefunden!")
+            Logger.WriteLine("Datenbank gefunden!")
             labelStatusDB.Text = "OK!"
             labelStatusDB.ForeColor = Color.LightGreen
             Globals.DBpath = dbPath
@@ -53,20 +58,20 @@ Public Class FormMainMenu
             If CM.createDB() Then
                 CM.ExecuteQuery(Globals.insertDefaultStatsQuery)
                 MsgBox("SQlite Datenbank wurde erstellt.")
-                Console.WriteLine("Datenbank wurde erstellt!")
+                Logger.WriteLine("Datenbank wurde erstellt!")
                 labelStatusDB.Text = "OK!"
                 labelStatusDB.ForeColor = Color.LightGreen
 
             Else
                 MsgBox("SQlite Datenbank konnte nicht erstellt werden.")
-                Console.WriteLine("Datenbank konnte nicht erstellt werden")
+                Logger.WriteLine("Datenbank konnte nicht erstellt werden")
                 labelStatusDB.Text = "FEHLER!"
                 labelStatusDB.ForeColor = Color.Red
                 Exit Sub
             End If
         End If
         'good to go
-        Console.WriteLine("Fülle Statistiken aus der Datanbank....")
+        Logger.WriteLine("Fülle Statistiken aus der Datanbank....")
         Dim stats As Stats = CM.GetStatsFromDB()
         With stats
             tbStatsGesUmsatz.Text = .GesUmsatz.ToString
@@ -75,9 +80,8 @@ Public Class FormMainMenu
             tbStatsAnzFlaschen.Text = .anzVerkFalschen.ToString
         End With
         tbID.Text = CM.GetNextFreeID().ToString
-        Engine.clearConsole(0)
-        Console.WriteLine("---------------------------------------------------- START -----------------------------------------------------------")
-        Console.WriteLine("Statistiken erfolgreich abgerufen")
+        Engine.clearLogger(0)
+        Logger.WriteLine("Statistiken erfolgreich abgerufen")
 
         Dim Img As Image = My.Resources._6220416
         Button1.Image = Engine.ScaleImage(Img, 40, 40)
@@ -106,7 +110,7 @@ Public Class FormMainMenu
         Dim Vending As New FormVending
         Vending.TopMost = True
         Vending.StartPosition = FormStartPosition.CenterParent
-        Console.WriteLine("Öffne Vending Mode...")
+        Logger.WriteLine("Öffne Vending Mode...")
         Vending.ShowDialog()
     End Sub
 
@@ -132,7 +136,7 @@ Public Class FormMainMenu
             If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
-                Console.WriteLine("FRONTEND: Produkthinzufügen ok!")
+                Logger.WriteLine("Produkthinzufügen ok!")
                 Dim TBs As New List(Of TextBox)
                 For Each tb In PanelAdd.Controls
                     If TypeOf tb Is TextBox Then
@@ -142,14 +146,14 @@ Public Class FormMainMenu
                 Next
                 Engine.CleanTBs(TBs)
             Else
-                Console.WriteLine("FRONTEND: Produkthinzufügen FEHLGESCHLAGEN!")
+                Logger.WriteLine("Produkthinzufügen FEHLGESCHLAGEN!")
             End If
         Else
             If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
                 CM.SaveImageToDatabase(PictureBoxAdd.Image, CM.GetProduktIDByName(tbBez.Text))
-                Console.WriteLine("FRONTEND: Eintrag für Produkt + Bild erfolgreich erstellt!")
+                Logger.WriteLine("Eintrag für Produkt + Bild erfolgreich erstellt!")
                 Dim TBs As New List(Of TextBox)
                 For Each tb In PanelAdd.Controls
                     If TypeOf tb Is TextBox Then
@@ -162,7 +166,7 @@ Public Class FormMainMenu
                 PictureBoxAdd.Image = Nothing
                 PictureBoxAdd.BackgroundImage = My.Resources.Dose
             Else
-                Console.WriteLine("FRONTEND: Produkthinzufügen FEHLGESCHLAGEN!")
+                Logger.WriteLine("Produkthinzufügen FEHLGESCHLAGEN!")
             End If
         End If
         CM.UpdateStatsAnzProd(CM.GetProductCount())
@@ -202,9 +206,9 @@ Public Class FormMainMenu
         Dim actProdukt As New Produkt
         Dim img As Image
         actProdukt = CM.getProduktByID(ID)
-        Console.WriteLine("ComboBoxEditID_SelectionChangeCommited: ID: " & ID.ToString)
+        Logger.WriteLine("ComboBoxEditID_SelectedValueChanged: ID: " & ID.ToString)
         If actProdukt.Preis = 0.00 Then
-            Console.WriteLine("ComboBoxEditID_SelectionChangeCommited: actProdukt.Preis : 0.00")
+            Logger.WriteLine("ComboBoxEditID_SelectedValueChanged: actProdukt.Preis : 0.00")
             Exit Sub
         End If
         With actProdukt
@@ -250,7 +254,7 @@ Public Class FormMainMenu
 
     Private Sub btnSaveEdit_Click(sender As Object, e As EventArgs) Handles btnSaveEdit.Click
         Dim newProdukt As New Produkt
-        Console.WriteLine("Erstelle Produkt für Update....")
+        Logger.WriteLine("Erstelle Produkt für Update....")
         With newProdukt
             .ID = Globals.openIDinEdit
             .Bezeichnung = tbEditBez.Text
@@ -258,7 +262,7 @@ Public Class FormMainMenu
             .Volumen = Convert.ToDouble(tbEditV.Text)
             .Alkoholgehalt = Convert.ToDouble(tbEditAlk.Text)
         End With
-        Console.WriteLine("Produkt erstellt : " & newProdukt.Bezeichnung & vbNewLine & "ID: " & newProdukt.ID & vbNewLine & "Preis: " & newProdukt.Preis.ToString & vbNewLine & "V: " & newProdukt.Volumen.ToString & vbNewLine & "Alk: " & newProdukt.Alkoholgehalt.ToString)
+        Logger.WriteLine("Produkt erstellt : " & newProdukt.Bezeichnung & vbNewLine & "ID: " & newProdukt.ID & vbNewLine & "Preis: " & newProdukt.Preis.ToString & vbNewLine & "V: " & newProdukt.Volumen.ToString & vbNewLine & "Alk: " & newProdukt.Alkoholgehalt.ToString)
         If PictureBoxEdit.Image IsNot Nothing Then
             CM.SaveOrUpdateImageInDatabase(PictureBoxEdit.Image, Globals.openIDinEdit)
         End If
@@ -311,7 +315,7 @@ Public Class FormMainMenu
 
     Private Sub TabControl1_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.TabIndexChanged, TabControl1.SelectedIndexChanged
         If TabControl1.SelectedIndex = 3 Then
-            Console.WriteLine("Fülle Statistiken aus der Datanbank....")
+            Logger.WriteLine("Fülle Statistiken aus der Datanbank....")
             Dim stats As Stats = CM.GetStatsFromDB()
             With stats
                 tbStatsGesUmsatz.Text = .GesUmsatz.ToString

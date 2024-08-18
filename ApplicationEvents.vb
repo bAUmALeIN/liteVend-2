@@ -7,8 +7,8 @@
     ' NetworkAvailabilityChanged: Wird beim Herstellen oder Trennen der Netzwerkverbindung ausgelöst.
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            ' Legen Sie die Mindestanzeigedauer für den Splashscreen fest
-            Me.MinimumSplashScreenDisplayTime = 5000 ' Zeit in Millisekunden (z.B. 2000 ms = 2 Sekunden)
+
+            Me.MinimumSplashScreenDisplayTime = 1000000
         End Sub
     End Class
 End Namespace

@@ -1,6 +1,14 @@
 ﻿Imports System.IO
 
 Public Class Globals
+
+
+    Public Shared logger As Logger
+
+    '################ LOGGING ####################
+    Public Shared logging = True
+    '#############################################
+
     '############################################## SQL STATEMENTS ###########################################################################
     '-----------------------> AUTOMAT
     Public Shared queryAllProducts As String = "SELECT * FROM Produkte"
@@ -109,5 +117,7 @@ Public Class Globals
     FormVending.btnItem29,
     FormVending.btnItem30
     }
+
+    Public Shared ActiveProductIDs As New List(Of Integer)
 
 End Class

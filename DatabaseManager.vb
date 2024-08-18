@@ -11,7 +11,7 @@ Public Class DatabaseManager
             End Using
             Return True
         Catch ex As Exception
-            Console.WriteLine($"Fehler beim Öffnen der Datenbank: {ex.Message}")
+            Logger.WriteLine($"Fehler beim Öffnen der Datenbank: {ex.Message}")
             Return False
         End Try
     End Function
@@ -181,14 +181,14 @@ Public Class DatabaseManager
                             Dim dataGridView As DataGridView = CType(control, DataGridView)
                             dataGridView.DataSource = dataTable
                         Else
-                            Console.WriteLine("dbManager.FillControlWithQuery: ControlTyp nicht unterstützt")
+                            Logger.WriteLine("dbManager.FillControlWithQuery: ControlTyp nicht unterstützt")
                         End If
                     End Using
                 End Using
                 connection.Close()
             End Using
         Catch ex As Exception
-            Console.WriteLine($"dbManager.FillControlWithQuery: Fehler bei Abfrage: {ex.Message}")
+            Logger.WriteLine($"dbManager.FillControlWithQuery: Fehler bei Abfrage: {ex.Message}")
         End Try
     End Sub
 
@@ -212,7 +212,7 @@ Public Class DatabaseManager
             Next
 
         Catch ex As Exception
-            Console.WriteLine($"dbManager.FillDataGridViewWithTable: Fehler:: {ex.Message}")
+            Logger.WriteLine($"dbManager.FillDataGridViewWithTable: Fehler:: {ex.Message}")
         End Try
     End Sub
 End Class

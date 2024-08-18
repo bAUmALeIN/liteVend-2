@@ -28,9 +28,10 @@ Partial Class FormMainMenu
         Me.tabPageMain = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label35 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.btnVendingMode = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.labelStatusDB = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.TabPageAdd = New System.Windows.Forms.TabPage()
@@ -97,8 +98,6 @@ Partial Class FormMainMenu
         Me.btnProduktOverview = New System.Windows.Forms.Button()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label41 = New System.Windows.Forms.Label()
-        Me.labelStatusDB = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -121,7 +120,6 @@ Partial Class FormMainMenu
         Me.TabControl1.SuspendLayout()
         Me.tabPageMain.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.TabPageAdd.SuspendLayout()
         Me.PanelAdd.SuspendLayout()
@@ -152,13 +150,12 @@ Partial Class FormMainMenu
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(323, 346)
         Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
-        Me.TabControl1.TabIndex = 0
+        Me.TabControl1.TabIndex = 3
         '
         'tabPageMain
         '
         Me.tabPageMain.BackColor = System.Drawing.Color.Gainsboro
         Me.tabPageMain.Controls.Add(Me.Panel1)
-        Me.tabPageMain.Controls.Add(Me.PictureBox2)
         Me.tabPageMain.Controls.Add(Me.btnVendingMode)
         Me.tabPageMain.Controls.Add(Me.Label13)
         Me.tabPageMain.Controls.Add(Me.Button1)
@@ -177,7 +174,7 @@ Partial Class FormMainMenu
         '
         Me.Panel1.BackColor = System.Drawing.Color.Gray
         Me.Panel1.Controls.Add(Me.Label35)
-        Me.Panel1.Location = New System.Drawing.Point(2, 177)
+        Me.Panel1.Location = New System.Drawing.Point(0, 134)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(323, 31)
         Me.Panel1.TabIndex = 34
@@ -193,27 +190,27 @@ Partial Class FormMainMenu
         Me.Label35.TabIndex = 32
         Me.Label35.Text = "Datenbank Verwaltung"
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.litevend_high_resolution_logo_black_transparent
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox2.Location = New System.Drawing.Point(2, 3)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(154, 46)
-        Me.PictureBox2.TabIndex = 33
-        Me.PictureBox2.TabStop = False
-        '
         'btnVendingMode
         '
         Me.btnVendingMode.BackColor = System.Drawing.Color.Ivory
         Me.btnVendingMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVendingMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVendingMode.Location = New System.Drawing.Point(62, 101)
+        Me.btnVendingMode.Location = New System.Drawing.Point(59, 58)
         Me.btnVendingMode.Name = "btnVendingMode"
         Me.btnVendingMode.Size = New System.Drawing.Size(202, 50)
-        Me.btnVendingMode.TabIndex = 0
+        Me.btnVendingMode.TabIndex = 1
         Me.btnVendingMode.Text = "Vending Mode"
         Me.btnVendingMode.UseVisualStyleBackColor = False
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(94, 286)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(116, 16)
+        Me.Label13.TabIndex = 15
+        Me.Label13.Text = "Status Datenbank:"
         '
         'Button1
         '
@@ -221,18 +218,30 @@ Partial Class FormMainMenu
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Button1.Location = New System.Drawing.Point(78, 223)
+        Me.Button1.Location = New System.Drawing.Point(77, 191)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(167, 50)
-        Me.Button1.TabIndex = 3
+        Me.Button1.TabIndex = 2
         Me.Button1.Text = "Controller"
         Me.Button1.UseVisualStyleBackColor = False
+        '
+        'labelStatusDB
+        '
+        Me.labelStatusDB.AutoSize = True
+        Me.labelStatusDB.BackColor = System.Drawing.Color.Silver
+        Me.labelStatusDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelStatusDB.ForeColor = System.Drawing.Color.Red
+        Me.labelStatusDB.Location = New System.Drawing.Point(218, 287)
+        Me.labelStatusDB.Name = "labelStatusDB"
+        Me.labelStatusDB.Size = New System.Drawing.Size(11, 16)
+        Me.labelStatusDB.TabIndex = 17
+        Me.labelStatusDB.Text = "-"
         '
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.Gray
         Me.Panel7.Controls.Add(Me.Label43)
-        Me.Panel7.Location = New System.Drawing.Point(-4, 52)
+        Me.Panel7.Location = New System.Drawing.Point(0, 1)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(323, 31)
         Me.Panel7.TabIndex = 24
@@ -253,7 +262,7 @@ Partial Class FormMainMenu
         Me.TabPageAdd.Controls.Add(Me.PanelAdd)
         Me.TabPageAdd.Location = New System.Drawing.Point(4, 24)
         Me.TabPageAdd.Name = "TabPageAdd"
-        Me.TabPageAdd.Size = New System.Drawing.Size(315, 317)
+        Me.TabPageAdd.Size = New System.Drawing.Size(315, 318)
         Me.TabPageAdd.TabIndex = 3
         Me.TabPageAdd.Text = "Anlegen"
         Me.TabPageAdd.UseVisualStyleBackColor = True
@@ -283,7 +292,7 @@ Partial Class FormMainMenu
         Me.PanelAdd.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelAdd.Location = New System.Drawing.Point(0, 0)
         Me.PanelAdd.Name = "PanelAdd"
-        Me.PanelAdd.Size = New System.Drawing.Size(315, 317)
+        Me.PanelAdd.Size = New System.Drawing.Size(315, 318)
         Me.PanelAdd.TabIndex = 24
         '
         'cbImage
@@ -292,7 +301,7 @@ Partial Class FormMainMenu
         Me.cbImage.Location = New System.Drawing.Point(129, 240)
         Me.cbImage.Name = "cbImage"
         Me.cbImage.Size = New System.Drawing.Size(47, 19)
-        Me.cbImage.TabIndex = 49
+        Me.cbImage.TabIndex = 6
         Me.cbImage.Text = "Bild"
         Me.cbImage.UseVisualStyleBackColor = True
         '
@@ -304,7 +313,7 @@ Partial Class FormMainMenu
         Me.btnSave.Location = New System.Drawing.Point(28, 262)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(105, 29)
-        Me.btnSave.TabIndex = 32
+        Me.btnSave.TabIndex = 7
         Me.btnSave.Text = "Speichern"
         Me.btnSave.UseVisualStyleBackColor = False
         '
@@ -324,7 +333,7 @@ Partial Class FormMainMenu
         Me.tbID.Name = "tbID"
         Me.tbID.ReadOnly = True
         Me.tbID.Size = New System.Drawing.Size(36, 21)
-        Me.tbID.TabIndex = 47
+        Me.tbID.TabIndex = 5
         '
         'Label27
         '
@@ -341,7 +350,7 @@ Partial Class FormMainMenu
         Me.tbBez.Location = New System.Drawing.Point(13, 103)
         Me.tbBez.Name = "tbBez"
         Me.tbBez.Size = New System.Drawing.Size(133, 21)
-        Me.tbBez.TabIndex = 45
+        Me.tbBez.TabIndex = 1
         '
         'Label28
         '
@@ -382,7 +391,7 @@ Partial Class FormMainMenu
         Me.btnAddAddImage.Location = New System.Drawing.Point(192, 296)
         Me.btnAddAddImage.Name = "btnAddAddImage"
         Me.btnAddAddImage.Size = New System.Drawing.Size(105, 21)
-        Me.btnAddAddImage.TabIndex = 41
+        Me.btnAddAddImage.TabIndex = 8
         Me.btnAddAddImage.Text = "Durchsuchen"
         Me.btnAddAddImage.UseVisualStyleBackColor = False
         '
@@ -421,21 +430,21 @@ Partial Class FormMainMenu
         Me.tbV.Location = New System.Drawing.Point(109, 159)
         Me.tbV.Name = "tbV"
         Me.tbV.Size = New System.Drawing.Size(36, 21)
-        Me.tbV.TabIndex = 37
+        Me.tbV.TabIndex = 3
         '
         'tbAlk
         '
         Me.tbAlk.Location = New System.Drawing.Point(109, 185)
         Me.tbAlk.Name = "tbAlk"
         Me.tbAlk.Size = New System.Drawing.Size(36, 21)
-        Me.tbAlk.TabIndex = 36
+        Me.tbAlk.TabIndex = 4
         '
         'tbPreis
         '
         Me.tbPreis.Location = New System.Drawing.Point(109, 134)
         Me.tbPreis.Name = "tbPreis"
         Me.tbPreis.Size = New System.Drawing.Size(36, 21)
-        Me.tbPreis.TabIndex = 35
+        Me.tbPreis.TabIndex = 2
         '
         'PictureBoxAdd
         '
@@ -484,7 +493,7 @@ Partial Class FormMainMenu
         Me.TabPageEdit.Controls.Add(Me.Panel4)
         Me.TabPageEdit.Location = New System.Drawing.Point(4, 24)
         Me.TabPageEdit.Name = "TabPageEdit"
-        Me.TabPageEdit.Size = New System.Drawing.Size(315, 317)
+        Me.TabPageEdit.Size = New System.Drawing.Size(315, 318)
         Me.TabPageEdit.TabIndex = 2
         Me.TabPageEdit.Text = "Bearbeiten"
         Me.TabPageEdit.UseVisualStyleBackColor = True
@@ -506,7 +515,7 @@ Partial Class FormMainMenu
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(315, 317)
+        Me.Panel4.Size = New System.Drawing.Size(315, 318)
         Me.Panel4.TabIndex = 1
         '
         'PanelEdit
@@ -534,7 +543,7 @@ Partial Class FormMainMenu
         Me.PanelEdit.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelEdit.Location = New System.Drawing.Point(0, 0)
         Me.PanelEdit.Name = "PanelEdit"
-        Me.PanelEdit.Size = New System.Drawing.Size(315, 317)
+        Me.PanelEdit.Size = New System.Drawing.Size(315, 318)
         Me.PanelEdit.TabIndex = 20
         '
         'checkBoxEdit
@@ -545,7 +554,7 @@ Partial Class FormMainMenu
         Me.checkBoxEdit.Location = New System.Drawing.Point(129, 240)
         Me.checkBoxEdit.Name = "checkBoxEdit"
         Me.checkBoxEdit.Size = New System.Drawing.Size(44, 17)
-        Me.checkBoxEdit.TabIndex = 0
+        Me.checkBoxEdit.TabIndex = 6
         Me.checkBoxEdit.Text = "Edit"
         Me.checkBoxEdit.UseVisualStyleBackColor = True
         '
@@ -616,7 +625,7 @@ Partial Class FormMainMenu
         Me.tbEditBez.Location = New System.Drawing.Point(12, 215)
         Me.tbEditBez.Name = "tbEditBez"
         Me.tbEditBez.Size = New System.Drawing.Size(133, 21)
-        Me.tbEditBez.TabIndex = 28
+        Me.tbEditBez.TabIndex = 5
         '
         'Label24
         '
@@ -657,7 +666,7 @@ Partial Class FormMainMenu
         Me.btnOpenImageEdit.Location = New System.Drawing.Point(192, 296)
         Me.btnOpenImageEdit.Name = "btnOpenImageEdit"
         Me.btnOpenImageEdit.Size = New System.Drawing.Size(105, 21)
-        Me.btnOpenImageEdit.TabIndex = 23
+        Me.btnOpenImageEdit.TabIndex = 8
         Me.btnOpenImageEdit.Text = "Durchsuchen"
         Me.btnOpenImageEdit.UseVisualStyleBackColor = False
         '
@@ -670,7 +679,7 @@ Partial Class FormMainMenu
         Me.btnSaveEdit.Location = New System.Drawing.Point(28, 262)
         Me.btnSaveEdit.Name = "btnSaveEdit"
         Me.btnSaveEdit.Size = New System.Drawing.Size(105, 29)
-        Me.btnSaveEdit.TabIndex = 22
+        Me.btnSaveEdit.TabIndex = 7
         Me.btnSaveEdit.Text = "Speichern"
         Me.btnSaveEdit.UseVisualStyleBackColor = False
         '
@@ -710,7 +719,7 @@ Partial Class FormMainMenu
         Me.tbEditV.Location = New System.Drawing.Point(109, 142)
         Me.tbEditV.Name = "tbEditV"
         Me.tbEditV.Size = New System.Drawing.Size(36, 21)
-        Me.tbEditV.TabIndex = 5
+        Me.tbEditV.TabIndex = 3
         '
         'tbEditAlk
         '
@@ -726,7 +735,7 @@ Partial Class FormMainMenu
         Me.tbEditPreis.Location = New System.Drawing.Point(109, 117)
         Me.tbEditPreis.Name = "tbEditPreis"
         Me.tbEditPreis.Size = New System.Drawing.Size(36, 21)
-        Me.tbEditPreis.TabIndex = 3
+        Me.tbEditPreis.TabIndex = 2
         '
         'PictureBoxEdit
         '
@@ -834,7 +843,7 @@ Partial Class FormMainMenu
         Me.TabPageDatabase.Location = New System.Drawing.Point(4, 24)
         Me.TabPageDatabase.Name = "TabPageDatabase"
         Me.TabPageDatabase.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageDatabase.Size = New System.Drawing.Size(271, 273)
+        Me.TabPageDatabase.Size = New System.Drawing.Size(315, 318)
         Me.TabPageDatabase.TabIndex = 1
         Me.TabPageDatabase.Text = "Übersicht"
         '
@@ -899,7 +908,7 @@ Partial Class FormMainMenu
         Me.PanelTabPageDatabase.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelTabPageDatabase.Location = New System.Drawing.Point(3, 3)
         Me.PanelTabPageDatabase.Name = "PanelTabPageDatabase"
-        Me.PanelTabPageDatabase.Size = New System.Drawing.Size(265, 267)
+        Me.PanelTabPageDatabase.Size = New System.Drawing.Size(309, 312)
         Me.PanelTabPageDatabase.TabIndex = 0
         '
         'btnProduktOverview
@@ -911,7 +920,7 @@ Partial Class FormMainMenu
         Me.btnProduktOverview.Location = New System.Drawing.Point(83, 264)
         Me.btnProduktOverview.Name = "btnProduktOverview"
         Me.btnProduktOverview.Size = New System.Drawing.Size(151, 29)
-        Me.btnProduktOverview.TabIndex = 2
+        Me.btnProduktOverview.TabIndex = 1
         Me.btnProduktOverview.Text = "Produktübersicht"
         Me.btnProduktOverview.UseVisualStyleBackColor = False
         '
@@ -936,28 +945,6 @@ Partial Class FormMainMenu
         Me.Label41.Size = New System.Drawing.Size(269, 25)
         Me.Label41.TabIndex = 31
         Me.Label41.Text = "Umsatz / Artikel-Statistiken"
-        '
-        'labelStatusDB
-        '
-        Me.labelStatusDB.AutoSize = True
-        Me.labelStatusDB.BackColor = System.Drawing.Color.Silver
-        Me.labelStatusDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelStatusDB.ForeColor = System.Drawing.Color.Red
-        Me.labelStatusDB.Location = New System.Drawing.Point(218, 287)
-        Me.labelStatusDB.Name = "labelStatusDB"
-        Me.labelStatusDB.Size = New System.Drawing.Size(11, 16)
-        Me.labelStatusDB.TabIndex = 17
-        Me.labelStatusDB.Text = "-"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(94, 286)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(116, 16)
-        Me.Label13.TabIndex = 15
-        Me.Label13.Text = "Status Datenbank:"
         '
         'Label9
         '
@@ -1158,7 +1145,6 @@ Partial Class FormMainMenu
         Me.tabPageMain.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.TabPageAdd.ResumeLayout(False)
@@ -1280,7 +1266,6 @@ Partial Class FormMainMenu
     Friend WithEvents Label42 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label43 As Label
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label35 As Label
 End Class

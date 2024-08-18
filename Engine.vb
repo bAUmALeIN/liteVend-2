@@ -25,7 +25,7 @@ Module Engine
     End Function
 
     Public Sub getStats()
-        Console.WriteLine("Engine.updateStats: Fülle Statistiken aus der Datanbank....")
+
         Dim stats As Stats = CM.GetStatsFromDB()
         With stats
             FormMainMenu.tbStatsGesUmsatz.Text = .GesUmsatz.ToString
@@ -33,7 +33,7 @@ Module Engine
             FormMainMenu.tbStatsAnzProd.Text = .anzProdukte.ToString
             FormMainMenu.tbStatsAnzFlaschen.Text = .anzVerkFalschen.ToString
         End With
-        Console.WriteLine("Engine.updateStats: Statistiken erfolgreich abgerufen")
+
 
 
     End Sub
@@ -70,19 +70,19 @@ Module Engine
         My.Settings.MultiVend = False
         My.Settings.isFirstOrder = True
         My.Settings.Save()
-        Console.WriteLine("Engine.cleanAppStats: Vending Parameter RESET")
+        Logger.WriteLine("Engine.cleanAppStats: Vending Parameter RESET")
     End Sub
 
-    Public Sub clearConsole(m As Integer)
+    Public Sub clearLogger(m As Integer)
         If m = 1 Then
-            Console.WriteLine("-------------------------------------------------- LÖSCHE VORGANG ---------------------------------------------------------------")
+
         End If
         Dim i As Integer
         While i < 20
-            Console.WriteLine("")
+            'Logger.WriteLine("")
             i += 1
         End While
-        Console.WriteLine("-------------------------------------------------- STARTE NEUEN VORGANG --------------------------------------------------------------")
+
     End Sub
 
     Public Function checkCheckBoxenCents(flp As FlowLayoutPanel)
@@ -125,28 +125,28 @@ Module Engine
             Select Case paraTextBox
                 Case 0
                     tbcolumID = "ID"
-                    Console.WriteLine("Engine.FillControls: TextBox Parameter ID")
+                    Logger.WriteLine("Engine.FillControls: TextBox Parameter ID")
                     Exit Select
                 Case 1
                     tbcolumID = "Bezeichnung"
-                    Console.WriteLine("Engine.FillControls: TextBox Parameter Bezeichnung")
+                    Logger.WriteLine("Engine.FillControls: TextBox Parameter Bezeichnung")
                     Exit Select
                 Case 2
                     tbcolumID = "Preis"
-                    Console.WriteLine("Engine.FillControls: TextBox Parameter Preis")
+                    Logger.WriteLine("Engine.FillControls: TextBox Parameter Preis")
                     Exit Select
                 Case 3
                     tbcolumID = "Volumen"
-                    Console.WriteLine("Engine.FillControls: TextBox Parameter Volumen")
+                    Logger.WriteLine("Engine.FillControls: TextBox Parameter Volumen")
                     Exit Select
                 Case 4
                     tbcolumID = "Alkoholgehalt"
-                    Console.WriteLine("Engine.FillControls: TextBox Parameter Alkoholgehalt")
+                    Logger.WriteLine("Engine.FillControls: TextBox Parameter Alkoholgehalt")
                     Exit Select
                 Case 5
 
                 Case Else
-                    Console.WriteLine("Engine.FillControls: TextBox Parameter ungültig")
+                    Logger.WriteLine("Engine.FillControls: TextBox Parameter ungültig")
                     Exit Select
             End Select
         End If
@@ -154,27 +154,27 @@ Module Engine
             Select Case paraCB
                 Case 0
                     cbcolumID = "ID"
-                    Console.WriteLine("Engine.FillControls: paraCB Parameter ID")
+                    Logger.WriteLine("Engine.FillControls: paraCB Parameter ID")
                     Exit Select
                 Case 1
                     cbcolumID = "Bezeichnung"
-                    Console.WriteLine("Engine.FillControls: paraCB Parameter Bezeichnung")
+                    Logger.WriteLine("Engine.FillControls: paraCB Parameter Bezeichnung")
                     Exit Select
                 Case 2
                     cbcolumID = "Preis"
-                    Console.WriteLine("Engine.FillControls: paraCB Parameter Preis")
+                    Logger.WriteLine("Engine.FillControls: paraCB Parameter Preis")
                     Exit Select
                 Case 3
                     cbcolumID = "Volumen"
-                    Console.WriteLine("Engine.FillControls: paraCB Parameter Volumen")
+                    Logger.WriteLine("Engine.FillControls: paraCB Parameter Volumen")
                     Exit Select
                 Case 4
                     cbcolumID = "Alkoholgehalt"
-                    Console.WriteLine("Engine.FillControls: paraCB Parameter Alkoholgehalt")
+                    Logger.WriteLine("Engine.FillControls: paraCB Parameter Alkoholgehalt")
                     Exit Select
 
                 Case Else
-                    Console.WriteLine("Engine.FillControls: paraCB Parameter ungültig")
+                    Logger.WriteLine("Engine.FillControls: paraCB Parameter ungültig")
                     Exit Select
             End Select
 
@@ -186,19 +186,19 @@ Module Engine
             cb.Items.Clear()
             For Each row As DataRow In ergebnis.Rows
                 cb.Items.Add(row(paraCB).ToString())
-                Console.WriteLine("Engine.FillControls: ADD ITEM ComboBox." & cb.Name & ": " & paraCB.ToString)
+                Logger.WriteLine("Engine.FillControls: ADD ITEM ComboBox." & cb.Name & ": " & paraCB.ToString)
             Next
         End If
 
         If tb IsNot Nothing Then
             If ergebnis.Rows.Count > 0 Then
                 tb.Text = ergebnis.Rows(0)(paraTextBox).ToString()
-                Console.WriteLine("Engine.FillControls: TextBox." & tb.Name & ": " & ergebnis.ToString)
+                Logger.WriteLine("Engine.FillControls: TextBox." & tb.Name & ": " & ergebnis.ToString)
             End If
         End If
         If pb IsNot Nothing Then
             If image IsNot Nothing Then
-                Console.WriteLine("Engine.FillControls: PictureBox." & pb.Name)
+                Logger.WriteLine("Engine.FillControls: PictureBox." & pb.Name)
                 pb.Image = image
                 pb.SizeMode = PictureBoxSizeMode.StretchImage
             End If

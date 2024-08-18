@@ -51,7 +51,7 @@
             If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
-                Console.WriteLine("FRONTEND: Produkthinzufügen ok!")
+                Logger.WriteLine("FRONTEND: Produkthinzufügen ok!")
                 Dim TBs As New List(Of TextBox)
                 For Each tb In PanelInputProdukt.Controls
                     If TypeOf tb Is TextBox Then
@@ -61,14 +61,14 @@
                 Next
                 Engine.CleanTBs(TBs)
             Else
-                Console.WriteLine("FRONTEND: Produkthinzufügen FEHLGESCHLAGEN!")
+                Logger.WriteLine("FRONTEND: Produkthinzufügen FEHLGESCHLAGEN!")
             End If
         Else
             If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
                 CM.SaveImageToDatabase(PictureBox1.Image, CM.GetProduktIDByName(tbBez.Text))
-                Console.WriteLine("FRONTEND: Eintrag für Produkt + Bild erfolgreich erstellt!")
+                Logger.WriteLine("FRONTEND: Eintrag für Produkt + Bild erfolgreich erstellt!")
                 Dim TBs As New List(Of TextBox)
                 For Each tb In PanelInputProdukt.Controls
                     If TypeOf tb Is TextBox Then
@@ -81,7 +81,7 @@
                 PictureBox1.Image = Nothing
                 PictureBox1.BackgroundImage = My.Resources.Dose
             Else
-                Console.WriteLine("FRONTEND: Produkthinzufügen FEHLGESCHLAGEN!")
+                Logger.WriteLine("FRONTEND: Produkthinzufügen FEHLGESCHLAGEN!")
             End If
         End If
         'Engine.updateStats()

@@ -26,6 +26,7 @@ Partial Class FormDBManager
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormDBManager))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.RoundButton1 = New Getränke_Automat_V2.RoundButton()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.CheckBoxResetDB = New System.Windows.Forms.CheckBox()
@@ -41,6 +42,7 @@ Partial Class FormDBManager
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TreeViewDatabase = New System.Windows.Forms.TreeView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnResetTable = New System.Windows.Forms.Button()
@@ -58,19 +60,16 @@ Partial Class FormDBManager
         Me.DataGridViewSQL = New System.Windows.Forms.DataGridView()
         Me.btnRunSQL = New System.Windows.Forms.Button()
         Me.rtfSQLAusgabe = New System.Windows.Forms.RichTextBox()
+        Me.TabControlSQL = New Getränke_Automat_V2.CustomTabControl()
+        Me.SQL1 = New System.Windows.Forms.TabPage()
+        Me.rtfRunSQL = New System.Windows.Forms.RichTextBox()
         Me.labelDBPath = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.btnMinimize = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.RoundButton1 = New Getränke_Automat_V2.RoundButton()
-        Me.TabControlSQL = New Getränke_Automat_V2.CustomTabControl()
-        Me.SQL1 = New System.Windows.Forms.TabPage()
-        Me.rtfRunSQL = New System.Windows.Forms.RichTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -80,10 +79,10 @@ Partial Class FormDBManager
         CType(Me.DataGridViewTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         CType(Me.DataGridViewSQL, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControlSQL.SuspendLayout()
         Me.SQL1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -113,6 +112,18 @@ Partial Class FormDBManager
         Me.TabPage1.Size = New System.Drawing.Size(774, 431)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Datenbankstruktur"
+        '
+        'RoundButton1
+        '
+        Me.RoundButton1.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.icons8_info_16
+        Me.RoundButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.RoundButton1.FlatAppearance.BorderSize = 0
+        Me.RoundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RoundButton1.Location = New System.Drawing.Point(738, 10)
+        Me.RoundButton1.Name = "RoundButton1"
+        Me.RoundButton1.Size = New System.Drawing.Size(23, 23)
+        Me.RoundButton1.TabIndex = 44
+        Me.RoundButton1.UseVisualStyleBackColor = True
         '
         'btnRefresh
         '
@@ -286,6 +297,17 @@ Partial Class FormDBManager
         Me.TabPage2.Size = New System.Drawing.Size(774, 431)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Daten bearbeiten"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Firebrick
+        Me.Label1.Location = New System.Drawing.Point(499, 384)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(242, 22)
+        Me.Label1.TabIndex = 37
+        Me.Label1.Text = "Nur Änderungen möglich"
         '
         'Panel4
         '
@@ -492,12 +514,44 @@ Partial Class FormDBManager
         Me.rtfSQLAusgabe.TabIndex = 6
         Me.rtfSQLAusgabe.Text = ""
         '
+        'TabControlSQL
+        '
+        Me.TabControlSQL.Controls.Add(Me.SQL1)
+        Me.TabControlSQL.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
+        Me.TabControlSQL.ItemSize = New System.Drawing.Size(150, 20)
+        Me.TabControlSQL.Location = New System.Drawing.Point(3, 72)
+        Me.TabControlSQL.Name = "TabControlSQL"
+        Me.TabControlSQL.SelectedIndex = 0
+        Me.TabControlSQL.Size = New System.Drawing.Size(763, 161)
+        Me.TabControlSQL.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.TabControlSQL.TabIndex = 40
+        '
+        'SQL1
+        '
+        Me.SQL1.BackColor = System.Drawing.Color.Gainsboro
+        Me.SQL1.Controls.Add(Me.rtfRunSQL)
+        Me.SQL1.Location = New System.Drawing.Point(4, 24)
+        Me.SQL1.Name = "SQL1"
+        Me.SQL1.Padding = New System.Windows.Forms.Padding(3)
+        Me.SQL1.Size = New System.Drawing.Size(755, 133)
+        Me.SQL1.TabIndex = 0
+        Me.SQL1.Text = "SQL 1"
+        '
+        'rtfRunSQL
+        '
+        Me.rtfRunSQL.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.rtfRunSQL.Location = New System.Drawing.Point(3, 3)
+        Me.rtfRunSQL.Name = "rtfRunSQL"
+        Me.rtfRunSQL.Size = New System.Drawing.Size(749, 127)
+        Me.rtfRunSQL.TabIndex = 4
+        Me.rtfRunSQL.Text = ""
+        '
         'labelDBPath
         '
         Me.labelDBPath.AutoSize = True
         Me.labelDBPath.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labelDBPath.ForeColor = System.Drawing.Color.Black
-        Me.labelDBPath.Location = New System.Drawing.Point(262, 7)
+        Me.labelDBPath.Location = New System.Drawing.Point(112, 6)
         Me.labelDBPath.Name = "labelDBPath"
         Me.labelDBPath.Size = New System.Drawing.Size(11, 15)
         Me.labelDBPath.TabIndex = 40
@@ -508,7 +562,7 @@ Partial Class FormDBManager
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(179, 7)
+        Me.Label6.Location = New System.Drawing.Point(33, 6)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(73, 15)
         Me.Label6.TabIndex = 39
@@ -518,7 +572,6 @@ Partial Class FormDBManager
         '
         Me.Panel2.BackColor = System.Drawing.Color.Silver
         Me.Panel2.Controls.Add(Me.labelDBPath)
-        Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.btnMinimize)
         Me.Panel2.Controls.Add(Me.Label6)
         Me.Panel2.Controls.Add(Me.btnClose)
@@ -527,17 +580,6 @@ Partial Class FormDBManager
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(801, 25)
         Me.Panel2.TabIndex = 5
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(33, 6)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(122, 16)
-        Me.Label5.TabIndex = 39
-        Me.Label5.Text = "liteVend | Controller"
         '
         'btnMinimize
         '
@@ -582,61 +624,6 @@ Partial Class FormDBManager
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
-        'RoundButton1
-        '
-        Me.RoundButton1.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.icons8_info_16
-        Me.RoundButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.RoundButton1.FlatAppearance.BorderSize = 0
-        Me.RoundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.RoundButton1.Location = New System.Drawing.Point(738, 10)
-        Me.RoundButton1.Name = "RoundButton1"
-        Me.RoundButton1.Size = New System.Drawing.Size(23, 23)
-        Me.RoundButton1.TabIndex = 44
-        Me.RoundButton1.UseVisualStyleBackColor = True
-        '
-        'TabControlSQL
-        '
-        Me.TabControlSQL.Controls.Add(Me.SQL1)
-        Me.TabControlSQL.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
-        Me.TabControlSQL.ItemSize = New System.Drawing.Size(150, 20)
-        Me.TabControlSQL.Location = New System.Drawing.Point(3, 72)
-        Me.TabControlSQL.Name = "TabControlSQL"
-        Me.TabControlSQL.SelectedIndex = 0
-        Me.TabControlSQL.Size = New System.Drawing.Size(763, 161)
-        Me.TabControlSQL.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
-        Me.TabControlSQL.TabIndex = 40
-        '
-        'SQL1
-        '
-        Me.SQL1.BackColor = System.Drawing.Color.Gainsboro
-        Me.SQL1.Controls.Add(Me.rtfRunSQL)
-        Me.SQL1.Location = New System.Drawing.Point(4, 24)
-        Me.SQL1.Name = "SQL1"
-        Me.SQL1.Padding = New System.Windows.Forms.Padding(3)
-        Me.SQL1.Size = New System.Drawing.Size(755, 133)
-        Me.SQL1.TabIndex = 0
-        Me.SQL1.Text = "SQL 1"
-        '
-        'rtfRunSQL
-        '
-        Me.rtfRunSQL.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.rtfRunSQL.Location = New System.Drawing.Point(3, 3)
-        Me.rtfRunSQL.Name = "rtfRunSQL"
-        Me.rtfRunSQL.Size = New System.Drawing.Size(749, 127)
-        Me.rtfRunSQL.TabIndex = 4
-        Me.rtfRunSQL.Text = ""
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Firebrick
-        Me.Label1.Location = New System.Drawing.Point(499, 384)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(242, 22)
-        Me.Label1.TabIndex = 37
-        Me.Label1.Text = "Nur Änderungen möglich"
-        '
         'FormDBManager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -665,11 +652,11 @@ Partial Class FormDBManager
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         CType(Me.DataGridViewSQL, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControlSQL.ResumeLayout(False)
+        Me.SQL1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControlSQL.ResumeLayout(False)
-        Me.SQL1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -704,7 +691,6 @@ Partial Class FormDBManager
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents labelDBPath As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents btnOpenSQL As Button
