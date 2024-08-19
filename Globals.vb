@@ -2,6 +2,14 @@
 
 Public Class Globals
 
+    Public Structure Stats
+        Public AnzVG As Integer
+        Public anzProdukte As Integer
+        Public anzVerkFalschen As Integer
+        Public GesUmsatz As Double
+    End Structure
+
+
 
     Public Shared logger As Logger
 
@@ -21,6 +29,7 @@ Public Class Globals
     Public Shared queryNextFreeID As String = "SELECT ID FROM Produkte ORDER BY ID"
     Public Shared queryUpdateStatsAnzProd As String = "UPDATE Stats SET anzProdukte = @anzProdukte"
     Public Shared queryUpdateStatsGesUmsatz As String = "UPDATE Stats SET  = @GesUmsatz"
+    Public Shared queryUpdateStatsVGZ As String = "UPDATE Stats SET  = @VGZ"
     Public Shared queryGetStatsGesUmsatz As String = "Select GesUmatz from Transaktionen"
     Public Shared querySelectProductCount = "SELECT COUNT(*) FROM Produkte"
 

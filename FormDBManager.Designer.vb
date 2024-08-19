@@ -26,7 +26,6 @@ Partial Class FormDBManager
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormDBManager))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.RoundButton1 = New Getränke_Automat_V2.RoundButton()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.CheckBoxResetDB = New System.Windows.Forms.CheckBox()
@@ -60,9 +59,6 @@ Partial Class FormDBManager
         Me.DataGridViewSQL = New System.Windows.Forms.DataGridView()
         Me.btnRunSQL = New System.Windows.Forms.Button()
         Me.rtfSQLAusgabe = New System.Windows.Forms.RichTextBox()
-        Me.TabControlSQL = New Getränke_Automat_V2.CustomTabControl()
-        Me.SQL1 = New System.Windows.Forms.TabPage()
-        Me.rtfRunSQL = New System.Windows.Forms.RichTextBox()
         Me.labelDBPath = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -70,6 +66,10 @@ Partial Class FormDBManager
         Me.btnClose = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RoundButton1 = New Getränke_Automat_V2.RoundButton()
+        Me.TabControlSQL = New Getränke_Automat_V2.CustomTabControl()
+        Me.SQL1 = New System.Windows.Forms.TabPage()
+        Me.rtfRunSQL = New System.Windows.Forms.RichTextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -79,10 +79,10 @@ Partial Class FormDBManager
         CType(Me.DataGridViewTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         CType(Me.DataGridViewSQL, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControlSQL.SuspendLayout()
-        Me.SQL1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabControlSQL.SuspendLayout()
+        Me.SQL1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -98,7 +98,7 @@ Partial Class FormDBManager
         '
         'TabPage1
         '
-        Me.TabPage1.BackColor = System.Drawing.Color.Gainsboro
+        Me.TabPage1.BackColor = System.Drawing.Color.LightGray
         Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.TabPage1.Controls.Add(Me.RoundButton1)
         Me.TabPage1.Controls.Add(Me.btnRefresh)
@@ -113,18 +113,6 @@ Partial Class FormDBManager
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Datenbankstruktur"
         '
-        'RoundButton1
-        '
-        Me.RoundButton1.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.icons8_info_16
-        Me.RoundButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.RoundButton1.FlatAppearance.BorderSize = 0
-        Me.RoundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.RoundButton1.Location = New System.Drawing.Point(738, 10)
-        Me.RoundButton1.Name = "RoundButton1"
-        Me.RoundButton1.Size = New System.Drawing.Size(23, 23)
-        Me.RoundButton1.TabIndex = 44
-        Me.RoundButton1.UseVisualStyleBackColor = True
-        '
         'btnRefresh
         '
         Me.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -132,9 +120,10 @@ Partial Class FormDBManager
         Me.btnRefresh.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRefresh.Location = New System.Drawing.Point(414, 34)
         Me.btnRefresh.Name = "btnRefresh"
-        Me.btnRefresh.Size = New System.Drawing.Size(168, 31)
+        Me.btnRefresh.Size = New System.Drawing.Size(126, 31)
         Me.btnRefresh.TabIndex = 33
         Me.btnRefresh.Text = "Aktualisieren"
+        Me.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnRefresh.UseVisualStyleBackColor = True
         '
         'Panel7
@@ -159,7 +148,7 @@ Partial Class FormDBManager
         '
         'btnResetDB
         '
-        Me.btnResetDB.BackColor = System.Drawing.Color.Ivory
+        Me.btnResetDB.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnResetDB.Enabled = False
         Me.btnResetDB.FlatAppearance.BorderColor = System.Drawing.Color.Brown
         Me.btnResetDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -178,16 +167,16 @@ Partial Class FormDBManager
         Me.PanelCreateTable.Controls.Add(Me.labelNode)
         Me.PanelCreateTable.Location = New System.Drawing.Point(14, 4)
         Me.PanelCreateTable.Name = "PanelCreateTable"
-        Me.PanelCreateTable.Size = New System.Drawing.Size(536, 277)
+        Me.PanelCreateTable.Size = New System.Drawing.Size(545, 296)
         Me.PanelCreateTable.TabIndex = 34
         '
         'ListView1
         '
         Me.ListView1.GridLines = True
         Me.ListView1.HideSelection = False
-        Me.ListView1.Location = New System.Drawing.Point(5, 39)
+        Me.ListView1.Location = New System.Drawing.Point(0, 33)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(533, 233)
+        Me.ListView1.Size = New System.Drawing.Size(545, 263)
         Me.ListView1.TabIndex = 0
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
@@ -196,7 +185,7 @@ Partial Class FormDBManager
         Me.labelNode.AutoSize = True
         Me.labelNode.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labelNode.ForeColor = System.Drawing.Color.Black
-        Me.labelNode.Location = New System.Drawing.Point(4, 14)
+        Me.labelNode.Location = New System.Drawing.Point(3, 6)
         Me.labelNode.Name = "labelNode"
         Me.labelNode.Size = New System.Drawing.Size(59, 24)
         Me.labelNode.TabIndex = 32
@@ -235,7 +224,7 @@ Partial Class FormDBManager
         '
         'btnCreateTable
         '
-        Me.btnCreateTable.BackColor = System.Drawing.Color.Ivory
+        Me.btnCreateTable.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnCreateTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCreateTable.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCreateTable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -249,7 +238,7 @@ Partial Class FormDBManager
         '
         'btnTableDelete
         '
-        Me.btnTableDelete.BackColor = System.Drawing.Color.Ivory
+        Me.btnTableDelete.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnTableDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTableDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnTableDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -331,7 +320,7 @@ Partial Class FormDBManager
         '
         'btnResetTable
         '
-        Me.btnResetTable.BackColor = System.Drawing.Color.Ivory
+        Me.btnResetTable.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnResetTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnResetTable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnResetTable.Location = New System.Drawing.Point(248, 378)
@@ -343,7 +332,7 @@ Partial Class FormDBManager
         '
         'btnEditTable
         '
-        Me.btnEditTable.BackColor = System.Drawing.Color.Ivory
+        Me.btnEditTable.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnEditTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditTable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEditTable.Location = New System.Drawing.Point(26, 378)
@@ -424,7 +413,7 @@ Partial Class FormDBManager
         '
         'btnSaveSQL
         '
-        Me.btnSaveSQL.BackColor = System.Drawing.Color.Ivory
+        Me.btnSaveSQL.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnSaveSQL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSaveSQL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSaveSQL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -438,7 +427,7 @@ Partial Class FormDBManager
         '
         'btnOpenSQL
         '
-        Me.btnOpenSQL.BackColor = System.Drawing.Color.Ivory
+        Me.btnOpenSQL.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnOpenSQL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnOpenSQL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOpenSQL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -452,7 +441,7 @@ Partial Class FormDBManager
         '
         'btnNewSQL
         '
-        Me.btnNewSQL.BackColor = System.Drawing.Color.Ivory
+        Me.btnNewSQL.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnNewSQL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNewSQL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNewSQL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -492,7 +481,7 @@ Partial Class FormDBManager
         '
         'btnRunSQL
         '
-        Me.btnRunSQL.BackColor = System.Drawing.Color.Ivory
+        Me.btnRunSQL.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnRunSQL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRunSQL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRunSQL.ForeColor = System.Drawing.Color.ForestGreen
@@ -513,38 +502,6 @@ Partial Class FormDBManager
         Me.rtfSQLAusgabe.Size = New System.Drawing.Size(749, 52)
         Me.rtfSQLAusgabe.TabIndex = 6
         Me.rtfSQLAusgabe.Text = ""
-        '
-        'TabControlSQL
-        '
-        Me.TabControlSQL.Controls.Add(Me.SQL1)
-        Me.TabControlSQL.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
-        Me.TabControlSQL.ItemSize = New System.Drawing.Size(150, 20)
-        Me.TabControlSQL.Location = New System.Drawing.Point(3, 72)
-        Me.TabControlSQL.Name = "TabControlSQL"
-        Me.TabControlSQL.SelectedIndex = 0
-        Me.TabControlSQL.Size = New System.Drawing.Size(763, 161)
-        Me.TabControlSQL.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
-        Me.TabControlSQL.TabIndex = 40
-        '
-        'SQL1
-        '
-        Me.SQL1.BackColor = System.Drawing.Color.Gainsboro
-        Me.SQL1.Controls.Add(Me.rtfRunSQL)
-        Me.SQL1.Location = New System.Drawing.Point(4, 24)
-        Me.SQL1.Name = "SQL1"
-        Me.SQL1.Padding = New System.Windows.Forms.Padding(3)
-        Me.SQL1.Size = New System.Drawing.Size(755, 133)
-        Me.SQL1.TabIndex = 0
-        Me.SQL1.Text = "SQL 1"
-        '
-        'rtfRunSQL
-        '
-        Me.rtfRunSQL.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.rtfRunSQL.Location = New System.Drawing.Point(3, 3)
-        Me.rtfRunSQL.Name = "rtfRunSQL"
-        Me.rtfRunSQL.Size = New System.Drawing.Size(749, 127)
-        Me.rtfRunSQL.TabIndex = 4
-        Me.rtfRunSQL.Text = ""
         '
         'labelDBPath
         '
@@ -624,6 +581,50 @@ Partial Class FormDBManager
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
+        'RoundButton1
+        '
+        Me.RoundButton1.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.icons8_info_16
+        Me.RoundButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.RoundButton1.FlatAppearance.BorderSize = 0
+        Me.RoundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RoundButton1.Location = New System.Drawing.Point(738, 10)
+        Me.RoundButton1.Name = "RoundButton1"
+        Me.RoundButton1.Size = New System.Drawing.Size(23, 23)
+        Me.RoundButton1.TabIndex = 44
+        Me.RoundButton1.UseVisualStyleBackColor = True
+        '
+        'TabControlSQL
+        '
+        Me.TabControlSQL.Controls.Add(Me.SQL1)
+        Me.TabControlSQL.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
+        Me.TabControlSQL.ItemSize = New System.Drawing.Size(150, 20)
+        Me.TabControlSQL.Location = New System.Drawing.Point(3, 72)
+        Me.TabControlSQL.Name = "TabControlSQL"
+        Me.TabControlSQL.SelectedIndex = 0
+        Me.TabControlSQL.Size = New System.Drawing.Size(763, 161)
+        Me.TabControlSQL.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.TabControlSQL.TabIndex = 40
+        '
+        'SQL1
+        '
+        Me.SQL1.BackColor = System.Drawing.Color.Gainsboro
+        Me.SQL1.Controls.Add(Me.rtfRunSQL)
+        Me.SQL1.Location = New System.Drawing.Point(4, 24)
+        Me.SQL1.Name = "SQL1"
+        Me.SQL1.Padding = New System.Windows.Forms.Padding(3)
+        Me.SQL1.Size = New System.Drawing.Size(755, 133)
+        Me.SQL1.TabIndex = 0
+        Me.SQL1.Text = "SQL 1"
+        '
+        'rtfRunSQL
+        '
+        Me.rtfRunSQL.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.rtfRunSQL.Location = New System.Drawing.Point(3, 3)
+        Me.rtfRunSQL.Name = "rtfRunSQL"
+        Me.rtfRunSQL.Size = New System.Drawing.Size(749, 127)
+        Me.rtfRunSQL.TabIndex = 4
+        Me.rtfRunSQL.Text = ""
+        '
         'FormDBManager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -652,11 +653,11 @@ Partial Class FormDBManager
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         CType(Me.DataGridViewSQL, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControlSQL.ResumeLayout(False)
-        Me.SQL1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControlSQL.ResumeLayout(False)
+        Me.SQL1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

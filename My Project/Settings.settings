@@ -23,7 +23,7 @@
     <Setting Name="NextID" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="BasketGesPreis" Type="System.Int32" Scope="User">
+    <Setting Name="BasketGesPreis" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>

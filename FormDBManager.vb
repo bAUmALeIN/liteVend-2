@@ -54,7 +54,7 @@ Public Class FormDBManager
         Img = My.Resources.refresh
         btnRefresh.Image = Engine.ScaleImage(Img, 22, 22)
         btnRefresh.ImageAlign = ContentAlignment.TopLeft
-        btnRefresh.TextAlign = ContentAlignment.MiddleCenter
+        btnRefresh.TextAlign = ContentAlignment.MiddleRight
         Img = My.Resources.icons8_speichern_50
         btnEditTable.Image = Engine.ScaleImage(Img, 22, 22)
         btnEditTable.ImageAlign = ContentAlignment.TopLeft
@@ -428,4 +428,6 @@ Public Class FormDBManager
 
     Private Sub FormDBManager_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
     End Sub
+
+
 End Class

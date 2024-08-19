@@ -61,8 +61,8 @@ Public Class ConnectionManger
         Return dt
     End Function
 
-    Public Function GetStatsFromDB() As Stats
-        Dim stats As FormMainMenu.Stats
+    Public Function GetStatsFromDB() As Globals.Stats
+        Dim stats As Globals.Stats
 
         Using connection As New SQLiteConnection(connectionString)
             connection.Open()
@@ -88,21 +88,22 @@ Public Class ConnectionManger
         Return stats
     End Function
 
-    Public Sub UpdateStatsDB(stats As FormMainMenu.Stats)
+    Public Sub UpdateStatsDB(stats As Globals.Stats)
+        Logger.WriteLine($"CM.UpdateStatsDB: GesUmsatz:{stats.GesUmsatz} | anz.Produkte:{stats.anzProdukte} | anz. verkaufte Flaschen:{stats.anzVerkFalschen} | anz.VG:{stats.AnzVG} |")
         Using connection As New SQLiteConnection(connectionString)
-            connection.Open()
+
             Try
-                ' Update-Query für die Statistiktabelle ohne ID
+                connection.Open()
                 Dim query As String = "UPDATE Stats SET Version = @Version, VGZ = @VGZ, anzProdukte = @anzProdukte, GesUmsatz = @GesUmsatz, Flaschen = @Flaschen"
                 Using cmd As New SQLiteCommand(query, connection)
-                    ' Parameter hinzufügen
+
                     cmd.Parameters.AddWithValue("@Version", 1)
                     cmd.Parameters.AddWithValue("@VGZ", (Int(stats.AnzVG)))
                     cmd.Parameters.AddWithValue("@anzProdukte", (Int(stats.anzProdukte)))
                     cmd.Parameters.AddWithValue("@GesUmsatz", stats.GesUmsatz)
                     cmd.Parameters.AddWithValue("@Flaschen", stats.anzVerkFalschen)
 
-                    ' Query ausführen
+
                     cmd.ExecuteNonQuery()
                 End Using
 
@@ -376,7 +377,7 @@ Public Class ConnectionManger
             connection.Open()
             Using command As New SQLiteCommand(query, connection)
                 command.Parameters.AddWithValue("@ID", id)
-                Logger.WriteLine(" Get Picture from Database")
+                Logger.WriteLine($"CM.GetImageFromDatabase: Suche Bild aus Datenbank | ID{id.ToString}")
                 Dim result = command.ExecuteScalar()
                 If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
                     image = ByteArrayToImage(DirectCast(result, Byte()))

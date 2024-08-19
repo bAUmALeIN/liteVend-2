@@ -26,7 +26,7 @@ Module Engine
 
     Public Sub getStats()
 
-        Dim stats As Stats = CM.GetStatsFromDB()
+        Dim stats As Globals.Stats = CM.GetStatsFromDB()
         With stats
             FormMainMenu.tbStatsGesUmsatz.Text = .GesUmsatz.ToString
             FormMainMenu.tbStatsAnzTrans.Text = .AnzVG.ToString

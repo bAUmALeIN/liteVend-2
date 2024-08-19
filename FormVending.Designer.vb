@@ -131,7 +131,6 @@ Partial Class FormVending
         Me.btnCLS = New System.Windows.Forms.Button()
         Me.btnNUM0 = New System.Windows.Forms.Button()
         Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.cbMultiVend = New System.Windows.Forms.CheckBox()
         Me.PanelAusgabe = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -1399,18 +1398,6 @@ Partial Class FormVending
         Me.RichTextBox2.TabIndex = 3
         Me.RichTextBox2.Text = ""
         '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox2.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.CheckBox2.Location = New System.Drawing.Point(422, 425)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(64, 17)
-        Me.CheckBox2.TabIndex = 5
-        Me.CheckBox2.Text = "DEBUG"
-        Me.CheckBox2.UseVisualStyleBackColor = False
-        '
         'cbMultiVend
         '
         Me.cbMultiVend.AutoSize = True
@@ -1701,7 +1688,6 @@ Partial Class FormVending
         Me.ClientSize = New System.Drawing.Size(489, 469)
         Me.Controls.Add(Me.FlowLayoutPanelCoinValues)
         Me.Controls.Add(Me.btnCheckout)
-        Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.cbMultiVend)
         Me.Controls.Add(Me.PanelCoinInsert)
         Me.Controls.Add(Me.btnClearVG)
@@ -1752,7 +1738,6 @@ Partial Class FormVending
     Friend WithEvents btnNUM3 As Button
     Friend WithEvents btnCLS As Button
     Friend WithEvents btnNUM0 As Button
-    Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents cbMultiVend As CheckBox
     Friend WithEvents PanelEbene1 As Panel
     Friend WithEvents Panel4 As Panel

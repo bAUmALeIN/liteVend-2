@@ -117,6 +117,7 @@ Partial Class FormMainMenu
         Me.btnClose = New System.Windows.Forms.Button()
         Me.TimerCheckTBAdd = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.btnShowLog = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.tabPageMain.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -155,6 +156,7 @@ Partial Class FormMainMenu
         'tabPageMain
         '
         Me.tabPageMain.BackColor = System.Drawing.Color.Gainsboro
+        Me.tabPageMain.Controls.Add(Me.btnShowLog)
         Me.tabPageMain.Controls.Add(Me.Panel1)
         Me.tabPageMain.Controls.Add(Me.btnVendingMode)
         Me.tabPageMain.Controls.Add(Me.Label13)
@@ -192,14 +194,14 @@ Partial Class FormMainMenu
         '
         'btnVendingMode
         '
-        Me.btnVendingMode.BackColor = System.Drawing.Color.Ivory
+        Me.btnVendingMode.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnVendingMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVendingMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVendingMode.Location = New System.Drawing.Point(59, 58)
+        Me.btnVendingMode.Location = New System.Drawing.Point(87, 48)
         Me.btnVendingMode.Name = "btnVendingMode"
-        Me.btnVendingMode.Size = New System.Drawing.Size(202, 50)
+        Me.btnVendingMode.Size = New System.Drawing.Size(152, 50)
         Me.btnVendingMode.TabIndex = 1
-        Me.btnVendingMode.Text = "Vending Mode"
+        Me.btnVendingMode.Text = "Automat"
         Me.btnVendingMode.UseVisualStyleBackColor = False
         '
         'Label13
@@ -214,7 +216,7 @@ Partial Class FormMainMenu
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.Ivory
+        Me.Button1.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft
@@ -307,7 +309,7 @@ Partial Class FormMainMenu
         '
         'btnSave
         '
-        Me.btnSave.BackColor = System.Drawing.Color.Ivory
+        Me.btnSave.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Location = New System.Drawing.Point(28, 262)
@@ -384,7 +386,7 @@ Partial Class FormMainMenu
         '
         'btnAddAddImage
         '
-        Me.btnAddAddImage.BackColor = System.Drawing.Color.LightGray
+        Me.btnAddAddImage.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnAddAddImage.Enabled = False
         Me.btnAddAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddAddImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -659,7 +661,7 @@ Partial Class FormMainMenu
         '
         'btnOpenImageEdit
         '
-        Me.btnOpenImageEdit.BackColor = System.Drawing.Color.LightGray
+        Me.btnOpenImageEdit.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnOpenImageEdit.Enabled = False
         Me.btnOpenImageEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnOpenImageEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -672,7 +674,7 @@ Partial Class FormMainMenu
         '
         'btnSaveEdit
         '
-        Me.btnSaveEdit.BackColor = System.Drawing.Color.LightGray
+        Me.btnSaveEdit.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnSaveEdit.Enabled = False
         Me.btnSaveEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSaveEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -871,7 +873,7 @@ Partial Class FormMainMenu
         '
         Me.PanelTabPageDatabaseTrenner1.BackColor = System.Drawing.Color.Gray
         Me.PanelTabPageDatabaseTrenner1.Controls.Add(Me.Label6)
-        Me.PanelTabPageDatabaseTrenner1.Location = New System.Drawing.Point(2, 177)
+        Me.PanelTabPageDatabaseTrenner1.Location = New System.Drawing.Point(2, 166)
         Me.PanelTabPageDatabaseTrenner1.Name = "PanelTabPageDatabaseTrenner1"
         Me.PanelTabPageDatabaseTrenner1.Size = New System.Drawing.Size(317, 31)
         Me.PanelTabPageDatabaseTrenner1.TabIndex = 4
@@ -913,11 +915,11 @@ Partial Class FormMainMenu
         '
         'btnProduktOverview
         '
-        Me.btnProduktOverview.BackColor = System.Drawing.Color.Ivory
+        Me.btnProduktOverview.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnProduktOverview.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.btnProduktOverview.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnProduktOverview.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnProduktOverview.Location = New System.Drawing.Point(83, 264)
+        Me.btnProduktOverview.Location = New System.Drawing.Point(74, 258)
         Me.btnProduktOverview.Name = "btnProduktOverview"
         Me.btnProduktOverview.Size = New System.Drawing.Size(151, 29)
         Me.btnProduktOverview.TabIndex = 1
@@ -950,7 +952,7 @@ Partial Class FormMainMenu
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(291, 243)
+        Me.Label9.Location = New System.Drawing.Point(284, 232)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(14, 16)
         Me.Label9.TabIndex = 13
@@ -960,7 +962,7 @@ Partial Class FormMainMenu
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(101, 243)
+        Me.Label7.Location = New System.Drawing.Point(94, 232)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(100, 16)
         Me.Label7.TabIndex = 12
@@ -970,7 +972,7 @@ Partial Class FormMainMenu
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(9, 243)
+        Me.Label8.Location = New System.Drawing.Point(2, 232)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(87, 16)
         Me.Label8.TabIndex = 11
@@ -979,7 +981,7 @@ Partial Class FormMainMenu
         'tbStatsGesUmsatz
         '
         Me.tbStatsGesUmsatz.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbStatsGesUmsatz.Location = New System.Drawing.Point(232, 240)
+        Me.tbStatsGesUmsatz.Location = New System.Drawing.Point(225, 229)
         Me.tbStatsGesUmsatz.Name = "tbStatsGesUmsatz"
         Me.tbStatsGesUmsatz.ReadOnly = True
         Me.tbStatsGesUmsatz.Size = New System.Drawing.Size(58, 20)
@@ -989,7 +991,7 @@ Partial Class FormMainMenu
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(167, 143)
+        Me.Label4.Location = New System.Drawing.Point(176, 132)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 16)
         Me.Label4.TabIndex = 9
@@ -999,7 +1001,7 @@ Partial Class FormMainMenu
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(10, 143)
+        Me.Label5.Location = New System.Drawing.Point(25, 132)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(154, 16)
         Me.Label5.TabIndex = 8
@@ -1007,7 +1009,7 @@ Partial Class FormMainMenu
         '
         'tbStatsAnzFlaschen
         '
-        Me.tbStatsAnzFlaschen.Location = New System.Drawing.Point(232, 137)
+        Me.tbStatsAnzFlaschen.Location = New System.Drawing.Point(225, 128)
         Me.tbStatsAnzFlaschen.Name = "tbStatsAnzFlaschen"
         Me.tbStatsAnzFlaschen.ReadOnly = True
         Me.tbStatsAnzFlaschen.Size = New System.Drawing.Size(56, 20)
@@ -1017,7 +1019,7 @@ Partial Class FormMainMenu
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(209, 218)
+        Me.Label3.Location = New System.Drawing.Point(202, 207)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(19, 16)
         Me.Label3.TabIndex = 6
@@ -1027,7 +1029,7 @@ Partial Class FormMainMenu
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(121, 117)
+        Me.Label2.Location = New System.Drawing.Point(134, 97)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 16)
         Me.Label2.TabIndex = 5
@@ -1037,7 +1039,7 @@ Partial Class FormMainMenu
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(10, 218)
+        Me.Label1.Location = New System.Drawing.Point(3, 207)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(182, 16)
         Me.Label1.TabIndex = 3
@@ -1045,7 +1047,7 @@ Partial Class FormMainMenu
         '
         'tbStatsAnzTrans
         '
-        Me.tbStatsAnzTrans.Location = New System.Drawing.Point(232, 213)
+        Me.tbStatsAnzTrans.Location = New System.Drawing.Point(225, 202)
         Me.tbStatsAnzTrans.Name = "tbStatsAnzTrans"
         Me.tbStatsAnzTrans.ReadOnly = True
         Me.tbStatsAnzTrans.Size = New System.Drawing.Size(58, 20)
@@ -1055,7 +1057,7 @@ Partial Class FormMainMenu
         '
         Me.LabelAnzProd.AutoSize = True
         Me.LabelAnzProd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelAnzProd.Location = New System.Drawing.Point(10, 117)
+        Me.LabelAnzProd.Location = New System.Drawing.Point(25, 97)
         Me.LabelAnzProd.Name = "LabelAnzProd"
         Me.LabelAnzProd.Size = New System.Drawing.Size(107, 16)
         Me.LabelAnzProd.TabIndex = 1
@@ -1063,7 +1065,7 @@ Partial Class FormMainMenu
         '
         'tbStatsAnzProd
         '
-        Me.tbStatsAnzProd.Location = New System.Drawing.Point(232, 111)
+        Me.tbStatsAnzProd.Location = New System.Drawing.Point(225, 96)
         Me.tbStatsAnzProd.Name = "tbStatsAnzProd"
         Me.tbStatsAnzProd.ReadOnly = True
         Me.tbStatsAnzProd.Size = New System.Drawing.Size(56, 20)
@@ -1128,6 +1130,15 @@ Partial Class FormMainMenu
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
+        'btnShowLog
+        '
+        Me.btnShowLog.Location = New System.Drawing.Point(133, 109)
+        Me.btnShowLog.Name = "btnShowLog"
+        Me.btnShowLog.Size = New System.Drawing.Size(61, 23)
+        Me.btnShowLog.TabIndex = 35
+        Me.btnShowLog.Text = "Open log"
+        Me.btnShowLog.UseVisualStyleBackColor = True
+        '
         'FormMainMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1191,11 +1202,7 @@ Partial Class FormMainMenu
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents tbStatsAnzFlaschen As TextBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents tbStatsGesUmsatz As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label9 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents btnMinimize As Button
     Friend WithEvents btnClose As Button
@@ -1268,4 +1275,9 @@ Partial Class FormMainMenu
     Friend WithEvents Label43 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label35 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents tbStatsGesUmsatz As TextBox
+    Friend WithEvents btnShowLog As Button
 End Class

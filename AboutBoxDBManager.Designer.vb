@@ -25,7 +25,6 @@ Partial Class AboutBoxDBManager
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AboutBoxDBManager))
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -34,7 +33,6 @@ Partial Class AboutBoxDBManager
         Me.btnVendingMode = New System.Windows.Forms.Button()
         Me.GradientLabel2 = New Getränke_Automat_V2.GradientLabel()
         Me.Panel6.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel6
@@ -51,21 +49,11 @@ Partial Class AboutBoxDBManager
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(165, 3)
+        Me.Label26.Location = New System.Drawing.Point(87, 3)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(123, 18)
         Me.Label26.TabIndex = 32
         Me.Label26.Text = "Informationen "
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.SQliteDBcontrollerPic
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(27, 92)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(169, 78)
-        Me.PictureBox1.TabIndex = 33
-        Me.PictureBox1.TabStop = False
         '
         'Label1
         '
@@ -73,7 +61,7 @@ Partial Class AboutBoxDBManager
         Me.Label1.BackColor = System.Drawing.Color.Gainsboro
         Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(23, 50)
+        Me.Label1.Location = New System.Drawing.Point(6, 31)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(265, 22)
         Me.Label1.TabIndex = 37
@@ -85,7 +73,7 @@ Partial Class AboutBoxDBManager
         Me.Label2.BackColor = System.Drawing.Color.Gainsboro
         Me.Label2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(241, 103)
+        Me.Label2.Location = New System.Drawing.Point(83, 68)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 22)
         Me.Label2.TabIndex = 38
@@ -97,7 +85,7 @@ Partial Class AboutBoxDBManager
         Me.Label3.BackColor = System.Drawing.Color.Gainsboro
         Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(241, 134)
+        Me.Label3.Location = New System.Drawing.Point(83, 99)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(63, 22)
         Me.Label3.TabIndex = 39
@@ -109,7 +97,7 @@ Partial Class AboutBoxDBManager
         Me.Label4.BackColor = System.Drawing.Color.Gainsboro
         Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(332, 134)
+        Me.Label4.Location = New System.Drawing.Point(152, 99)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(72, 22)
         Me.Label4.TabIndex = 40
@@ -121,7 +109,7 @@ Partial Class AboutBoxDBManager
         Me.Label5.BackColor = System.Drawing.Color.Gainsboro
         Me.Label5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(332, 103)
+        Me.Label5.Location = New System.Drawing.Point(174, 68)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(38, 22)
         Me.Label5.TabIndex = 41
@@ -129,10 +117,10 @@ Partial Class AboutBoxDBManager
         '
         'btnVendingMode
         '
-        Me.btnVendingMode.BackColor = System.Drawing.Color.Ivory
+        Me.btnVendingMode.BackColor = System.Drawing.Color.White
         Me.btnVendingMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVendingMode.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVendingMode.Location = New System.Drawing.Point(336, 220)
+        Me.btnVendingMode.Location = New System.Drawing.Point(112, 138)
         Me.btnVendingMode.Name = "btnVendingMode"
         Me.btnVendingMode.Size = New System.Drawing.Size(83, 30)
         Me.btnVendingMode.TabIndex = 42
@@ -141,9 +129,10 @@ Partial Class AboutBoxDBManager
         '
         'GradientLabel2
         '
-        Me.GradientLabel2.Location = New System.Drawing.Point(12, 227)
+        Me.GradientLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GradientLabel2.Location = New System.Drawing.Point(6, 189)
         Me.GradientLabel2.Name = "GradientLabel2"
-        Me.GradientLabel2.Size = New System.Drawing.Size(99, 23)
+        Me.GradientLabel2.Size = New System.Drawing.Size(124, 22)
         Me.GradientLabel2.TabIndex = 36
         Me.GradientLabel2.Text = "bAUmALeIN"
         '
@@ -152,7 +141,7 @@ Partial Class AboutBoxDBManager
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
-        Me.ClientSize = New System.Drawing.Size(439, 262)
+        Me.ClientSize = New System.Drawing.Size(278, 214)
         Me.Controls.Add(Me.btnVendingMode)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -160,7 +149,6 @@ Partial Class AboutBoxDBManager
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GradientLabel2)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Panel6)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -173,7 +161,6 @@ Partial Class AboutBoxDBManager
         Me.Text = "AboutBoxDBManager"
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -181,7 +168,6 @@ Partial Class AboutBoxDBManager
 
     Friend WithEvents Panel6 As Panel
     Friend WithEvents Label26 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents GradientLabel2 As GradientLabel
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label

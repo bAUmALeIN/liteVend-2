@@ -12,6 +12,7 @@ Public Class FormVending
 
 
 
+
     '############################################### Mause Move/Down #################################################
     Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, Panel5.MouseDown, LabelTextMunz.MouseDown
         mouseOffset = New Point(-e.X, -e.Y)
@@ -41,6 +42,7 @@ Public Class FormVending
 
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Globals.ActiveProductIDs.Clear()
         Me.Close()
     End Sub
 
@@ -147,14 +149,12 @@ Public Class FormVending
         rtfAusgabe.Text = WelcomeText
         FlowLayoutPanelNumBlock.Enabled = True
         Basket.Clear()
-        'Logger.WriteLine("AbortTimer: START")
+
         If FlowLayoutPanelCoinValues.Visible Then
 
-            'Logger.WriteLine("FLPCoinValues Visible True")
             Abort = True
             AbortTimer.Enabled = True
             AbortTimer.Start()
-            Engine.clearLogger(1)
             Engine.cleanButtons(PanelProdukte.Controls)
             For Each ctrl As Control In FlowLayoutPanelCoinValues.Controls
                 If TypeOf ctrl Is CheckBox Then
@@ -166,11 +166,9 @@ Public Class FormVending
             FlowLayoutPanelCoinValues.Visible = False
             Exit Sub
         Else
-            'Logger.WriteLine("FLPCoinValues Visible FALSE")
             TimerPanelBlinken.Enabled = True
             TimerPanelBlinken.Start()
         End If
-        Engine.clearLogger(1)
         Engine.cleanButtons(PanelProdukte.Controls)
         FlowLayoutPanelCoinValues.Visible = False
         BlinkOn = False
@@ -236,7 +234,6 @@ Public Class FormVending
                         Exit Sub
                     End If
                     checkedCB = True
-                    Logger.WriteLine("CheckeBox checked: " & cb.Name)
                     BlinkCoinInsert.Enabled = True
                     BlinkCoinInsert.Start()
                     Exit Sub
@@ -244,7 +241,6 @@ Public Class FormVending
 
             End If
         Next
-        Logger.WriteLine("CheckeBox checked: NONE")
         BlinkCoinInsert.Enabled = False
         cb50Cent.Enabled = True
         cb1Euro.Enabled = True
@@ -255,7 +251,6 @@ Public Class FormVending
         PanelCoinInsert.BackColor = Color.Silver
         Globals.Zahlung = False
         Globals.CoinValue = 0.00
-        Logger.WriteLine($"--> Globals | Zahlung:{Globals.Zahlung.ToString} | CoinValue: {Globals.CoinValue.ToString}")
     End Sub
 
     Private Sub BlinkCoinInsert_Tick(sender As Object, e As EventArgs) Handles BlinkCoinInsert.Tick
@@ -378,7 +373,7 @@ Public Class FormVending
         If VendingEngine.ProcessZahlung(selectedAmount, rtfAusgabe) Then
             MessageBox.Show("Zahlung erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Globals.Zahlung = False
-            '
+            btnClearVG_Click(sender, e)
 
 
         Else
@@ -435,11 +430,11 @@ Public Class FormVending
 
     Private Sub LoadImagesInButtons()
         For Each id As Integer In Globals.ActiveProductIDs
-            Logger.WriteLine("ID in Globals.ActiveProductIDs : " + id.ToString)
+            Logger.WriteLine("LoadImagesInButtons: ID in Globals.ActiveProductIDs : " + id.ToString)
             For Each button As Button In PanelProdukte.Controls.OfType(Of Button)
 
                 If button.Tag.ToString() = id.ToString() Then
-                    Logger.WriteLine("BTN.TAG:" + button.Tag.ToString() + "| ID:" + id.ToString)
+                    Logger.WriteLine("LoadImagesInButtons: BTN.TAG:" + button.Tag.ToString() + "| ID:" + id.ToString)
                     Dim img As Image = CM.GetImageFromDatabase(id)
 
                     If img IsNot Nothing Then
@@ -448,7 +443,7 @@ Public Class FormVending
                         Dim newBitmap As New Bitmap(bitmap, button.Width, button.Height)
                         button.Image = newBitmap
                     Else
-                        Logger.WriteLine("Bild für ID " + id.ToString() + " ist nicht vorhanden.")
+                        Logger.WriteLine("LoadImagesInButtons: Bild für ID " + id.ToString() + " ist nicht vorhanden.")
                     End If
                 End If
 

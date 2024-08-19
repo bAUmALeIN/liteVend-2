@@ -16,12 +16,7 @@ Public Class FormMainMenu
         Public Image As Image
     End Structure
 
-    Public Structure Stats
-        Public AnzVG As Integer
-        Public anzProdukte As Integer
-        Public anzVerkFalschen As Integer
-        Public GesUmsatz As Double
-    End Structure
+
 
     Dim CM As New ConnectionManger
     Private appDirectory As String = AppDomain.CurrentDomain.BaseDirectory
@@ -72,7 +67,7 @@ Public Class FormMainMenu
         End If
         'good to go
         Logger.WriteLine("Fülle Statistiken aus der Datanbank....")
-        Dim stats As Stats = CM.GetStatsFromDB()
+        Dim stats As Globals.Stats = CM.GetStatsFromDB()
         With stats
             tbStatsGesUmsatz.Text = .GesUmsatz.ToString
             tbStatsAnzTrans.Text = .AnzVG.ToString
@@ -111,7 +106,11 @@ Public Class FormMainMenu
         Vending.TopMost = True
         Vending.StartPosition = FormStartPosition.CenterParent
         Logger.WriteLine("Öffne Vending Mode...")
-        Vending.ShowDialog()
+        If Globals.logging = True Then
+            Vending.Show()
+        Else
+            Vending.ShowDialog()
+        End If
     End Sub
 
     Private Sub btnProduktAnlegen_Click(sender As Object, e As EventArgs)
@@ -231,7 +230,7 @@ Public Class FormMainMenu
     End Sub
 
     Private Sub checkBoxEdit_CheckedChanged(sender As Object, e As EventArgs) Handles checkBoxEdit.CheckedChanged
-        If checkBoxEdit.CheckState = CheckState.Checked Then
+        If checkBoxEdit.CheckState = CheckState.Checked AndAlso Not ComboBoxEditID.Text = "" Then
             tbEditAlk.Enabled = True
             tbEditBez.Enabled = True
             tbEditPreis.Enabled = True
@@ -316,7 +315,7 @@ Public Class FormMainMenu
     Private Sub TabControl1_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.TabIndexChanged, TabControl1.SelectedIndexChanged
         If TabControl1.SelectedIndex = 3 Then
             Logger.WriteLine("Fülle Statistiken aus der Datanbank....")
-            Dim stats As Stats = CM.GetStatsFromDB()
+            Dim stats As Globals.Stats = CM.GetStatsFromDB()
             With stats
                 tbStatsGesUmsatz.Text = .GesUmsatz.ToString
                 tbStatsAnzTrans.Text = .AnzVG.ToString
@@ -324,5 +323,15 @@ Public Class FormMainMenu
                 tbStatsAnzFlaschen.Text = .anzVerkFalschen.ToString
             End With
         End If
+    End Sub
+
+    Private Sub btnShowLog_Click(sender As Object, e As EventArgs) Handles btnShowLog.Click
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is Logger Then
+                Return
+
+            End If
+        Next
+        logger.Show()
     End Sub
 End Class

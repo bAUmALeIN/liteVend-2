@@ -141,9 +141,9 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property BasketGesPreis() As Integer
+        Public Property BasketGesPreis() As Double
             Get
-                Return CType(Me("BasketGesPreis"),Integer)
+                Return CType(Me("BasketGesPreis"),Double)
             End Get
             Set
                 Me("BasketGesPreis") = value

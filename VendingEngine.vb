@@ -14,18 +14,20 @@
     Private gesamtpreis As Double
     Private bereitsEingeworfenerBetrag As Double
 
+    Dim gesAnzFlaschenBasket As Integer = 0
+
     Public Function processEingabe(panelCtrls As Control.ControlCollection, InputBox As TextBox, OutputBox As RichTextBox, flp As FlowLayoutPanel, flpNum As FlowLayoutPanel) As Boolean
         If My.Settings.isFirstOrder OrElse (My.Settings.MultiVend AndAlso Not My.Settings.needMenge) Then
             ' Kein Mengenvorgang
             Dim ID = InputBox.Text.TrimStart("0")
-            Logger.WriteLine(".ProccesEingabe: ID Trimmed: " & ID)
+            Logger.WriteLine("VendingEngine.ProccesEingabe| ID Trimmed: " & ID)
 
             Dim produktGefunden As Boolean = False
             For Each ctrl In panelCtrls
                 If TypeOf ctrl Is Button AndAlso ctrl.Name = "btnItem" & ID Then
                     ctrl.ForeColor = Color.Red
                     Dim preis As Double = CM.GetProduktPreisByID(ID)
-                    Logger.WriteLine("VendingEngine.ProccesEingabe: ermittelter Preis: " & preis)
+                    Logger.WriteLine("VendingEngine.ProccesEingabe|ermittelter Preis: " & preis)
 
                     Dim be As New basketEintrag With {
                     .EP = preis,
@@ -36,10 +38,10 @@
                 }
                     Basket.Add(be)
 
-                    Logger.WriteLine("VendingEngine.ProccesEingabe: Anzahl Basket:" & Basket.Count)
+                    Logger.WriteLine("VendingEngine.ProccesEingabe| Anzahl Basket:" & Basket.Count)
                     My.Settings.ActiveMengeID = Convert.ToInt32(ID)
-                    Logger.WriteLine("VendingEngine.ProccesEingabe: ActiveMengenID gesetzt: " & My.Settings.ActiveMengeID)
-                    Logger.WriteLine("VendingEngine.ProccesEingabe: OrderNum BasketEintrag zugewiesen: " & My.Settings.OrderNum)
+                    Logger.WriteLine("VendingEngine.ProccesEingabe| ActiveMengenID gesetzt: " & My.Settings.ActiveMengeID)
+                    Logger.WriteLine("VendingEngine.ProccesEingabe| OrderNum BasketEintrag zugewiesen: " & My.Settings.OrderNum)
 
                     My.Settings.OrderNum += 1
                     My.Settings.Save()
@@ -63,19 +65,19 @@
 
             If Not produktGefunden Then
                 ' Produkt nicht gefunden
-                Logger.WriteLine("VendingEngine.processEingabe: Produkt nicht gefunden")
+                Logger.WriteLine("VendingEngine.ProccesEingabe| Produkt nicht gefunden")
             End If
         Else
             ' Mengenvorgang
             If InputBox.TextLength = 0 Then
-                Logger.WriteLine("VendingEngine.processEingabe: InputBox Leer")
+                Logger.WriteLine("VendingEngine.ProccesEingabe| InputBox Leer")
                 Return False
             End If
 
             Dim Menge As String = InputBox.Text
             Dim intMenge As Integer
             If Not Integer.TryParse(Menge, intMenge) Then
-                Logger.WriteLine("VendingEngine.processEingabe: Ungültige Menge")
+                Logger.WriteLine("VendingEngine.ProccesEingabe| Ungültige Menge")
                 Return False
             End If
 
@@ -107,20 +109,20 @@
             OutputBox.ScrollToCaret()
 
             If My.Settings.MultiVend Then
-                Logger.WriteLine("VendingEngine.processEingabe: MULTIVEND 1")
+                Logger.WriteLine("VendingEngine.ProccesEingabe| MULTIVEND 1")
                 My.Settings.ActiveMengeID = 0
                 My.Settings.needMenge = False
                 My.Settings.Save()
                 Return True
             End If
 
-            Logger.WriteLine("VendingEngine.processEingabe: MULTIVEND 0")
-            Logger.WriteLine("VendingEngine.processEingabe: Start Zahlung.... WIP")
+            Logger.WriteLine("VendingEngine.ProccesEingabe| MULTIVEND 0")
+            Logger.WriteLine("VendingEngine.ProccesEingabe| Start Zahlung")
             Globals.Zahlung = True
             bereitsEingeworfenerBetrag = 0
 
             For Each be As basketEintrag In Basket
-                Logger.WriteLine($"Basket Eintrag: {be.OrderNum} | Basket GesPreis: {be.gesPreis} | Basket Anz. {be.Menge}")
+                Logger.WriteLine($"VendingEngine.ProccesEingabe| Basket Eintrag: {be.OrderNum} | Basket GesPreis: {be.gesPreis} | Basket Anz. {be.Menge}")
             Next
 
             OutputBox.Text = ""
@@ -149,20 +151,32 @@
             OutputBox.AppendText(vbNewLine & "-----------------------------------")
             OutputBox.AppendText(vbNewLine & $"Zahlung erfolgreich! Wechselgeld: {wechselgeld.ToString("F2")}€")
             OutputBox.ScrollToCaret()
-            Dim stats As FormMainMenu.Stats = CM.GetStatsFromDB
-            Logger.WriteLine($"alter GesamtUmsatz = {stats.GesUmsatz}")
-            Logger.WriteLine($"{My.Settings.BasketGesPreis.ToString}")
+            Dim stats As Globals.Stats = CM.GetStatsFromDB
+            Logger.WriteLine($"ProcessZahlung| alter GesamtUmsatz = {stats.GesUmsatz}")
+            Logger.WriteLine($"ProcessZahlung| Basket Preis:{My.Settings.BasketGesPreis.ToString}")
+            stats.AnzVG += 1
+            stats.GesUmsatz = stats.GesUmsatz + My.Settings.BasketGesPreis
 
+            For Each eintrag As basketEintrag In Basket
+                gesAnzFlaschenBasket += eintrag.Menge
 
-            My.Settings.BasketGesPreis = 0
+            Next
+            stats.anzVerkFalschen = stats.anzVerkFalschen + gesAnzFlaschenBasket
             CM.UpdateStatsDB(stats)
-            Basket.Clear() ' Warenkorb leeren nach erfolgreicher Zahlung
+            My.Settings.BasketGesPreis = 0
+            My.Settings.Save()
+            Basket.Clear()
             bereitsEingeworfenerBetrag = 0
             gesamtpreis = 0
+            gesAnzFlaschenBasket = 0
+
+
+
+
 
             Return True
         Else
-            ' Zeige Restbetrag
+
             OutputBox.AppendText(vbNewLine & "-----------------------------------")
             OutputBox.AppendText(vbNewLine & $"Restbetrag: {restbetrag.ToString("F2")}€")
             OutputBox.ScrollToCaret()
