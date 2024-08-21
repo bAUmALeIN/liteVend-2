@@ -141,6 +141,7 @@ Public Class FormVending
         PanelCoinInsert.BackColor = Color.Silver
         cbMultiVend.Checked = False
         My.Settings.ActiveMengeID = 0
+        My.Settings.BasketGesPreis = 0
         My.Settings.MultiVend = False
         My.Settings.OrderNum = 1
         My.Settings.needMenge = False
@@ -406,7 +407,6 @@ Public Class FormVending
             rtfAusgabe.Text = ""
             rtfAusgabe.AppendText("-----------------------------------" & vbNewLine)
             rtfAusgabe.AppendText("Zahlung gestartet. Bitte Münzbetrag auswählen" & vbNewLine)
-            rtfAusgabe.AppendText($"GESAMT PREIS: {gesamtpreis.ToString("F2")}€" & vbNewLine)
 
             FlowLayoutPanelNumBlock.Enabled = False
             FlowLayoutPanelCoinValues.Visible = True
@@ -418,10 +418,15 @@ Public Class FormVending
 
 
             Globals.Zahlung = True
-
+            Dim gespreis As Double = 0
             For Each be As basketEintrag In Basket
-                Logger.WriteLine($"Basket Eintrag: {be.OrderNum} | Basket GesPreis: {be.gesPreis} | Basket Anz. {be.Menge}")
+                Logger.WriteLine($"OrderNum: {be.OrderNum} | be.gesPreis: {be.gesPreis} | be.menge: {be.Menge}")
+                gespreis *= be.gesPreis
+
             Next
+            My.Settings.BasketGesPreis = gespreis
+            My.Settings.Save()
+            rtfAusgabe.AppendText($"GESAMT PREIS: {My.Settings.BasketGesPreis.ToString()}€" & vbNewLine)
         Else
             Logger.WriteLine("VendingEngine.btnCheckout_Click: MULTIVEND not enabled")
 

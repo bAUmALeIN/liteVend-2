@@ -35,14 +35,16 @@
                     .ID = ID,
                     .Menge = 1,
                     .gesPreis = preis
-                }
+                    }
                     Basket.Add(be)
 
-                    Logger.WriteLine("VendingEngine.ProccesEingabe| Anzahl Basket:" & Basket.Count)
+                    Logger.WriteLine("VendingEngine.ProccesEingabe| Eintrag:" & Basket.Count)
                     My.Settings.ActiveMengeID = Convert.ToInt32(ID)
                     Logger.WriteLine("VendingEngine.ProccesEingabe| ActiveMengenID gesetzt: " & My.Settings.ActiveMengeID)
                     Logger.WriteLine("VendingEngine.ProccesEingabe| OrderNum BasketEintrag zugewiesen: " & My.Settings.OrderNum)
-
+                    Logger.WriteLine($"VendingEngine.ProccesEingabe| alt :My.Settings.BaskeGesPreis:{My.Settings.BasketGesPreis}")
+                    My.Settings.BasketGesPreis = My.Settings.BasketGesPreis + be.gesPreis
+                    Logger.WriteLine($"VendingEngine.ProccesEingabe| neu :My.Settings.BaskeGesPreis:{My.Settings.BasketGesPreis.ToString}")
                     My.Settings.OrderNum += 1
                     My.Settings.Save()
 
@@ -96,9 +98,13 @@
                     .Menge = intMenge,
                     .gesPreis = intMenge * Basket(i).EP
                 }
-                    Logger.WriteLine("VendingEngine.processEingabe -> Mengenvorgang.gefundenOrderNum: " & Basket(i).OrderNum & " | gesPreis: " & Basket(i).gesPreis)
+                    Logger.WriteLine("VendingEngine.processEingabe -> Mengenvorgang.gefundenOrderNum: " & Basket(i).OrderNum & " | gesPreis: " & My.Settings.BasketGesPreis.ToString)
                     ID = Basket(i).ID
-                    gesamtpreis = Basket(i).gesPreis
+                    gesamtpreis = My.Settings.BasketGesPreis
+                    Logger.WriteLine($"VendingEngine.ProccesEingabe| alt :My.Settings.BaskeGesPreis:{My.Settings.BasketGesPreis}")
+                    My.Settings.BasketGesPreis = My.Settings.BasketGesPreis + Basket(i).gesPreis
+                    Logger.WriteLine($"VendingEngine.ProccesEingabe| neu :My.Settings.BaskeGesPreis:{My.Settings.BasketGesPreis.ToString}")
+                    My.Settings.Save
                 End If
             Next
 
@@ -122,14 +128,14 @@
             bereitsEingeworfenerBetrag = 0
 
             For Each be As basketEintrag In Basket
-                Logger.WriteLine($"VendingEngine.ProccesEingabe| Basket Eintrag: {be.OrderNum} | Basket GesPreis: {be.gesPreis} | Basket Anz. {be.Menge}")
+                Logger.WriteLine($"VendingEngine.ProccesEingabe| be.OrderNum: {be.OrderNum} | be.gesPreis: {be.gesPreis} | be.menge. {be.Menge}")
             Next
 
             OutputBox.Text = ""
             OutputBox.AppendText("-----------------------------------" & vbNewLine)
             OutputBox.AppendText("Zahlung gestartet. Bitte Münzbetrag auswählen" & vbNewLine)
             OutputBox.AppendText($"GESAMT PREIS: {gesamtpreis.ToString("F2")}€" & vbNewLine)
-            My.Settings.BasketGesPreis = gesamtpreis
+            'My.Settings.BasketGesPreis = gesamtpreis
             My.Settings.Save()
             flpNum.Enabled = True
             flp.Visible = True

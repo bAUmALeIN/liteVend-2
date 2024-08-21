@@ -88,6 +88,9 @@ Public Class FormMainMenu
         btnVendingMode.ImageAlign = ContentAlignment.MiddleLeft
         btnVendingMode.TextAlign = ContentAlignment.MiddleRight
 
+        My.Settings.BasketGesPreis = 0
+
+
         Engine.FillControlsFromDB(Globals.queryAllProducts,, 0, ComboBoxEditID)
         Engine.cleanAppStats()
 
@@ -190,7 +193,7 @@ Public Class FormMainMenu
     Private Sub cbImage_CheckedChanged(sender As Object, e As EventArgs) Handles cbImage.CheckedChanged
         If cbImage.Checked = True Then
             btnAddAddImage.Enabled = True
-            btnAddAddImage.BackColor = Color.Ivory
+            btnAddAddImage.BackColor = Color.WhiteSmoke
         Else
             btnAddAddImage.Enabled = False
             btnAddAddImage.BackColor = Color.LightGray

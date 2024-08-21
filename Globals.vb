@@ -9,6 +9,25 @@ Public Class Globals
         Public GesUmsatz As Double
     End Structure
 
+    ' Monster   X
+    ' diet zuckerfrei   X
+    ' Vilsa X   
+    ' Schwipp Schwapp   X
+    ' Mezzo Mix X
+    ' Paulaner Spezi    X
+    ' Eistee    X
+    ' Augustiner Edelstoff, Münchner Hell,  X
+    ' SevenUP X
+    ' DrPepper X
+    ' Mountain Dew  X
+    ' Powerade X
+    ' Durstlöscher versch. Sorten
+    ' Jägermeister
+    ' Schwepps
+    ' Vodka 
+    ' Kippen
+    ' Orangensaft
+    ' Radler
 
 
     Public Shared logger As Logger
