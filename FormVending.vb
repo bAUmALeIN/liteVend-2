@@ -426,7 +426,7 @@ Public Class FormVending
             Next
             My.Settings.BasketGesPreis = gespreis
             My.Settings.Save()
-            rtfAusgabe.AppendText($"GESAMT PREIS: {My.Settings.BasketGesPreis.ToString()}€" & vbNewLine)
+            rtfAusgabe.AppendText($"GESAMT PREIS: {gesamtpreis.ToString}€" & vbNewLine)
         Else
             Logger.WriteLine("VendingEngine.btnCheckout_Click: MULTIVEND not enabled")
 
