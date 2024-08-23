@@ -79,9 +79,11 @@ Partial Class FormArtikelManager
         Me.tbPreis = New System.Windows.Forms.TextBox()
         Me.PictureBoxAM = New System.Windows.Forms.PictureBox()
         Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.label_text_am_panelbar = New System.Windows.Forms.Label()
         Me.btnMinimize = New System.Windows.Forms.Button()
+        Me.label_text_am_panelbar = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.PanelBackground.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -91,9 +93,12 @@ Partial Class FormArtikelManager
         '
         'PanelBackground
         '
-        Me.PanelBackground.BackColor = System.Drawing.Color.LightGray
+        Me.PanelBackground.BackColor = System.Drawing.Color.Silver
+        Me.PanelBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PanelBackground.Controls.Add(Me.CheckBox2)
         Me.PanelBackground.Controls.Add(Me.CheckBox1)
         Me.PanelBackground.Controls.Add(Me.Label14)
+        Me.PanelBackground.Controls.Add(Me.Label18)
         Me.PanelBackground.Controls.Add(Me.Label16)
         Me.PanelBackground.Controls.Add(Me.Panel8)
         Me.PanelBackground.Controls.Add(Me.cbSearchBEZ)
@@ -170,7 +175,7 @@ Partial Class FormArtikelManager
         Me.Panel8.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Panel8.Location = New System.Drawing.Point(490, 53)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(309, 5)
+        Me.Panel8.Size = New System.Drawing.Size(309, 8)
         Me.Panel8.TabIndex = 78
         '
         'cbSearchBEZ
@@ -214,7 +219,7 @@ Partial Class FormArtikelManager
         Me.Panel7.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Panel7.Location = New System.Drawing.Point(0, 53)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(483, 5)
+        Me.Panel7.Size = New System.Drawing.Size(483, 8)
         Me.Panel7.TabIndex = 71
         '
         'btnCancel
@@ -223,19 +228,20 @@ Partial Class FormArtikelManager
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.ForeColor = System.Drawing.Color.Firebrick
-        Me.btnCancel.Location = New System.Drawing.Point(279, 416)
+        Me.btnCancel.Location = New System.Drawing.Point(320, 416)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(192, 51)
+        Me.btnCancel.Size = New System.Drawing.Size(151, 51)
         Me.btnCancel.TabIndex = 70
         Me.btnCancel.Text = "Abbrechen"
         Me.btnCancel.UseVisualStyleBackColor = False
+        Me.btnCancel.Visible = False
         '
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Panel6.Location = New System.Drawing.Point(0, 397)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(483, 5)
+        Me.Panel6.Size = New System.Drawing.Size(483, 8)
         Me.Panel6.TabIndex = 69
         '
         'cbLagerOrt
@@ -281,7 +287,7 @@ Partial Class FormArtikelManager
         Me.Panel5.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Panel5.Location = New System.Drawing.Point(0, 189)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(483, 5)
+        Me.Panel5.Size = New System.Drawing.Size(483, 8)
         Me.Panel5.TabIndex = 61
         '
         'Panel4
@@ -289,7 +295,7 @@ Partial Class FormArtikelManager
         Me.Panel4.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Panel4.Location = New System.Drawing.Point(0, 258)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(483, 5)
+        Me.Panel4.Size = New System.Drawing.Size(483, 8)
         Me.Panel4.TabIndex = 60
         '
         'Panel3
@@ -347,9 +353,9 @@ Partial Class FormArtikelManager
         Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.Label11)
         Me.Panel2.Enabled = False
-        Me.Panel2.Location = New System.Drawing.Point(3, 63)
+        Me.Panel2.Location = New System.Drawing.Point(5, 63)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(468, 120)
+        Me.Panel2.Size = New System.Drawing.Size(472, 120)
         Me.Panel2.TabIndex = 54
         '
         'LabelPflicht2
@@ -448,12 +454,13 @@ Partial Class FormArtikelManager
         Me.btnSaveArticle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSaveArticle.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSaveArticle.ForeColor = System.Drawing.Color.ForestGreen
-        Me.btnSaveArticle.Location = New System.Drawing.Point(11, 416)
+        Me.btnSaveArticle.Location = New System.Drawing.Point(148, 416)
         Me.btnSaveArticle.Name = "btnSaveArticle"
-        Me.btnSaveArticle.Size = New System.Drawing.Size(192, 51)
+        Me.btnSaveArticle.Size = New System.Drawing.Size(151, 51)
         Me.btnSaveArticle.TabIndex = 53
         Me.btnSaveArticle.Text = "Speichern"
         Me.btnSaveArticle.UseVisualStyleBackColor = False
+        Me.btnSaveArticle.Visible = False
         '
         'checkboxSetPicture
         '
@@ -686,7 +693,6 @@ Partial Class FormArtikelManager
         'PictureBoxAM
         '
         Me.PictureBoxAM.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBoxAM.BackgroundImage = Global.Getränke_Automat_V2.My.Resources.Resources.Dose
         Me.PictureBoxAM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBoxAM.Location = New System.Drawing.Point(512, 84)
         Me.PictureBoxAM.Name = "PictureBoxAM"
@@ -696,7 +702,7 @@ Partial Class FormArtikelManager
         '
         'Panel9
         '
-        Me.Panel9.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.Panel9.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Panel9.Controls.Add(Me.btnMinimize)
         Me.Panel9.Controls.Add(Me.label_text_am_panelbar)
         Me.Panel9.Controls.Add(Me.btnClose)
@@ -704,17 +710,6 @@ Partial Class FormArtikelManager
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(796, 30)
         Me.Panel9.TabIndex = 81
-        '
-        'label_text_am_panelbar
-        '
-        Me.label_text_am_panelbar.AutoSize = True
-        Me.label_text_am_panelbar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label_text_am_panelbar.ForeColor = System.Drawing.SystemColors.Control
-        Me.label_text_am_panelbar.Location = New System.Drawing.Point(3, 3)
-        Me.label_text_am_panelbar.Name = "label_text_am_panelbar"
-        Me.label_text_am_panelbar.Size = New System.Drawing.Size(179, 24)
-        Me.label_text_am_panelbar.TabIndex = 57
-        Me.label_text_am_panelbar.Text = "Artikel Verwaltung"
         '
         'btnMinimize
         '
@@ -730,6 +725,17 @@ Partial Class FormArtikelManager
         Me.btnMinimize.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnMinimize.UseVisualStyleBackColor = True
         '
+        'label_text_am_panelbar
+        '
+        Me.label_text_am_panelbar.AutoSize = True
+        Me.label_text_am_panelbar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label_text_am_panelbar.ForeColor = System.Drawing.SystemColors.Control
+        Me.label_text_am_panelbar.Location = New System.Drawing.Point(3, 3)
+        Me.label_text_am_panelbar.Name = "label_text_am_panelbar"
+        Me.label_text_am_panelbar.Size = New System.Drawing.Size(179, 24)
+        Me.label_text_am_panelbar.TabIndex = 57
+        Me.label_text_am_panelbar.Text = "Artikel Verwaltung"
+        '
         'btnClose
         '
         Me.btnClose.FlatAppearance.BorderSize = 0
@@ -743,6 +749,26 @@ Partial Class FormArtikelManager
         Me.btnClose.Text = "X"
         Me.btnClose.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(129, 438)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(15, 14)
+        Me.CheckBox2.TabIndex = 82
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
+                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(6, 435)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(120, 15)
+        Me.Label18.TabIndex = 81
+        Me.Label18.Text = "Artikel bearbeiten"
         '
         'FormArtikelManager
         '
@@ -827,4 +853,6 @@ Partial Class FormArtikelManager
     Friend WithEvents label_text_am_panelbar As Label
     Friend WithEvents btnMinimize As Button
     Friend WithEvents btnClose As Button
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents Label18 As Label
 End Class

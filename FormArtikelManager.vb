@@ -44,15 +44,14 @@ Public Class FormArtikelManager
             tbID.Text = .ID.ToString
             tbInhalt.Text = .Volumen.ToString
 
-            img = .Image
+            img = CM.GetImageFromDatabase(.ID)
             If img IsNot Nothing Then
                 PictureBoxAM.BackgroundImage = Nothing
                 PictureBoxAM.Image = img
                 PictureBoxAM.SizeMode = PictureBoxSizeMode.StretchImage
                 Exit Sub
             End If
-            PictureBoxAM.Image = Nothing
-            PictureBoxAM.BackgroundImage = My.Resources.Dose
+
         End With
 
     End Sub
@@ -66,15 +65,15 @@ Public Class FormArtikelManager
             tbBez.Text = .Bezeichnung
             tbID.Text = .ID.ToString
             tbInhalt.Text = .Volumen.ToString
-            img = .Image
+            img = CM.GetImageFromDatabase(.ID)
             If img IsNot Nothing Then
                 PictureBoxAM.BackgroundImage = Nothing
                 PictureBoxAM.Image = img
                 PictureBoxAM.SizeMode = PictureBoxSizeMode.StretchImage
                 Exit Sub
             End If
-            PictureBoxAM.Image = Nothing
-            PictureBoxAM.BackgroundImage = My.Resources.Dose
+            ' PictureBoxAM.Image = Nothing
+            'PictureBoxAM.BackgroundImage = My.Resources.Dose
         End With
 
     End Sub
@@ -97,13 +96,6 @@ Public Class FormArtikelManager
                 ID = CM.GetProduktIDByName(cbSearchBEZ.SelectedItem)
                 actProdukt = CM.getProduktByID(ID)
                 Logger.WriteLine($"{cbSearchID.Name.ToString} | Produkt ID: {actProdukt.ID.ToString} | Produkt Bez: {actProdukt.Bezeichnung}")
-                With actProdukt
-                    tbPreis.Text = .Preis.ToString
-                    tbALK.Text = .Alkoholgehalt.ToString
-                    tbBez.Text = .Bezeichnung
-                    tbID.Text = .ID.ToString
-                    tbInhalt.Text = .Volumen.ToString
-                End With
                 Exit Select
 
             Case Else
@@ -121,5 +113,16 @@ Public Class FormArtikelManager
 
     Private Sub btnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
         Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        Select Case CheckBox2.CheckState
+            Case CheckState.Checked
+                btnSaveArticle.Visible = True
+                btnCancel.Visible = True
+            Case CheckState.Unchecked
+                btnSaveArticle.Visible = False
+                btnCancel.Visible = False
+        End Select
     End Sub
 End Class

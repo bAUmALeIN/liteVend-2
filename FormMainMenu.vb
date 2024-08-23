@@ -335,6 +335,7 @@ Public Class FormMainMenu
 
             End If
         Next
+        FAM.StartPosition = FormStartPosition.CenterScreen
         FAM.Show()
     End Sub
 End Class
