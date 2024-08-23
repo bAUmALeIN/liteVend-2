@@ -1,7 +1,7 @@
-﻿Module VendingEngine
+﻿Module EngineVending
     Public Const MengenOrderText = "Bitte geben Sie die gewünschte Menge ein."
 
-    ' Umwandlung der Struktur in eine Klasse
+    ' Umwandlung der Struktur in eine Klasse // 21.08 vorher Struktur // change:Klasse -> einfachere handhabung
     Public Class basketEintrag
         Public Property OrderNum As Integer
         Public Property EP As Double
@@ -45,7 +45,7 @@
                         Logger.WriteLine("VendingEngine.ProccesEingabe| ActiveMengenID gesetzt: " & My.Settings.ActiveMengeID)
                         Logger.WriteLine("VendingEngine.ProccesEingabe| OrderNum BasketEintrag zugewiesen: " & My.Settings.OrderNum)
 
-                        ' Aktualisiere den Gesamtpreis basierend auf dem Warenkorb
+                        ' Aktualisiere Gesamtpreis basierend auf dem basket
                         gesamtpreis += be.gesPreis
 
                         Logger.WriteLine($"VendingEngine.ProccesEingabe| neu: Gesamtpreis = {gesamtpreis}")
@@ -114,7 +114,7 @@
                 OutputBox.AppendText(vbNewLine & "-----------------------------------")
                 OutputBox.AppendText(vbNewLine & "Ausgewähltes Produkt: " & ID & vbNewLine)
                 OutputBox.AppendText("Eingegebene Menge: " & Menge & vbNewLine)
-                OutputBox.AppendText("Ges. Preis: " & gesamtpreis.ToString & "€")
+                OutputBox.AppendText("Ges. Preis: " & gesamtpreis.ToString("F2") & "€")
                 OutputBox.ScrollToCaret()
 
                 If My.Settings.MultiVend Then

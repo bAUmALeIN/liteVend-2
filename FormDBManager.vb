@@ -31,10 +31,7 @@ Public Class FormDBManager
         btnRunSQL.Image = Engine.ScaleImage(Img, 84, 20)
         btnRunSQL.ImageAlign = ContentAlignment.TopLeft
         btnRunSQL.TextAlign = ContentAlignment.MiddleRight
-        Img = My.Resources.icons8_datei_hinzufuegen_50
-        btnCreateTable.Image = Engine.ScaleImage(Img, 20, 20)
-        btnCreateTable.ImageAlign = ContentAlignment.TopLeft
-        btnCreateTable.TextAlign = ContentAlignment.MiddleRight
+
         Img = My.Resources.icons8_ordner_öffnen_50
         btnOpenSQL.Image = Engine.ScaleImage(Img, 20, 20)
         btnOpenSQL.ImageAlign = ContentAlignment.TopLeft
@@ -47,10 +44,7 @@ Public Class FormDBManager
         btnNewSQL.Image = Engine.ScaleImage(Img, 20, 20)
         btnNewSQL.ImageAlign = ContentAlignment.TopLeft
         btnNewSQL.TextAlign = ContentAlignment.MiddleCenter
-        Img = My.Resources.icons8_datei_loeschen_50
-        btnTableDelete.Image = Engine.ScaleImage(Img, 20, 20)
-        btnTableDelete.ImageAlign = ContentAlignment.TopLeft
-        btnTableDelete.TextAlign = ContentAlignment.MiddleRight
+
         Img = My.Resources.refresh
         btnRefresh.Image = Engine.ScaleImage(Img, 22, 22)
         btnRefresh.ImageAlign = ContentAlignment.TopLeft
@@ -80,20 +74,20 @@ Public Class FormDBManager
         Dim selectedNode As TreeNode = e.Node
 
         If selectedNode.Parent IsNot Nothing Then
-            ' Unterknoten (Spalte) wurde ausgewählt
+            ' Unterknoten (Spalte) 
             Dim selectedTable As String = selectedNode.Parent.Text
             Dim selectedColumn As String = selectedNode.Text.Split("|"c)(0).Trim() ' Spaltenname extrahieren
             labelNode.Text = $"{selectedColumn}:"
 
             DBM.FillListViewWithColumnData(ListView1, selectedTable, selectedColumn)
         ElseIf selectedNode.Parent Is Nothing Then
-            ' Hauptknoten (Tabellenname) wurde ausgewählt
+            ' Hauptknoten (Tabellenname) 
             Dim selectedTable As String = selectedNode.Text
             labelNode.Text = $"{selectedNode.Text}:"
 
             DBM.FillListViewWithTableData(ListView1, selectedTable)
         Else
-            ' Wurzelknoten oder ungültiger Knoten wurde ausgewählt
+            ' Wurzelknoten oder ungültiger Knoten 
             ' 
             labelNode.Text = $"Inhalt:"
         End If
@@ -109,6 +103,7 @@ Public Class FormDBManager
 
         Dim currentPosition As Integer = rtfBox.SelectionStart
         Dim originalColor As Color = Color.Black
+        Dim originalFont As Font = rtfBox.Font
 
         rtfBox.SelectAll()
         rtfBox.SelectionColor = originalColor
@@ -117,17 +112,21 @@ Public Class FormDBManager
         For Each match As Match In keywordRegex.Matches(rtfBox.Text)
             rtfBox.Select(match.Index, match.Length)
             rtfBox.SelectionColor = Color.Blue
+            rtfBox.SelectionFont = New Font(rtfBox.Font, FontStyle.Bold)
         Next
 
         ' Zeichenfolgen 
         For Each match As Match In stringRegex.Matches(rtfBox.Text)
             rtfBox.Select(match.Index, match.Length)
             rtfBox.SelectionColor = Color.Green
+            rtfBox.SelectionFont = New Font(rtfBox.Font, FontStyle.Bold)
         Next
 
         ' ursprüngliche Cursorposition und Farbe
         rtfBox.Select(currentPosition, 0)
         rtfBox.SelectionColor = originalColor
+        rtfBox.SelectionFont = originalFont
+
     End Sub
 
     Private Sub rtfRunSQL_TextChanged(sender As Object, e As EventArgs) Handles rtfRunSQL.TextChanged
@@ -231,7 +230,15 @@ Public Class FormDBManager
     End Sub
 
     Private Sub btnResetDB_Click(sender As Object, e As EventArgs) Handles btnResetDB.Click
-
+        Try
+            System.IO.File.Delete(Globals.DBpath)
+            CM.createDB()
+        Catch ex As Exception
+            Logger.WriteLine("DATABASE RESET: Fehlgeschlagen!")
+            Logger.WriteLine(ex.Message)
+            Exit Sub
+        End Try
+        Logger.WriteLine("DATABASE RESET: OK!")
     End Sub
 
     Private Sub RoundButton1_Click(sender As Object, e As EventArgs) Handles RoundButton1.Click

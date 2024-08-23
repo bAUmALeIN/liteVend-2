@@ -7,14 +7,7 @@ Imports System.Data.Sql
 Public Class FormMainMenu
 
 
-    Public Structure Produkt
-        Public ID As Integer
-        Public Preis As Double
-        Public Bezeichnung As String
-        Public Alkoholgehalt As Double
-        Public Volumen As Double
-        Public Image As Image
-    End Structure
+
 
 
 
@@ -24,11 +17,11 @@ Public Class FormMainMenu
 
     Dim mouseOffset As Point
 
-    Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, Panel2.MouseDown
+    Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, Panel2.MouseDown, labelStatusDB.MouseDown, Label13.MouseDown
         mouseOffset = New Point(-e.X, -e.Y)
     End Sub
 
-    Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove, Panel2.MouseMove
+    Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove, Panel2.MouseMove, labelStatusDB.MouseMove, Label13.MouseMove
 
         If e.Button = MouseButtons.Left Then
             Dim mousePos = Control.MousePosition
@@ -36,7 +29,6 @@ Public Class FormMainMenu
             Location = mousePos
         End If
     End Sub
-
 
     Public Sub FormMainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If (Globals.logging = True) Then
@@ -75,7 +67,6 @@ Public Class FormMainMenu
             tbStatsAnzFlaschen.Text = .anzVerkFalschen.ToString
         End With
         tbID.Text = CM.GetNextFreeID().ToString
-        Engine.clearLogger(0)
         Logger.WriteLine("Statistiken erfolgreich abgerufen")
 
         Dim Img As Image = My.Resources._6220416
@@ -205,7 +196,7 @@ Public Class FormMainMenu
 
     Private Sub ComboBoxEditID_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboBoxEditID.SelectedValueChanged
         Dim ID As Integer = Convert.ToInt32(ComboBoxEditID.SelectedItem)
-        Dim actProdukt As New Produkt
+        Dim actProdukt As New Globals.Produkt
         Dim img As Image
         actProdukt = CM.getProduktByID(ID)
         Logger.WriteLine("ComboBoxEditID_SelectedValueChanged: ID: " & ID.ToString)
@@ -255,7 +246,7 @@ Public Class FormMainMenu
     End Sub
 
     Private Sub btnSaveEdit_Click(sender As Object, e As EventArgs) Handles btnSaveEdit.Click
-        Dim newProdukt As New Produkt
+        Dim newProdukt As New Globals.Produkt
         Logger.WriteLine("Erstelle Produkt für Update....")
         With newProdukt
             .ID = Globals.openIDinEdit
@@ -311,9 +302,7 @@ Public Class FormMainMenu
 
 
 
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
 
-    End Sub
 
     Private Sub TabControl1_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.TabIndexChanged, TabControl1.SelectedIndexChanged
         If TabControl1.SelectedIndex = 3 Then
@@ -336,5 +325,16 @@ Public Class FormMainMenu
             End If
         Next
         logger.Show()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim FAM As New FormArtikelManager
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FormArtikelManager Then
+                Return
+
+            End If
+        Next
+        FAM.Show()
     End Sub
 End Class

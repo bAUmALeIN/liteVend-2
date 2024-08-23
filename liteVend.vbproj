@@ -94,7 +94,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>liteVend_1_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -150,10 +151,17 @@
     <Compile Include="ConnectionManger.vb" />
     <Compile Include="DatabaseManager.vb" />
     <Compile Include="Engine.vb" />
+    <Compile Include="EngineArtikelManager.vb" />
     <Compile Include="FormAddProdukt.Designer.vb">
       <DependentUpon>FormAddProdukt.vb</DependentUpon>
     </Compile>
     <Compile Include="FormAddProdukt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArtikelManager.Designer.vb">
+      <DependentUpon>FormArtikelManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormArtikelManager.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDBManager.Designer.vb">
@@ -219,7 +227,7 @@
     <Compile Include="TabRenderer.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VendingEngine.vb" />
+    <Compile Include="EngineVending.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutBoxDBManager.resx">
@@ -227,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddProdukt.resx">
       <DependentUpon>FormAddProdukt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArtikelManager.resx">
+      <DependentUpon>FormArtikelManager.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDBManager.resx">
       <DependentUpon>FormDBManager.vb</DependentUpon>
@@ -254,8 +265,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="liteVend_1_TemporaryKey.pfx" />
-    <None Include="liteVend_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -313,6 +322,7 @@
     <None Include="Resources\litevend-high-resolution-logo-black-transparent.png" />
     <None Include="Resources\litevend-high-resolution-logo-transparent.png" />
     <None Include="Resources\litevend-high-resolution-logo-white-transparent.png" />
+    <None Include="Resources\icons8-suche-24.png" />
     <Content Include="vending-machine_821356 %282%29.ico" />
   </ItemGroup>
   <ItemGroup>

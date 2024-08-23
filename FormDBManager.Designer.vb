@@ -36,8 +36,6 @@ Partial Class FormDBManager
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.btnCreateTable = New System.Windows.Forms.Button()
-        Me.btnTableDelete = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TreeViewDatabase = New System.Windows.Forms.TreeView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
@@ -213,42 +211,12 @@ Partial Class FormDBManager
         '
         'Panel8
         '
-        Me.Panel8.Controls.Add(Me.btnCreateTable)
-        Me.Panel8.Controls.Add(Me.btnTableDelete)
         Me.Panel8.Controls.Add(Me.Label4)
         Me.Panel8.Controls.Add(Me.TreeViewDatabase)
         Me.Panel8.Location = New System.Drawing.Point(0, 0)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(190, 426)
         Me.Panel8.TabIndex = 43
-        '
-        'btnCreateTable
-        '
-        Me.btnCreateTable.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnCreateTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCreateTable.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCreateTable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCreateTable.Location = New System.Drawing.Point(22, 318)
-        Me.btnCreateTable.Name = "btnCreateTable"
-        Me.btnCreateTable.Size = New System.Drawing.Size(135, 31)
-        Me.btnCreateTable.TabIndex = 1
-        Me.btnCreateTable.Text = "Tabelle erstellen"
-        Me.btnCreateTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCreateTable.UseVisualStyleBackColor = False
-        '
-        'btnTableDelete
-        '
-        Me.btnTableDelete.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnTableDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnTableDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTableDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnTableDelete.Location = New System.Drawing.Point(22, 355)
-        Me.btnTableDelete.Name = "btnTableDelete"
-        Me.btnTableDelete.Size = New System.Drawing.Size(135, 31)
-        Me.btnTableDelete.TabIndex = 39
-        Me.btnTableDelete.Text = "Tabelle löschen"
-        Me.btnTableDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnTableDelete.UseVisualStyleBackColor = False
         '
         'Label4
         '
@@ -266,7 +234,7 @@ Partial Class FormDBManager
         Me.TreeViewDatabase.BackColor = System.Drawing.SystemColors.MenuBar
         Me.TreeViewDatabase.Location = New System.Drawing.Point(15, 52)
         Me.TreeViewDatabase.Name = "TreeViewDatabase"
-        Me.TreeViewDatabase.Size = New System.Drawing.Size(154, 255)
+        Me.TreeViewDatabase.Size = New System.Drawing.Size(154, 359)
         Me.TreeViewDatabase.TabIndex = 0
         '
         'TabPage2
@@ -675,7 +643,6 @@ Partial Class FormDBManager
     Friend WithEvents btnMinimize As Button
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents btnClose As Button
-    Friend WithEvents btnCreateTable As Button
     Friend WithEvents ListView1 As ListView
     Friend WithEvents labelNode As Label
     Friend WithEvents btnRefresh As Button
@@ -701,7 +668,6 @@ Partial Class FormDBManager
     Friend WithEvents btnNewSQL As Button
     Friend WithEvents Panel7 As Panel
     Friend WithEvents Panel8 As Panel
-    Friend WithEvents btnTableDelete As Button
     Friend WithEvents btnResetDB As Button
     Friend WithEvents CheckBoxResetDB As CheckBox
     Friend WithEvents RoundButton1 As RoundButton

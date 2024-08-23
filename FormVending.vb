@@ -61,7 +61,7 @@ Public Class FormVending
                 If clickedbtn.Tag.ToString() = btn.Tag.ToString Then
                     Logger.WriteLine($" Produkt-Button mit Tag gefunden: {btn.Name}")
                     rtfAusgabe.Text = Nothing
-                    Dim prodausgabe As FormMainMenu.Produkt = CM.getProduktByID(Int(btn.Tag))
+                    Dim prodausgabe As Globals.Produkt = CM.getProduktByID(Int(btn.Tag))
                     If prodausgabe.Preis <> 0 Then
 
                         Logger.WriteLine($" Produkt mit Bez.:{prodausgabe.Bezeichnung} gefunden")
@@ -86,7 +86,7 @@ Public Class FormVending
     '########################################## NUMPAD ####################################################
 
     Private Sub btnEnter_Click(sender As Object, e As EventArgs) Handles btnEnter.Click
-        VendingEngine.processEingabe(PanelProdukte.Controls, tbEingabe, rtfAusgabe, FlowLayoutPanelCoinValues, FlowLayoutPanelNumBlock)
+        EngineVending.processEingabe(PanelProdukte.Controls, tbEingabe, rtfAusgabe, FlowLayoutPanelCoinValues, FlowLayoutPanelNumBlock)
     End Sub
 
     Private Sub btnNUM0_Click(sender As Object, e As EventArgs) Handles btnNUM0.Click
@@ -371,7 +371,7 @@ Public Class FormVending
         End If
 
 
-        If VendingEngine.ProcessZahlung(selectedAmount, rtfAusgabe) Then
+        If EngineVending.ProcessZahlung(selectedAmount, rtfAusgabe) Then
             MessageBox.Show("Zahlung erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Globals.Zahlung = False
             btnClearVG_Click(sender, e)
@@ -456,7 +456,6 @@ Public Class FormVending
 
         Next
     End Sub
-
 
 
 End Class

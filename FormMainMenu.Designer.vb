@@ -26,14 +26,15 @@ Partial Class FormMainMenu
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMainMenu))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabPageMain = New System.Windows.Forms.TabPage()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.btnVendingMode = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.labelStatusDB = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label43 = New System.Windows.Forms.Label()
+        Me.btnShowLog = New System.Windows.Forms.Button()
         Me.TabPageAdd = New System.Windows.Forms.TabPage()
         Me.PanelAdd = New System.Windows.Forms.Panel()
         Me.cbImage = New System.Windows.Forms.CheckBox()
@@ -117,10 +118,8 @@ Partial Class FormMainMenu
         Me.btnClose = New System.Windows.Forms.Button()
         Me.TimerCheckTBAdd = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.btnShowLog = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.tabPageMain.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.TabPageAdd.SuspendLayout()
         Me.PanelAdd.SuspendLayout()
@@ -156,12 +155,10 @@ Partial Class FormMainMenu
         'tabPageMain
         '
         Me.tabPageMain.BackColor = System.Drawing.Color.Gainsboro
-        Me.tabPageMain.Controls.Add(Me.btnShowLog)
-        Me.tabPageMain.Controls.Add(Me.Panel1)
+        Me.tabPageMain.Controls.Add(Me.Button3)
+        Me.tabPageMain.Controls.Add(Me.Button2)
         Me.tabPageMain.Controls.Add(Me.btnVendingMode)
-        Me.tabPageMain.Controls.Add(Me.Label13)
         Me.tabPageMain.Controls.Add(Me.Button1)
-        Me.tabPageMain.Controls.Add(Me.labelStatusDB)
         Me.tabPageMain.Controls.Add(Me.Panel7)
         Me.tabPageMain.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabPageMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -172,34 +169,38 @@ Partial Class FormMainMenu
         Me.tabPageMain.TabIndex = 0
         Me.tabPageMain.Text = "Start"
         '
-        'Panel1
+        'Button3
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Gray
-        Me.Panel1.Controls.Add(Me.Label35)
-        Me.Panel1.Location = New System.Drawing.Point(0, 134)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(323, 31)
-        Me.Panel1.TabIndex = 34
+        Me.Button3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(56, 166)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(186, 50)
+        Me.Button3.TabIndex = 37
+        Me.Button3.Text = "Lagerverwaltung"
+        Me.Button3.UseVisualStyleBackColor = False
         '
-        'Label35
+        'Button2
         '
-        Me.Label35.AutoSize = True
-        Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.ForeColor = System.Drawing.Color.White
-        Me.Label35.Location = New System.Drawing.Point(21, 1)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(254, 29)
-        Me.Label35.TabIndex = 32
-        Me.Label35.Text = "Datenbank Verwaltung"
+        Me.Button2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(56, 103)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(186, 50)
+        Me.Button2.TabIndex = 36
+        Me.Button2.Text = "Artkel Manager"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'btnVendingMode
         '
         Me.btnVendingMode.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnVendingMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnVendingMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVendingMode.Location = New System.Drawing.Point(87, 48)
+        Me.btnVendingMode.Location = New System.Drawing.Point(56, 38)
         Me.btnVendingMode.Name = "btnVendingMode"
-        Me.btnVendingMode.Size = New System.Drawing.Size(152, 50)
+        Me.btnVendingMode.Size = New System.Drawing.Size(186, 50)
         Me.btnVendingMode.TabIndex = 1
         Me.btnVendingMode.Text = "Automat"
         Me.btnVendingMode.UseVisualStyleBackColor = False
@@ -208,7 +209,7 @@ Partial Class FormMainMenu
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(94, 286)
+        Me.Label13.Location = New System.Drawing.Point(93, 4)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(116, 16)
         Me.Label13.TabIndex = 15
@@ -220,9 +221,9 @@ Partial Class FormMainMenu
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Button1.Location = New System.Drawing.Point(77, 191)
+        Me.Button1.Location = New System.Drawing.Point(56, 230)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(167, 50)
+        Me.Button1.Size = New System.Drawing.Size(188, 50)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Controller"
         Me.Button1.UseVisualStyleBackColor = False
@@ -233,7 +234,7 @@ Partial Class FormMainMenu
         Me.labelStatusDB.BackColor = System.Drawing.Color.Silver
         Me.labelStatusDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labelStatusDB.ForeColor = System.Drawing.Color.Red
-        Me.labelStatusDB.Location = New System.Drawing.Point(218, 287)
+        Me.labelStatusDB.Location = New System.Drawing.Point(217, 4)
         Me.labelStatusDB.Name = "labelStatusDB"
         Me.labelStatusDB.Size = New System.Drawing.Size(11, 16)
         Me.labelStatusDB.TabIndex = 17
@@ -243,6 +244,7 @@ Partial Class FormMainMenu
         '
         Me.Panel7.BackColor = System.Drawing.Color.Gray
         Me.Panel7.Controls.Add(Me.Label43)
+        Me.Panel7.Controls.Add(Me.btnShowLog)
         Me.Panel7.Location = New System.Drawing.Point(0, 1)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(323, 31)
@@ -253,11 +255,20 @@ Partial Class FormMainMenu
         Me.Label43.AutoSize = True
         Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label43.ForeColor = System.Drawing.Color.White
-        Me.Label43.Location = New System.Drawing.Point(132, 0)
+        Me.Label43.Location = New System.Drawing.Point(119, -1)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(62, 29)
         Me.Label43.TabIndex = 32
         Me.Label43.Text = "Start"
+        '
+        'btnShowLog
+        '
+        Me.btnShowLog.Location = New System.Drawing.Point(3, 3)
+        Me.btnShowLog.Name = "btnShowLog"
+        Me.btnShowLog.Size = New System.Drawing.Size(39, 23)
+        Me.btnShowLog.TabIndex = 35
+        Me.btnShowLog.Text = "log"
+        Me.btnShowLog.UseVisualStyleBackColor = True
         '
         'TabPageAdd
         '
@@ -1077,6 +1088,8 @@ Partial Class FormMainMenu
         Me.Panel2.Controls.Add(Me.Label10)
         Me.Panel2.Controls.Add(Me.btnMinimize)
         Me.Panel2.Controls.Add(Me.btnClose)
+        Me.Panel2.Controls.Add(Me.Label13)
+        Me.Panel2.Controls.Add(Me.labelStatusDB)
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(323, 25)
@@ -1130,15 +1143,6 @@ Partial Class FormMainMenu
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
-        'btnShowLog
-        '
-        Me.btnShowLog.Location = New System.Drawing.Point(133, 109)
-        Me.btnShowLog.Name = "btnShowLog"
-        Me.btnShowLog.Size = New System.Drawing.Size(61, 23)
-        Me.btnShowLog.TabIndex = 35
-        Me.btnShowLog.Text = "Open log"
-        Me.btnShowLog.UseVisualStyleBackColor = True
-        '
         'FormMainMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1153,9 +1157,6 @@ Partial Class FormMainMenu
         Me.Text = "Hauptmenü "
         Me.TabControl1.ResumeLayout(False)
         Me.tabPageMain.ResumeLayout(False)
-        Me.tabPageMain.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.TabPageAdd.ResumeLayout(False)
@@ -1273,11 +1274,11 @@ Partial Class FormMainMenu
     Friend WithEvents Label42 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label43 As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label35 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents tbStatsGesUmsatz As TextBox
     Friend WithEvents btnShowLog As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 End Class

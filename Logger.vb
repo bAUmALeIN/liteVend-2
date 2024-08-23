@@ -27,5 +27,31 @@
         RichTextBox1.ScrollToCaret()
     End Sub
 
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim sfd As New SaveFileDialog
+        sfd.Filter = "Text Files (*.txt)|*.txt"
+        sfd.Title = "Log speichern unter"
+        sfd.FileName = $"LOG_{System.DateTime.Now.ToString}"
+        sfd.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory
+        If sfd.ShowDialog() = DialogResult.OK Then
+            Try
+                System.IO.File.WriteAllText(sfd.FileName, RichTextBox1.Text)
+            Catch ex As Exception
+                WriteLine(ex.Message)
+
+            End Try
+
+        End If
+    End Sub
+
+    Private Sub Logger_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim img = My.Resources.icons8_speichern_50
+        btnSave.Image = Engine.ScaleImage(img, 50, 15)
+        btnSave.ImageAlign = ContentAlignment.MiddleLeft
+        btnSave.TextAlign = ContentAlignment.MiddleRight
+    End Sub
 End Class

@@ -38,16 +38,6 @@ Module Engine
 
     End Sub
 
-    Public Sub filladdtbID(tb As TextBox)
-        My.Settings.NextID = CM.GetNextFreeID
-        My.Settings.Save()
-        If My.Settings.NextID = 1 Then
-            tb.Text = My.Settings.NextID.ToString
-            Exit Sub
-        End If
-        tb.Text = My.Settings.NextID.ToString + 1
-    End Sub
-
     Public Sub cleanButtons(pctrl As Panel.ControlCollection)
         For Each ctrl As Control In pctrl
             If TypeOf ctrl Is Button Then
@@ -59,11 +49,6 @@ Module Engine
         Next
     End Sub
 
-    Public Function getMenge(panelcontrols As FlowLayoutPanel.ControlCollection, tbInput As TextBox, tbOutput As RichTextBox, ID As Integer) As Integer
-
-
-    End Function
-
     Public Sub cleanAppStats()
         My.Settings.OrderNum = 1
         My.Settings.ActiveMengeID = 0
@@ -71,42 +56,6 @@ Module Engine
         My.Settings.isFirstOrder = True
         My.Settings.Save()
         Logger.WriteLine("Engine.cleanAppStats: Vending Parameter RESET")
-    End Sub
-
-    Public Sub clearLogger(m As Integer)
-        If m = 1 Then
-
-        End If
-        Dim i As Integer
-        While i < 20
-            'Logger.WriteLine("")
-            i += 1
-        End While
-
-    End Sub
-
-    Public Function checkCheckBoxenCents(flp As FlowLayoutPanel)
-        Dim cblist As New List(Of CheckBox)
-        For Each cb As CheckBox In flp.Controls
-            cblist.Add(cb)
-        Next
-        For Each cb As CheckBox In cblist
-            If cb.Checked Then
-                Return True
-            End If
-
-        Next
-        Return False
-    End Function
-
-
-    Public Sub eneableControls(list As List(Of Control))
-
-        For Each ctrl As Control In list
-            ctrl.Enabled = True
-        Next
-
-
     End Sub
 
     Public Function FillControlsFromDB(query As String, Optional produktID As Integer = -1, Optional paraCB As Integer = -1, Optional cb As ComboBox = Nothing, Optional paraTextBox As Integer = -1, Optional tb As TextBox = Nothing, Optional InputStringTextBox As String = Nothing, Optional image As Image = Nothing, Optional pb As PictureBox = Nothing) As Boolean
@@ -120,7 +69,7 @@ Module Engine
         ' 3 -> Volumen
         ' 4 -> Alk
         ' 5 -> Freie Eingabe
-        If paraTextBox = -1 Then
+        If paraTextBox > -1 Then
 
             Select Case paraTextBox
                 Case 0
@@ -150,7 +99,7 @@ Module Engine
                     Exit Select
             End Select
         End If
-        If paraCB = -1 Then
+        If paraCB > -1 Then
             Select Case paraCB
                 Case 0
                     cbcolumID = "ID"
@@ -186,7 +135,7 @@ Module Engine
             cb.Items.Clear()
             For Each row As DataRow In ergebnis.Rows
                 cb.Items.Add(row(paraCB).ToString())
-                Logger.WriteLine("Engine.FillControls: ADD ITEM ComboBox." & cb.Name & ": " & paraCB.ToString)
+                Logger.WriteLine("Engine.FillControls: Eintrag erstellt in ComboBox." & cb.Name & "| Parameter " & paraCB.ToString)
             Next
         End If
 

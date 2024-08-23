@@ -2,6 +2,27 @@
 
 Public Class Globals
 
+    Public Class Produkt
+        Public Property ID As Integer
+        Public Property Preis As Double
+        Public Property Preis_PL1 As Double
+        Public Property Preis_PL2 As Double
+        Public Property Preis_PL3 As Double
+        Public Property Preis_PL4 As Double
+        Public Property Bezeichnung As String
+        Public Property Alkoholgehalt As Double
+        Public Property Volumen As Double
+        Public Property Image As Image
+        Public Property PLU As String
+        Public Property LagerOrt_name As String
+        Public Property Lager_name As String
+        Public Property LagerID As Integer
+        Public Property mindBestand As Integer
+
+    End Class
+
+
+
     Public Structure Stats
         Public AnzVG As Integer
         Public anzProdukte As Integer
@@ -33,7 +54,7 @@ Public Class Globals
     Public Shared logger As Logger
 
     '################ LOGGING ####################
-    Public Shared logging = True
+    Public Shared logging = False
     '#############################################
 
     '############################################## SQL STATEMENTS ###########################################################################
@@ -63,12 +84,22 @@ Public Class Globals
 
     '################################# CREATE TABLE #############################################
 
-    Public Shared createProductsTableQuery As String = "CREATE TABLE IF NOT EXISTS Produkte (" &
-                                                     "ID INTEGER PRIMARY KEY AUTOINCREMENT, " &
-                                                     "Bezeichnung TEXT NOT NULL, " &
-                                                     "Preis REAL NOT NULL, " &
-                                                     "Volumen REAL NOT NULL, " &
-                                                     "Alkoholgehalt REAL NOT NULL)"
+    Public Shared createProductsTableQuery As String = "CREATE TABLE 'Produkte' (
+	                                                    'ID'	INTEGER,
+	                                                    'Bezeichnung'	TEXT NOT NULL,
+	                                                    'Preis'	REAL NOT NULL,
+	                                                    'Volumen'	REAL NOT NULL,
+	                                                    'Alkoholgehalt'	REAL NOT NULL,
+	                                                    'Lager'	TEXT,
+	                                                    'LagerOrt'	TEXT,
+	                                                    'mindBestand'	INTEGER,
+	                                                    'PL1_preis'	REAL,
+	                                                    'PL2_preis'	REAL,
+	                                                    'PL3_preis'	REAL,
+	                                                    'PL4_preis'	REAL,
+                                                        'PLU' INTEGER,
+	                                                    PRIMARY KEY('ID' AUTOINCREMENT)
+                                                    )"
 
     Public Shared createTransactionsTableQuery As String = "CREATE TABLE IF NOT EXISTS Transaktionen (" &
                                                          "ID INTEGER PRIMARY KEY AUTOINCREMENT, " &
@@ -86,11 +117,24 @@ Public Class Globals
                                                          "anzProdukte INTEGER NOT NULL, " &
                                                          "GesUmsatz REAL NOT NULL," &
                                                          "Flaschen INTEGER NOT NULL)"
-    Public Shared insertDefaultStatsQuery As String = "
-                    INSERT INTO Stats (Version, VGZ, anzProdukte, GesUmsatz, Flaschen)
-                    VALUES ('1.00', 0, 0, 0.0, 0);
-                "
+    Public Shared insertDefaultStatsQuery As String = "INSERT INTO Stats (Version, VGZ, anzProdukte, GesUmsatz, Flaschen)
+                                                       VALUES ('2.00', 0, 0, 0.0, 0);"
 
+    Public Shared createLagerListQuery As String = "CREATE TABLE 'LagerList' (
+	                                                'Lager_ID'	INTEGER NOT NULL,
+	                                                'Lager_Name'	TEXT NOT NULL,
+	                                                'Lager_cap'	INTEGER NOT NULL,
+	                                                'Lager_frei'	INTEGER NOT NULL,
+	                                                'lager_belegt'	INTEGER NOT NULL
+                                                    )"
+
+    Public Shared createLagerOrtListQuery As String = "CREATE TABLE 'LagerOrtList' (
+	                                                'Lager_ID_Parent'	INTEGER,
+	                                                'LagerOrt_Name'	TEXT,
+	                                                'LagerOrt_size'	INTEGER,
+	                                                'LagerOrt_frei'	INTEGER,
+	                                                'LagerOrt_belegt'	INTEGER
+                                                    )"
 
 
 

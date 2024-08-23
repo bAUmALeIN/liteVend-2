@@ -20,7 +20,9 @@ Public Class ConnectionManger
             Globals.createProductsTableQuery,
             Globals.createTransactionsTableQuery,
             Globals.createStatsTableQuery,
-            Globals.createPictureTableQuery
+            Globals.createPictureTableQuery,
+            Globals.createLagerListQuery,
+            Globals.createLagerOrtListQuery
             }
             Try
                 Logger.WriteLine("Versuche Datenbank Tabellen zu erstellen")
@@ -47,7 +49,7 @@ Public Class ConnectionManger
                 connection.Open()
 
                 Using cmd As New SQLiteCommand(query, connection)
-                    Logger.WriteLine("ConnectionManager.ExecuteQuery:" & query)
+                    Logger.WriteLine("CM.ExecuteQuery:" & query)
                     Using reader As SQLiteDataReader = cmd.ExecuteReader()
                         dt.Load(reader)
                     End Using
@@ -79,7 +81,7 @@ Public Class ConnectionManger
                     Else
 
                     End If
-                    Logger.WriteLine($"GetStatsFromDB = {stats.GesUmsatz.ToString}")
+                    Logger.WriteLine($"CM.GetStatsFromDB | GesUmsatz:{stats.GesUmsatz.ToString} | Transaktionen:{stats.AnzVG.ToString} | Anz. Produkte:{stats.anzProdukte.ToString} | Ausgegebene Flaschen:{stats.anzVerkFalschen.ToString}")
                 End Using
             End Using
             connection.Close()
@@ -117,8 +119,8 @@ Public Class ConnectionManger
     End Sub
 
 
-    Public Function getProduktByID(ID As Integer) As Produkt
-        Dim produkt As New Produkt()
+    Public Function getProduktByID(ID As Integer) As Globals.Produkt
+        Dim produkt As New Globals.Produkt()
         Dim query As String = "SELECT ID, Bezeichnung, Preis, Volumen, Alkoholgehalt FROM Produkte WHERE ID = @ProductID"
 
         Using connection As New SQLiteConnection(connectionString)
@@ -186,7 +188,7 @@ Public Class ConnectionManger
         Return success
     End Function
 
-    Public Function InsertProduktAsProdukt(produkt As Produkt)
+    Public Function InsertProduktAsProdukt(produkt As Globals.Produkt)
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()
@@ -206,13 +208,13 @@ Public Class ConnectionManger
             End Using
         Catch ex As Exception
 
-            Logger.WriteLine("ConnectionManager.InsertProduktAsProdukt: Fehler beim Einfügen des Produkts: " & ex.Message)
+            Logger.WriteLine("CM.InsertProduktAsProdukt: Fehler beim Einfügen des Produkts: " & ex.Message)
             Return False
         End Try
-        Logger.WriteLine("ConnectionManager.InsertProduktAsProdukt: Eintrag erfolgreich erstellt.")
+        Logger.WriteLine("CM.InsertProduktAsProdukt: Eintrag erfolgreich erstellt.")
     End Function
 
-    Public Function UpdateProdukt(produkt As Produkt) As Boolean
+    Public Function UpdateProdukt(produkt As Globals.Produkt) As Boolean
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()
@@ -226,12 +228,12 @@ Public Class ConnectionManger
 
 
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
-                    Logger.WriteLine("ConnectionManager.UpdateProdukt: Eintrag erfolgreich aktualisiert.")
+                    Logger.WriteLine("CM.UpdateProdukt: Eintrag erfolgreich aktualisiert.")
                     Return rowsAffected > 0
                 End Using
             End Using
         Catch ex As Exception
-            Logger.WriteLine("ConnectionManager.UpdateProdukt: Fehler beim Aktualisieren des Produkts: " & ex.Message)
+            Logger.WriteLine("CM.UpdateProdukt: Fehler beim Aktualisieren des Produkts: " & ex.Message)
             Return False
         End Try
 
@@ -392,7 +394,7 @@ Public Class ConnectionManger
     Public Function GetProduktIDByName(bezeichnung As String) As Integer
         Dim query As String = "SELECT ID FROM Produkte WHERE Bezeichnung = @Bezeichnung"
         Dim productID As Integer = -1
-        Logger.WriteLine("CM.GetProduktIDByName: Suche Produkt ID mit Bezeichnung: " & bezeichnung)
+        Logger.WriteLine("CM.GetProduktIDByName| Suche Produkt ID mit Bezeichnung: " & bezeichnung)
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()
@@ -401,13 +403,13 @@ Public Class ConnectionManger
                     Dim result = cmd.ExecuteScalar()
                     If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
                         productID = Convert.ToInt32(result)
-                        Logger.WriteLine("CM.GetProduktIDByName:    Produkt ID: " & productID)
+                        Logger.WriteLine("CM.GetProduktIDByName| found: ID: " & productID)
                     End If
                 End Using
                 connection.Close()
             End Using
         Catch ex As Exception
-            Logger.WriteLine("CM.GetProduktIDByName: Fehler beim Abrufen der ProduktID: " & ex.Message)
+            Logger.WriteLine("CM.GetProduktIDByName| Fehler beim Abrufen der ProduktID: " & ex.Message)
         End Try
 
         Return productID
