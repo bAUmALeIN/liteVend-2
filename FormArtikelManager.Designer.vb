@@ -23,37 +23,36 @@ Partial Class FormArtikelManager
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PanelBackground = New System.Windows.Forms.Panel()
+        Me.labelBestand = New System.Windows.Forms.Label()
+        Me.tbBestand = New System.Windows.Forms.TextBox()
+        Me.labelMindBestand = New System.Windows.Forms.Label()
+        Me.tbMindBestand = New System.Windows.Forms.TextBox()
+        Me.labelTextNeu2 = New System.Windows.Forms.Label()
+        Me.labelTextNeu3 = New System.Windows.Forms.Label()
+        Me.labelTextNeu1 = New System.Windows.Forms.Label()
+        Me.checkboxEdit = New System.Windows.Forms.CheckBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.tbBez = New System.Windows.Forms.TextBox()
+        Me.labelText_Suche = New System.Windows.Forms.Label()
+        Me.tbID = New System.Windows.Forms.TextBox()
+        Me.tbPLU = New System.Windows.Forms.TextBox()
         Me.cbSearchBEZ = New System.Windows.Forms.ComboBox()
-        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.labelTextSucheBez = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.cbSearchID = New System.Windows.Forms.ComboBox()
-        Me.Label_ArticleID = New System.Windows.Forms.Label()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.labelTextSucheID = New System.Windows.Forms.Label()
         Me.cbLagerOrt = New System.Windows.Forms.ComboBox()
         Me.cbLager = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.LabelPflicht4 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.LabelPflicht3 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.LabelPflicht2 = New System.Windows.Forms.Label()
-        Me.LabelPflicht1 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.tbBez = New System.Windows.Forms.TextBox()
-        Me.tbID = New System.Windows.Forms.TextBox()
-        Me.tbPLU = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.labelTextNeu6 = New System.Windows.Forms.Label()
+        Me.labelTextNeu7 = New System.Windows.Forms.Label()
+        Me.labelTextNeu5 = New System.Windows.Forms.Label()
         Me.btnSaveArticle = New System.Windows.Forms.Button()
         Me.checkboxSetPicture = New System.Windows.Forms.CheckBox()
         Me.btnAddAddImage = New System.Windows.Forms.Button()
@@ -66,13 +65,13 @@ Partial Class FormArtikelManager
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.tbPL4 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.tbPL3 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.tbPL2 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.tbPL1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tbALK = New System.Windows.Forms.TextBox()
         Me.tbInhalt = New System.Windows.Forms.TextBox()
@@ -82,10 +81,12 @@ Partial Class FormArtikelManager
         Me.btnMinimize = New System.Windows.Forms.Button()
         Me.label_text_am_panelbar = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.PanelBackground.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBoxAM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel9.SuspendLayout()
@@ -95,18 +96,30 @@ Partial Class FormArtikelManager
         '
         Me.PanelBackground.BackColor = System.Drawing.Color.Silver
         Me.PanelBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PanelBackground.Controls.Add(Me.CheckBox2)
+        Me.PanelBackground.Controls.Add(Me.labelBestand)
+        Me.PanelBackground.Controls.Add(Me.tbBestand)
+        Me.PanelBackground.Controls.Add(Me.labelMindBestand)
+        Me.PanelBackground.Controls.Add(Me.tbMindBestand)
+        Me.PanelBackground.Controls.Add(Me.labelTextNeu2)
+        Me.PanelBackground.Controls.Add(Me.labelTextNeu3)
+        Me.PanelBackground.Controls.Add(Me.labelTextNeu1)
+        Me.PanelBackground.Controls.Add(Me.checkboxEdit)
         Me.PanelBackground.Controls.Add(Me.CheckBox1)
         Me.PanelBackground.Controls.Add(Me.Label14)
+        Me.PanelBackground.Controls.Add(Me.Label13)
+        Me.PanelBackground.Controls.Add(Me.Label1)
         Me.PanelBackground.Controls.Add(Me.Label18)
-        Me.PanelBackground.Controls.Add(Me.Label16)
-        Me.PanelBackground.Controls.Add(Me.Panel8)
+        Me.PanelBackground.Controls.Add(Me.tbBez)
+        Me.PanelBackground.Controls.Add(Me.labelText_Suche)
+        Me.PanelBackground.Controls.Add(Me.tbID)
+        Me.PanelBackground.Controls.Add(Me.tbPLU)
         Me.PanelBackground.Controls.Add(Me.cbSearchBEZ)
-        Me.PanelBackground.Controls.Add(Me.Label15)
+        Me.PanelBackground.Controls.Add(Me.Label12)
+        Me.PanelBackground.Controls.Add(Me.labelTextSucheBez)
+        Me.PanelBackground.Controls.Add(Me.Label11)
         Me.PanelBackground.Controls.Add(Me.cbSearchID)
-        Me.PanelBackground.Controls.Add(Me.Label_ArticleID)
+        Me.PanelBackground.Controls.Add(Me.labelTextSucheID)
         Me.PanelBackground.Controls.Add(Me.Panel7)
-        Me.PanelBackground.Controls.Add(Me.btnCancel)
         Me.PanelBackground.Controls.Add(Me.Panel6)
         Me.PanelBackground.Controls.Add(Me.cbLagerOrt)
         Me.PanelBackground.Controls.Add(Me.cbLager)
@@ -115,10 +128,9 @@ Partial Class FormArtikelManager
         Me.PanelBackground.Controls.Add(Me.Panel5)
         Me.PanelBackground.Controls.Add(Me.Panel4)
         Me.PanelBackground.Controls.Add(Me.Panel3)
-        Me.PanelBackground.Controls.Add(Me.LabelPflicht4)
-        Me.PanelBackground.Controls.Add(Me.Label17)
-        Me.PanelBackground.Controls.Add(Me.LabelPflicht3)
-        Me.PanelBackground.Controls.Add(Me.Panel2)
+        Me.PanelBackground.Controls.Add(Me.labelTextNeu6)
+        Me.PanelBackground.Controls.Add(Me.labelTextNeu7)
+        Me.PanelBackground.Controls.Add(Me.labelTextNeu5)
         Me.PanelBackground.Controls.Add(Me.btnSaveArticle)
         Me.PanelBackground.Controls.Add(Me.checkboxSetPicture)
         Me.PanelBackground.Controls.Add(Me.btnAddAddImage)
@@ -134,15 +146,102 @@ Partial Class FormArtikelManager
         Me.PanelBackground.Controls.Add(Me.tbInhalt)
         Me.PanelBackground.Controls.Add(Me.tbPreis)
         Me.PanelBackground.Controls.Add(Me.PictureBoxAM)
-        Me.PanelBackground.Location = New System.Drawing.Point(0, 29)
+        Me.PanelBackground.Location = New System.Drawing.Point(6, 33)
         Me.PanelBackground.Name = "PanelBackground"
         Me.PanelBackground.Size = New System.Drawing.Size(796, 478)
         Me.PanelBackground.TabIndex = 0
         '
+        'labelBestand
+        '
+        Me.labelBestand.AutoSize = True
+        Me.labelBestand.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelBestand.Location = New System.Drawing.Point(266, 230)
+        Me.labelBestand.Name = "labelBestand"
+        Me.labelBestand.Size = New System.Drawing.Size(69, 17)
+        Me.labelBestand.TabIndex = 88
+        Me.labelBestand.Text = "Bestand:"
+        '
+        'tbBestand
+        '
+        Me.tbBestand.Enabled = False
+        Me.tbBestand.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbBestand.Location = New System.Drawing.Point(353, 228)
+        Me.tbBestand.Name = "tbBestand"
+        Me.tbBestand.Size = New System.Drawing.Size(83, 25)
+        Me.tbBestand.TabIndex = 87
+        Me.tbBestand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'labelMindBestand
+        '
+        Me.labelMindBestand.AutoSize = True
+        Me.labelMindBestand.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelMindBestand.Location = New System.Drawing.Point(200, 202)
+        Me.labelMindBestand.Name = "labelMindBestand"
+        Me.labelMindBestand.Size = New System.Drawing.Size(131, 17)
+        Me.labelMindBestand.TabIndex = 86
+        Me.labelMindBestand.Text = "Mindest Bestand:"
+        '
+        'tbMindBestand
+        '
+        Me.tbMindBestand.Enabled = False
+        Me.tbMindBestand.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMindBestand.Location = New System.Drawing.Point(353, 200)
+        Me.tbMindBestand.Name = "tbMindBestand"
+        Me.tbMindBestand.Size = New System.Drawing.Size(83, 25)
+        Me.tbMindBestand.TabIndex = 85
+        Me.tbMindBestand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'labelTextNeu2
+        '
+        Me.labelTextNeu2.AutoSize = True
+        Me.labelTextNeu2.CausesValidation = False
+        Me.labelTextNeu2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextNeu2.ForeColor = System.Drawing.Color.Red
+        Me.labelTextNeu2.Location = New System.Drawing.Point(9, 83)
+        Me.labelTextNeu2.Name = "labelTextNeu2"
+        Me.labelTextNeu2.Size = New System.Drawing.Size(11, 16)
+        Me.labelTextNeu2.TabIndex = 84
+        Me.labelTextNeu2.Text = "*"
+        Me.labelTextNeu2.Visible = False
+        '
+        'labelTextNeu3
+        '
+        Me.labelTextNeu3.AutoSize = True
+        Me.labelTextNeu3.CausesValidation = False
+        Me.labelTextNeu3.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextNeu3.ForeColor = System.Drawing.Color.Red
+        Me.labelTextNeu3.Location = New System.Drawing.Point(77, 145)
+        Me.labelTextNeu3.Name = "labelTextNeu3"
+        Me.labelTextNeu3.Size = New System.Drawing.Size(11, 16)
+        Me.labelTextNeu3.TabIndex = 83
+        Me.labelTextNeu3.Text = "*"
+        Me.labelTextNeu3.Visible = False
+        '
+        'labelTextNeu1
+        '
+        Me.labelTextNeu1.AutoSize = True
+        Me.labelTextNeu1.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextNeu1.ForeColor = System.Drawing.Color.Red
+        Me.labelTextNeu1.Location = New System.Drawing.Point(331, 50)
+        Me.labelTextNeu1.Name = "labelTextNeu1"
+        Me.labelTextNeu1.Size = New System.Drawing.Size(40, 17)
+        Me.labelTextNeu1.TabIndex = 57
+        Me.labelTextNeu1.Text = "NEU"
+        Me.labelTextNeu1.Visible = False
+        '
+        'checkboxEdit
+        '
+        Me.checkboxEdit.AutoSize = True
+        Me.checkboxEdit.Location = New System.Drawing.Point(450, 449)
+        Me.checkboxEdit.Name = "checkboxEdit"
+        Me.checkboxEdit.Size = New System.Drawing.Size(15, 14)
+        Me.checkboxEdit.TabIndex = 82
+        Me.checkboxEdit.UseVisualStyleBackColor = True
+        '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(723, 23)
+        Me.CheckBox1.Location = New System.Drawing.Point(450, 419)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(15, 14)
         Me.CheckBox1.TabIndex = 80
@@ -151,104 +250,140 @@ Partial Class FormArtikelManager
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(569, 15)
+        Me.Label14.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(331, 417)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(150, 24)
+        Me.Label14.Size = New System.Drawing.Size(120, 17)
         Me.Label14.TabIndex = 79
         Me.Label14.Text = "Artikel anlegen"
         '
-        'Label16
+        'Label13
         '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(164, 3)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(134, 24)
-        Me.Label16.TabIndex = 56
-        Me.Label16.Text = "Artikel Suche"
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Lucida Sans", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(-1, 45)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(207, 22)
+        Me.Label13.TabIndex = 55
+        Me.Label13.Text = "Basisinformationen"
         '
-        'Panel8
+        'Label1
         '
-        Me.Panel8.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel8.Location = New System.Drawing.Point(490, 53)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(309, 8)
-        Me.Panel8.TabIndex = 78
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(19, 83)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(107, 17)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Bezeichnung:"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(312, 447)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(139, 17)
+        Me.Label18.TabIndex = 81
+        Me.Label18.Text = "Artikel bearbeiten"
+        '
+        'tbBez
+        '
+        Me.tbBez.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbBez.Location = New System.Drawing.Point(143, 81)
+        Me.tbBez.Name = "tbBez"
+        Me.tbBez.Size = New System.Drawing.Size(184, 25)
+        Me.tbBez.TabIndex = 0
+        '
+        'labelText_Suche
+        '
+        Me.labelText_Suche.AutoSize = True
+        Me.labelText_Suche.Font = New System.Drawing.Font("Lucida Sans", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelText_Suche.Location = New System.Drawing.Point(-1, 2)
+        Me.labelText_Suche.Name = "labelText_Suche"
+        Me.labelText_Suche.Size = New System.Drawing.Size(68, 22)
+        Me.labelText_Suche.TabIndex = 56
+        Me.labelText_Suche.Text = "Suche"
+        '
+        'tbID
+        '
+        Me.tbID.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbID.Location = New System.Drawing.Point(144, 113)
+        Me.tbID.Name = "tbID"
+        Me.tbID.ReadOnly = True
+        Me.tbID.Size = New System.Drawing.Size(47, 25)
+        Me.tbID.TabIndex = 5
+        '
+        'tbPLU
+        '
+        Me.tbPLU.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPLU.Location = New System.Drawing.Point(144, 144)
+        Me.tbPLU.Name = "tbPLU"
+        Me.tbPLU.Size = New System.Drawing.Size(47, 25)
+        Me.tbPLU.TabIndex = 48
+        Me.tbPLU.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'cbSearchBEZ
         '
         Me.cbSearchBEZ.FormattingEnabled = True
-        Me.cbSearchBEZ.Location = New System.Drawing.Point(246, 28)
+        Me.cbSearchBEZ.Location = New System.Drawing.Point(300, 6)
         Me.cbSearchBEZ.Name = "cbSearchBEZ"
-        Me.cbSearchBEZ.Size = New System.Drawing.Size(183, 21)
+        Me.cbSearchBEZ.Size = New System.Drawing.Size(175, 21)
         Me.cbSearchBEZ.TabIndex = 77
         '
-        'Label15
+        'Label12
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(126, 28)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(118, 20)
-        Me.Label15.TabIndex = 76
-        Me.Label15.Text = "Bezeichnung:"
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(85, 147)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(41, 17)
+        Me.Label12.TabIndex = 50
+        Me.Label12.Text = "PLU:"
+        '
+        'labelTextSucheBez
+        '
+        Me.labelTextSucheBez.AutoSize = True
+        Me.labelTextSucheBez.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextSucheBez.Location = New System.Drawing.Point(180, 6)
+        Me.labelTextSucheBez.Name = "labelTextSucheBez"
+        Me.labelTextSucheBez.Size = New System.Drawing.Size(107, 17)
+        Me.labelTextSucheBez.TabIndex = 76
+        Me.labelTextSucheBez.Text = "Bezeichnung:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(44, 116)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(82, 17)
+        Me.Label11.TabIndex = 49
+        Me.Label11.Text = "Artikel ID:"
         '
         'cbSearchID
         '
         Me.cbSearchID.FormattingEnabled = True
-        Me.cbSearchID.Location = New System.Drawing.Point(51, 28)
+        Me.cbSearchID.Location = New System.Drawing.Point(105, 6)
         Me.cbSearchID.Name = "cbSearchID"
-        Me.cbSearchID.Size = New System.Drawing.Size(51, 21)
+        Me.cbSearchID.Size = New System.Drawing.Size(43, 21)
         Me.cbSearchID.TabIndex = 74
         '
-        'Label_ArticleID
+        'labelTextSucheID
         '
-        Me.Label_ArticleID.AutoSize = True
-        Me.Label_ArticleID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_ArticleID.Location = New System.Drawing.Point(12, 28)
-        Me.Label_ArticleID.Name = "Label_ArticleID"
-        Me.Label_ArticleID.Size = New System.Drawing.Size(33, 20)
-        Me.Label_ArticleID.TabIndex = 73
-        Me.Label_ArticleID.Text = "ID:"
-        '
-        'Panel7
-        '
-        Me.Panel7.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel7.Location = New System.Drawing.Point(0, 53)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(483, 8)
-        Me.Panel7.TabIndex = 71
-        '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.ForeColor = System.Drawing.Color.Firebrick
-        Me.btnCancel.Location = New System.Drawing.Point(320, 416)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(151, 51)
-        Me.btnCancel.TabIndex = 70
-        Me.btnCancel.Text = "Abbrechen"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        Me.btnCancel.Visible = False
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel6.Location = New System.Drawing.Point(0, 397)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(483, 8)
-        Me.Panel6.TabIndex = 69
+        Me.labelTextSucheID.AutoSize = True
+        Me.labelTextSucheID.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextSucheID.Location = New System.Drawing.Point(66, 6)
+        Me.labelTextSucheID.Name = "labelTextSucheID"
+        Me.labelTextSucheID.Size = New System.Drawing.Size(28, 17)
+        Me.labelTextSucheID.TabIndex = 73
+        Me.labelTextSucheID.Text = "ID:"
         '
         'cbLagerOrt
         '
         Me.cbLagerOrt.Enabled = False
         Me.cbLagerOrt.FormattingEnabled = True
-        Me.cbLagerOrt.Location = New System.Drawing.Point(299, 232)
+        Me.cbLagerOrt.Location = New System.Drawing.Point(116, 230)
         Me.cbLagerOrt.Name = "cbLagerOrt"
         Me.cbLagerOrt.Size = New System.Drawing.Size(78, 21)
         Me.cbLagerOrt.TabIndex = 68
@@ -257,7 +392,7 @@ Partial Class FormArtikelManager
         '
         Me.cbLager.Enabled = False
         Me.cbLager.FormattingEnabled = True
-        Me.cbLager.Location = New System.Drawing.Point(297, 201)
+        Me.cbLager.Location = New System.Drawing.Point(116, 201)
         Me.cbLager.Name = "cbLager"
         Me.cbLager.Size = New System.Drawing.Size(78, 21)
         Me.cbLager.TabIndex = 67
@@ -265,188 +400,59 @@ Partial Class FormArtikelManager
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(203, 233)
+        Me.Label20.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(22, 233)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(90, 20)
+        Me.Label20.Size = New System.Drawing.Size(78, 17)
         Me.Label20.TabIndex = 66
         Me.Label20.Text = "Lager Ort:"
         '
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(231, 202)
+        Me.Label22.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Location = New System.Drawing.Point(50, 202)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(60, 20)
+        Me.Label22.Size = New System.Drawing.Size(51, 17)
         Me.Label22.TabIndex = 64
         Me.Label22.Text = "Lager:"
         '
-        'Panel5
+        'labelTextNeu6
         '
-        Me.Panel5.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel5.Location = New System.Drawing.Point(0, 189)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(483, 8)
-        Me.Panel5.TabIndex = 61
+        Me.labelTextNeu6.AutoSize = True
+        Me.labelTextNeu6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextNeu6.Location = New System.Drawing.Point(33, 427)
+        Me.labelTextNeu6.Name = "labelTextNeu6"
+        Me.labelTextNeu6.Size = New System.Drawing.Size(64, 16)
+        Me.labelTextNeu6.TabIndex = 58
+        Me.labelTextNeu6.Text = "Pflichtfeld"
+        Me.labelTextNeu6.Visible = False
         '
-        'Panel4
+        'labelTextNeu7
         '
-        Me.Panel4.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel4.Location = New System.Drawing.Point(0, 258)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(483, 8)
-        Me.Panel4.TabIndex = 60
+        Me.labelTextNeu7.AutoSize = True
+        Me.labelTextNeu7.CausesValidation = False
+        Me.labelTextNeu7.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextNeu7.ForeColor = System.Drawing.Color.Red
+        Me.labelTextNeu7.Location = New System.Drawing.Point(26, 421)
+        Me.labelTextNeu7.Name = "labelTextNeu7"
+        Me.labelTextNeu7.Size = New System.Drawing.Size(11, 16)
+        Me.labelTextNeu7.TabIndex = 57
+        Me.labelTextNeu7.Text = "*"
+        Me.labelTextNeu7.Visible = False
         '
-        'Panel3
+        'labelTextNeu5
         '
-        Me.Panel3.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Panel3.Location = New System.Drawing.Point(481, 1)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(10, 480)
-        Me.Panel3.TabIndex = 59
-        '
-        'LabelPflicht4
-        '
-        Me.LabelPflicht4.AutoSize = True
-        Me.LabelPflicht4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelPflicht4.Location = New System.Drawing.Point(722, 447)
-        Me.LabelPflicht4.Name = "LabelPflicht4"
-        Me.LabelPflicht4.Size = New System.Drawing.Size(64, 16)
-        Me.LabelPflicht4.TabIndex = 58
-        Me.LabelPflicht4.Text = "Pflichtfeld"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.CausesValidation = False
-        Me.Label17.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Red
-        Me.Label17.Location = New System.Drawing.Point(712, 447)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(11, 16)
-        Me.Label17.TabIndex = 57
-        Me.Label17.Text = "*"
-        '
-        'LabelPflicht3
-        '
-        Me.LabelPflicht3.AutoSize = True
-        Me.LabelPflicht3.CausesValidation = False
-        Me.LabelPflicht3.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelPflicht3.ForeColor = System.Drawing.Color.Red
-        Me.LabelPflicht3.Location = New System.Drawing.Point(58, 272)
-        Me.LabelPflicht3.Name = "LabelPflicht3"
-        Me.LabelPflicht3.Size = New System.Drawing.Size(11, 16)
-        Me.LabelPflicht3.TabIndex = 56
-        Me.LabelPflicht3.Text = "*"
-        '
-        'Panel2
-        '
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel2.Controls.Add(Me.LabelPflicht2)
-        Me.Panel2.Controls.Add(Me.LabelPflicht1)
-        Me.Panel2.Controls.Add(Me.Label13)
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Controls.Add(Me.tbBez)
-        Me.Panel2.Controls.Add(Me.tbID)
-        Me.Panel2.Controls.Add(Me.tbPLU)
-        Me.Panel2.Controls.Add(Me.Label12)
-        Me.Panel2.Controls.Add(Me.Label11)
-        Me.Panel2.Enabled = False
-        Me.Panel2.Location = New System.Drawing.Point(5, 63)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(472, 120)
-        Me.Panel2.TabIndex = 54
-        '
-        'LabelPflicht2
-        '
-        Me.LabelPflicht2.AutoSize = True
-        Me.LabelPflicht2.CausesValidation = False
-        Me.LabelPflicht2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelPflicht2.ForeColor = System.Drawing.Color.Red
-        Me.LabelPflicht2.Location = New System.Drawing.Point(83, 88)
-        Me.LabelPflicht2.Name = "LabelPflicht2"
-        Me.LabelPflicht2.Size = New System.Drawing.Size(11, 16)
-        Me.LabelPflicht2.TabIndex = 56
-        Me.LabelPflicht2.Text = "*"
-        '
-        'LabelPflicht1
-        '
-        Me.LabelPflicht1.AutoSize = True
-        Me.LabelPflicht1.CausesValidation = False
-        Me.LabelPflicht1.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelPflicht1.ForeColor = System.Drawing.Color.Red
-        Me.LabelPflicht1.Location = New System.Drawing.Point(13, 29)
-        Me.LabelPflicht1.Name = "LabelPflicht1"
-        Me.LabelPflicht1.Size = New System.Drawing.Size(11, 16)
-        Me.LabelPflicht1.TabIndex = 55
-        Me.LabelPflicht1.Text = "*"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(150, 6)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(163, 20)
-        Me.Label13.TabIndex = 55
-        Me.Label13.Text = "Basisinformationen"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(19, 31)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(118, 20)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Bezeichnung:"
-        '
-        'tbBez
-        '
-        Me.tbBez.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbBez.Location = New System.Drawing.Point(143, 29)
-        Me.tbBez.Name = "tbBez"
-        Me.tbBez.Size = New System.Drawing.Size(184, 24)
-        Me.tbBez.TabIndex = 0
-        '
-        'tbID
-        '
-        Me.tbID.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbID.Location = New System.Drawing.Point(143, 59)
-        Me.tbID.Name = "tbID"
-        Me.tbID.ReadOnly = True
-        Me.tbID.Size = New System.Drawing.Size(47, 24)
-        Me.tbID.TabIndex = 5
-        '
-        'tbPLU
-        '
-        Me.tbPLU.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPLU.Location = New System.Drawing.Point(143, 88)
-        Me.tbPLU.Name = "tbPLU"
-        Me.tbPLU.Size = New System.Drawing.Size(47, 24)
-        Me.tbPLU.TabIndex = 48
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(89, 90)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(48, 20)
-        Me.Label12.TabIndex = 50
-        Me.Label12.Text = "PLU:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(48, 61)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(89, 20)
-        Me.Label11.TabIndex = 49
-        Me.Label11.Text = "Artikel ID:"
+        Me.labelTextNeu5.AutoSize = True
+        Me.labelTextNeu5.CausesValidation = False
+        Me.labelTextNeu5.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelTextNeu5.ForeColor = System.Drawing.Color.Red
+        Me.labelTextNeu5.Location = New System.Drawing.Point(57, 272)
+        Me.labelTextNeu5.Name = "labelTextNeu5"
+        Me.labelTextNeu5.Size = New System.Drawing.Size(11, 16)
+        Me.labelTextNeu5.TabIndex = 56
+        Me.labelTextNeu5.Text = "*"
+        Me.labelTextNeu5.Visible = False
         '
         'btnSaveArticle
         '
@@ -454,9 +460,9 @@ Partial Class FormArtikelManager
         Me.btnSaveArticle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSaveArticle.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSaveArticle.ForeColor = System.Drawing.Color.ForestGreen
-        Me.btnSaveArticle.Location = New System.Drawing.Point(148, 416)
+        Me.btnSaveArticle.Location = New System.Drawing.Point(143, 419)
         Me.btnSaveArticle.Name = "btnSaveArticle"
-        Me.btnSaveArticle.Size = New System.Drawing.Size(151, 51)
+        Me.btnSaveArticle.Size = New System.Drawing.Size(136, 40)
         Me.btnSaveArticle.TabIndex = 53
         Me.btnSaveArticle.Text = "Speichern"
         Me.btnSaveArticle.UseVisualStyleBackColor = False
@@ -466,10 +472,10 @@ Partial Class FormArtikelManager
         '
         Me.checkboxSetPicture.AutoSize = True
         Me.checkboxSetPicture.Enabled = False
-        Me.checkboxSetPicture.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checkboxSetPicture.Location = New System.Drawing.Point(521, 407)
+        Me.checkboxSetPicture.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.checkboxSetPicture.Location = New System.Drawing.Point(512, 434)
         Me.checkboxSetPicture.Name = "checkboxSetPicture"
-        Me.checkboxSetPicture.Size = New System.Drawing.Size(111, 22)
+        Me.checkboxSetPicture.Size = New System.Drawing.Size(110, 21)
         Me.checkboxSetPicture.TabIndex = 52
         Me.checkboxSetPicture.Text = "Bild ändern"
         Me.checkboxSetPicture.UseVisualStyleBackColor = True
@@ -479,20 +485,21 @@ Partial Class FormArtikelManager
         Me.btnAddAddImage.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnAddAddImage.Enabled = False
         Me.btnAddAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddAddImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddAddImage.Location = New System.Drawing.Point(652, 400)
+        Me.btnAddAddImage.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddAddImage.Location = New System.Drawing.Point(643, 427)
         Me.btnAddAddImage.Name = "btnAddAddImage"
         Me.btnAddAddImage.Size = New System.Drawing.Size(123, 34)
         Me.btnAddAddImage.TabIndex = 51
         Me.btnAddAddImage.Text = "Durchsuchen"
         Me.btnAddAddImage.UseVisualStyleBackColor = False
+        Me.btnAddAddImage.Visible = False
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.CausesValidation = False
         Me.Label10.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(183, 237)
+        Me.Label10.Location = New System.Drawing.Point(377, 153)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(16, 16)
         Me.Label10.TabIndex = 47
@@ -501,10 +508,10 @@ Partial Class FormArtikelManager
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(3, 233)
+        Me.Label9.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(197, 149)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(123, 20)
+        Me.Label9.Size = New System.Drawing.Size(116, 17)
         Me.Label9.TabIndex = 46
         Me.Label9.Text = "Alkoholgehalt:"
         '
@@ -513,7 +520,7 @@ Partial Class FormArtikelManager
         Me.Label29.AutoSize = True
         Me.Label29.CausesValidation = False
         Me.Label29.Font = New System.Drawing.Font("Segoe Script", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(182, 203)
+        Me.Label29.Location = New System.Drawing.Point(376, 117)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(14, 20)
         Me.Label29.TabIndex = 45
@@ -522,10 +529,10 @@ Partial Class FormArtikelManager
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(3, 202)
+        Me.Label8.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(197, 116)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(123, 20)
+        Me.Label8.Size = New System.Drawing.Size(109, 17)
         Me.Label8.TabIndex = 44
         Me.Label8.Text = "Inhaltsmenge:"
         '
@@ -543,10 +550,10 @@ Partial Class FormArtikelManager
         '
         Me.checkboxActivatePL.AutoSize = True
         Me.checkboxActivatePL.Enabled = False
-        Me.checkboxActivatePL.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.checkboxActivatePL.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.checkboxActivatePL.Location = New System.Drawing.Point(217, 272)
         Me.checkboxActivatePL.Name = "checkboxActivatePL"
-        Me.checkboxActivatePL.Size = New System.Drawing.Size(183, 22)
+        Me.checkboxActivatePL.Size = New System.Drawing.Size(180, 21)
         Me.checkboxActivatePL.TabIndex = 9
         Me.checkboxActivatePL.Text = "Preislisten aktivieren"
         Me.checkboxActivatePL.UseVisualStyleBackColor = True
@@ -556,13 +563,13 @@ Partial Class FormArtikelManager
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.TextBox8)
+        Me.Panel1.Controls.Add(Me.tbPL4)
         Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.TextBox9)
+        Me.Panel1.Controls.Add(Me.tbPL3)
         Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.TextBox7)
+        Me.Panel1.Controls.Add(Me.tbPL2)
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.TextBox6)
+        Me.Panel1.Controls.Add(Me.tbPL1)
         Me.Panel1.Enabled = False
         Me.Panel1.Location = New System.Drawing.Point(62, 302)
         Me.Panel1.Name = "Panel1"
@@ -572,131 +579,141 @@ Partial Class FormArtikelManager
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(113, 2)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(97, 20)
+        Me.Label7.Size = New System.Drawing.Size(87, 17)
         Me.Label7.TabIndex = 9
         Me.Label7.Text = "Preislisten:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(178, 54)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(45, 20)
+        Me.Label5.Size = New System.Drawing.Size(38, 17)
         Me.Label5.TabIndex = 16
         Me.Label5.Text = "PL4:"
         '
-        'TextBox8
+        'tbPL4
         '
-        Me.TextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox8.Location = New System.Drawing.Point(238, 52)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(83, 24)
-        Me.TextBox8.TabIndex = 15
+        Me.tbPL4.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPL4.Location = New System.Drawing.Point(238, 52)
+        Me.tbPL4.Name = "tbPL4"
+        Me.tbPL4.Size = New System.Drawing.Size(83, 25)
+        Me.tbPL4.TabIndex = 15
+        Me.tbPL4.Text = "0,00"
+        Me.tbPL4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(178, 27)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(45, 20)
+        Me.Label6.Size = New System.Drawing.Size(38, 17)
         Me.Label6.TabIndex = 14
         Me.Label6.Text = "PL3:"
         '
-        'TextBox9
+        'tbPL3
         '
-        Me.TextBox9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox9.Location = New System.Drawing.Point(238, 25)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(83, 24)
-        Me.TextBox9.TabIndex = 13
+        Me.tbPL3.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPL3.Location = New System.Drawing.Point(238, 25)
+        Me.tbPL3.Name = "tbPL3"
+        Me.tbPL3.Size = New System.Drawing.Size(83, 25)
+        Me.tbPL3.TabIndex = 13
+        Me.tbPL3.Text = "0,00"
+        Me.tbPL3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(19, 54)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(45, 20)
+        Me.Label4.Size = New System.Drawing.Size(38, 17)
         Me.Label4.TabIndex = 12
         Me.Label4.Text = "PL2:"
         '
-        'TextBox7
+        'tbPL2
         '
-        Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(79, 52)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(83, 24)
-        Me.TextBox7.TabIndex = 11
+        Me.tbPL2.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPL2.Location = New System.Drawing.Point(79, 52)
+        Me.tbPL2.Name = "tbPL2"
+        Me.tbPL2.Size = New System.Drawing.Size(83, 25)
+        Me.tbPL2.TabIndex = 11
+        Me.tbPL2.Text = "0,00"
+        Me.tbPL2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(19, 27)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(45, 20)
+        Me.Label3.Size = New System.Drawing.Size(38, 17)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "PL1:"
         '
-        'TextBox6
+        'tbPL1
         '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(79, 25)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(83, 24)
-        Me.TextBox6.TabIndex = 9
+        Me.tbPL1.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPL1.Location = New System.Drawing.Point(79, 25)
+        Me.tbPL1.Name = "tbPL1"
+        Me.tbPL1.Size = New System.Drawing.Size(83, 25)
+        Me.tbPL1.TabIndex = 9
+        Me.tbPL1.Text = "0,00"
+        Me.tbPL1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(65, 274)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(54, 20)
+        Me.Label2.Size = New System.Drawing.Size(47, 17)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Preis:"
         '
         'tbALK
         '
         Me.tbALK.Enabled = False
-        Me.tbALK.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbALK.Location = New System.Drawing.Point(130, 232)
+        Me.tbALK.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbALK.Location = New System.Drawing.Point(324, 148)
         Me.tbALK.Name = "tbALK"
-        Me.tbALK.Size = New System.Drawing.Size(47, 24)
+        Me.tbALK.Size = New System.Drawing.Size(47, 25)
         Me.tbALK.TabIndex = 4
         Me.tbALK.Text = "0,00"
+        Me.tbALK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'tbInhalt
         '
         Me.tbInhalt.Enabled = False
-        Me.tbInhalt.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInhalt.Location = New System.Drawing.Point(130, 200)
+        Me.tbInhalt.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbInhalt.Location = New System.Drawing.Point(324, 114)
         Me.tbInhalt.Name = "tbInhalt"
-        Me.tbInhalt.Size = New System.Drawing.Size(47, 24)
+        Me.tbInhalt.Size = New System.Drawing.Size(47, 25)
         Me.tbInhalt.TabIndex = 3
+        Me.tbInhalt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'tbPreis
         '
         Me.tbPreis.Enabled = False
-        Me.tbPreis.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPreis.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPreis.Location = New System.Drawing.Point(125, 272)
         Me.tbPreis.Name = "tbPreis"
-        Me.tbPreis.Size = New System.Drawing.Size(67, 24)
+        Me.tbPreis.Size = New System.Drawing.Size(67, 25)
         Me.tbPreis.TabIndex = 2
+        Me.tbPreis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'PictureBoxAM
         '
-        Me.PictureBoxAM.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBoxAM.BackColor = System.Drawing.Color.LightGray
         Me.PictureBoxAM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBoxAM.Location = New System.Drawing.Point(512, 84)
+        Me.PictureBoxAM.Location = New System.Drawing.Point(512, 30)
         Me.PictureBoxAM.Name = "PictureBoxAM"
-        Me.PictureBoxAM.Size = New System.Drawing.Size(263, 307)
+        Me.PictureBoxAM.Size = New System.Drawing.Size(263, 375)
         Me.PictureBoxAM.TabIndex = 1
         Me.PictureBoxAM.TabStop = False
         '
@@ -706,9 +723,9 @@ Partial Class FormArtikelManager
         Me.Panel9.Controls.Add(Me.btnMinimize)
         Me.Panel9.Controls.Add(Me.label_text_am_panelbar)
         Me.Panel9.Controls.Add(Me.btnClose)
-        Me.Panel9.Location = New System.Drawing.Point(0, -1)
+        Me.Panel9.Location = New System.Drawing.Point(0, 0)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(796, 30)
+        Me.Panel9.Size = New System.Drawing.Size(809, 33)
         Me.Panel9.TabIndex = 81
         '
         'btnMinimize
@@ -750,31 +767,52 @@ Partial Class FormArtikelManager
         Me.btnClose.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnClose.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'Panel6
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(129, 438)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox2.TabIndex = 82
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.Panel6.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel6.Location = New System.Drawing.Point(0, 397)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(483, 8)
+        Me.Panel6.TabIndex = 69
         '
-        'Label18
+        'Panel4
         '
-        Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(6, 435)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(120, 15)
-        Me.Label18.TabIndex = 81
-        Me.Label18.Text = "Artikel bearbeiten"
+        Me.Panel4.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel4.Location = New System.Drawing.Point(0, 258)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(483, 8)
+        Me.Panel4.TabIndex = 60
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel3.Location = New System.Drawing.Point(481, 1)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(10, 480)
+        Me.Panel3.TabIndex = 59
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel7.Location = New System.Drawing.Point(0, 33)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(483, 8)
+        Me.Panel7.TabIndex = 71
+        '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel5.Location = New System.Drawing.Point(0, 188)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(483, 8)
+        Me.Panel5.TabIndex = 61
         '
         'FormArtikelManager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(796, 506)
+        Me.BackColor = System.Drawing.Color.AliceBlue
+        Me.ClientSize = New System.Drawing.Size(809, 517)
         Me.Controls.Add(Me.Panel9)
         Me.Controls.Add(Me.PanelBackground)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -782,8 +820,6 @@ Partial Class FormArtikelManager
         Me.Text = "FormArtikelManager"
         Me.PanelBackground.ResumeLayout(False)
         Me.PanelBackground.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.PictureBoxAM, System.ComponentModel.ISupportInitialize).EndInit()
@@ -806,13 +842,13 @@ Partial Class FormArtikelManager
     Friend WithEvents checkboxActivatePL As CheckBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents tbPL4 As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents tbPL3 As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents tbPL2 As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents tbPL1 As TextBox
     Friend WithEvents Label30 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label29 As Label
@@ -824,35 +860,37 @@ Partial Class FormArtikelManager
     Friend WithEvents btnAddAddImage As Button
     Friend WithEvents checkboxSetPicture As CheckBox
     Friend WithEvents btnSaveArticle As Button
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents LabelPflicht2 As Label
-    Friend WithEvents LabelPflicht1 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents cbLager As ComboBox
     Friend WithEvents Label20 As Label
     Friend WithEvents Label22 As Label
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents LabelPflicht4 As Label
-    Friend WithEvents Label17 As Label
-    Friend WithEvents LabelPflicht3 As Label
-    Friend WithEvents btnCancel As Button
-    Friend WithEvents Panel6 As Panel
+    Friend WithEvents labelTextNeu6 As Label
+    Friend WithEvents labelTextNeu7 As Label
+    Friend WithEvents labelTextNeu5 As Label
     Friend WithEvents cbLagerOrt As ComboBox
-    Friend WithEvents Panel7 As Panel
-    Friend WithEvents Label_ArticleID As Label
-    Friend WithEvents Label15 As Label
+    Friend WithEvents labelTextSucheID As Label
+    Friend WithEvents labelTextSucheBez As Label
     Friend WithEvents cbSearchID As ComboBox
     Friend WithEvents cbSearchBEZ As ComboBox
-    Friend WithEvents Label16 As Label
-    Friend WithEvents Panel8 As Panel
+    Friend WithEvents labelText_Suche As Label
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label14 As Label
     Friend WithEvents Panel9 As Panel
     Friend WithEvents label_text_am_panelbar As Label
     Friend WithEvents btnMinimize As Button
     Friend WithEvents btnClose As Button
-    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents checkboxEdit As CheckBox
     Friend WithEvents Label18 As Label
+    Friend WithEvents labelTextNeu1 As Label
+    Friend WithEvents labelTextNeu2 As Label
+    Friend WithEvents labelTextNeu3 As Label
+    Friend WithEvents labelBestand As Label
+    Friend WithEvents tbBestand As TextBox
+    Friend WithEvents labelMindBestand As Label
+    Friend WithEvents tbMindBestand As TextBox
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel3 As Panel
 End Class

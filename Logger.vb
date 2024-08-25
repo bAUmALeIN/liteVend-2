@@ -54,4 +54,12 @@
         btnSave.ImageAlign = ContentAlignment.MiddleLeft
         btnSave.TextAlign = ContentAlignment.MiddleRight
     End Sub
+
+
+    Public Sub printProdukt(produkt As Globals.Produkt)
+        Dim Text = $"ID:{produkt.ID.ToString}| Bez:{produkt.Bezeichnung}| PLU:{produkt.PLU.ToString}| Preis:{produkt.Preis.ToString}| Lager:{produkt.Lager.ToString}| LagerOrt:{produkt.LagerOrt.ToString}| mindBestand:{produkt.Bestand.ToString}| ALK:{produkt.Alkoholgehalt.ToString}| Inhalt:{produkt.Volumen.ToString}| "
+        RichTextBox1.AppendText(Text)
+        RichTextBox1.AppendText(vbNewLine)
+        RichTextBox1.ScrollToCaret()
+    End Sub
 End Class

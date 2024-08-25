@@ -126,7 +126,7 @@ Public Class FormMainMenu
         Dim Alk As Double = Convert.ToDouble(tbAlk.Text)
         Dim V As Double = Convert.ToDouble(tbV.Text)
         If cbImage.Checked = False Then
-            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
+            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk, 0, 0, 0, 0, 0) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
                 Logger.WriteLine("Produkthinzufügen ok!")
@@ -142,7 +142,7 @@ Public Class FormMainMenu
                 Logger.WriteLine("Produkthinzufügen FEHLGESCHLAGEN!")
             End If
         Else
-            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
+            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk, 0, 0, 0, 0, 0) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
                 CM.SaveImageToDatabase(PictureBoxAdd.Image, CM.GetProduktIDByName(tbBez.Text))
@@ -328,6 +328,15 @@ Public Class FormMainMenu
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If FormArtikelManager.ctrlList IsNot Nothing Then
+            FormArtikelManager.ctrlList.Clear()
+            Logger.WriteLine("ctrlList | clear")
+        End If
+        If FormArtikelManager.ctrlList_TB_newArticle IsNot Nothing Then
+            FormArtikelManager.ctrlList_TB_newArticle.Clear()
+            Logger.WriteLine("ctrlList_TB_newArticle | clear")
+
+        End If
         Dim FAM As New FormArtikelManager
         For Each frm As Form In Application.OpenForms
             If TypeOf frm Is FormArtikelManager Then

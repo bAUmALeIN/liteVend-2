@@ -142,27 +142,37 @@ Public Class ConnectionManger
         Return produkt
     End Function
 
-    Public Function InsertProdukt(Bezeichnung As String, Preis As Double, volumen As Double, alkohol As Double) As Boolean
+    Public Function InsertProdukt(Bezeichnung As String, Preis As Double, volumen As Double, alkohol As Double, PLU As Integer, Lager As Integer, LagerOrt As Integer, mindBestand As Integer, Bestand As Integer, Optional PLactive As Boolean = False, Optional PL1 As Double = -1, Optional PL2 As Double = -1, Optional PL3 As Double = -1, Optional PL4 As Double = -1) As Boolean
+        ' ID, Bez, Preis, Volumen,Alk, PLU,Lager,LagerOrt,OPT PL1,OPT PL2,OPT PL3,OPT PL4
+
         Logger.WriteLine("CM.Insert.Pordukt: Eintrag wird in die Datenbank geschrieben.....")
         Dim success As Boolean = False
         Dim nextID As Integer = GetNextFreeID()
         Logger.WriteLine("CM.InsertProdukt: Die nächste freie ID ist: " & nextID)
         Try
-
-
-
             Using connection As New SQLiteConnection(Globals.ConString)
                 connection.Open()
-
-
-
                 Using command As New SQLiteCommand(Globals.queryAddProduct, connection)
                     command.Parameters.AddWithValue("@ID", nextID)
                     command.Parameters.AddWithValue("@Bezeichnung", Bezeichnung)
                     command.Parameters.AddWithValue("@Preis", Preis)
                     command.Parameters.AddWithValue("@Volumen", volumen)
                     command.Parameters.AddWithValue("@Alkoholgehalt", alkohol)
-
+                    command.Parameters.AddWithValue("@Lager", Lager)
+                    command.Parameters.AddWithValue("@LagerOrt", LagerOrt)
+                    command.Parameters.AddWithValue("@mindBestand", mindBestand)
+                    command.Parameters.AddWithValue("@Bestand", Bestand)
+                    If (PLactive) Then
+                        command.Parameters.AddWithValue("@PL1_preis", PL1)
+                        command.Parameters.AddWithValue("@PL2_preis", PL2)
+                        command.Parameters.AddWithValue("@PL3_preis", PL3)
+                        command.Parameters.AddWithValue("@PL4_preis", PL4)
+                    Else
+                        command.Parameters.AddWithValue("@PL1_preis", 0)
+                        command.Parameters.AddWithValue("@PL2_preis", 0)
+                        command.Parameters.AddWithValue("@PL3_preis", 0)
+                        command.Parameters.AddWithValue("@PL4_preis", 0)
+                    End If
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
 
                     If rowsAffected > 0 Then
@@ -188,7 +198,7 @@ Public Class ConnectionManger
         Return success
     End Function
 
-    Public Function InsertProduktAsProdukt(produkt As Globals.Produkt)
+    Public Function InsertProduktAsProdukt(produkt As Globals.Produkt, Optional PLactive As Boolean = False)
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()
@@ -199,11 +209,32 @@ Public Class ConnectionManger
                     command.Parameters.AddWithValue("@Preis", produkt.Preis)
                     command.Parameters.AddWithValue("@Volumen", produkt.Volumen)
                     command.Parameters.AddWithValue("@Alkoholgehalt", produkt.Alkoholgehalt)
+                    command.Parameters.AddWithValue("@Lager", produkt.Lager)
+                    command.Parameters.AddWithValue("@LagerOrt", produkt.LagerOrt)
+                    command.Parameters.AddWithValue("@mindBestand", produkt.mindBestand)
+                    command.Parameters.AddWithValue("@Bestand", produkt.Bestand)
+                    command.Parameters.AddWithValue("@PLU", produkt.PLU)
+                    If (PLactive) Then
+                        command.Parameters.AddWithValue("@PL1_preis", produkt.Preis_PL1)
+                        command.Parameters.AddWithValue("@PL2_preis", produkt.Preis_PL2)
+                        command.Parameters.AddWithValue("@PL3_preis", produkt.Preis_PL3)
+                        command.Parameters.AddWithValue("@PL4_preis", produkt.Preis_PL4)
+                    Else
+                        command.Parameters.AddWithValue("@PL1_preis", 0)
+                        command.Parameters.AddWithValue("@PL2_preis", 0)
+                        command.Parameters.AddWithValue("@PL3_preis", 0)
+                        command.Parameters.AddWithValue("@PL4_preis", 0)
+                    End If
+                    If produkt.Image Is Nothing Then
+                        Logger.WriteLine("CM.InsertProduktAsProdukt: Kein Bild")
 
+                    Else
 
+                        Logger.WriteLine("CM.InsertProduktAsProdukt: Bild vorhanden")
+                    End If
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
 
-                    Return rowsAffected > 0
+                    ' Return rowsAffected > 0
                 End Using
             End Using
         Catch ex As Exception
@@ -212,9 +243,10 @@ Public Class ConnectionManger
             Return False
         End Try
         Logger.WriteLine("CM.InsertProduktAsProdukt: Eintrag erfolgreich erstellt.")
+        Return True
     End Function
 
-    Public Function UpdateProdukt(produkt As Globals.Produkt) As Boolean
+    Public Function UpdateProdukt(produkt As Globals.Produkt) As Boolean            ' MUSS noch überarbeitet werden für V3
         Try
             Using connection As New SQLiteConnection(connectionString)
                 connection.Open()

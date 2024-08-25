@@ -48,7 +48,7 @@
         Dim Alk As Double = Convert.ToDouble(tbAlk.Text)
         Dim V As Double = Convert.ToDouble(tbV.Text)
         If cbImage.Checked = False Then
-            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
+            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk, 0, 0, 0, 0, 0) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
                 Logger.WriteLine("FRONTEND: Produkthinzufügen ok!")
@@ -64,7 +64,7 @@
                 Logger.WriteLine("FRONTEND: Produkthinzufügen FEHLGESCHLAGEN!")
             End If
         Else
-            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk) Then
+            If CM.InsertProdukt(tbBez.Text, Preis, V, Alk, 0, 0, 0, 0, 0) Then
                 Dim anz As Integer = CM.GetProductCount()
                 CM.UpdateStatsAnzProd(anz + 1)
                 CM.SaveImageToDatabase(PictureBox1.Image, CM.GetProduktIDByName(tbBez.Text))

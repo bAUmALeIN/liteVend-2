@@ -13,11 +13,11 @@ Public Class Globals
         Public Property Alkoholgehalt As Double
         Public Property Volumen As Double
         Public Property Image As Image
-        Public Property PLU As String
-        Public Property LagerOrt_name As String
-        Public Property Lager_name As String
-        Public Property LagerID As Integer
+        Public Property PLU As Integer
+        Public Property LagerOrt As Integer
+        Public Property Lager As Integer
         Public Property mindBestand As Integer
+        Public Property Bestand As Integer
 
     End Class
 
@@ -61,7 +61,7 @@ Public Class Globals
     '-----------------------> AUTOMAT
     Public Shared queryAllProducts As String = "SELECT * FROM Produkte"
     Public Shared queryIDProducts As String = "SELECT * FROM Produkte where ID = @ID"
-    Public Shared queryAddProduct As String = "INSERT INTO Produkte (ID, Bezeichnung, Preis, Volumen, Alkoholgehalt) VALUES (@ID, @Bezeichnung, @Preis, @Volumen, @Alkoholgehalt)"
+    Public Shared queryAddProduct As String = "INSERT INTO Produkte (ID, Bezeichnung, Preis, Volumen, Alkoholgehalt,Lager,LagerOrt,mindBestand,PL1_preis,PL2_preis,PL3_preis,PL4_preis,PLU,Bestand) VALUES (@ID, @Bezeichnung, @Preis, @Volumen, @Alkoholgehalt,@Lager,@LagerOrt,@mindBestand,@PL1_preis,@PL2_preis,@PL3_preis,@PL4_preis,@PLU,@Bestand)"
     Public Shared queryUpdateProduct As String = "UPDATE Produkte SET Bezeichnung = @Bezeichnung, Preis = @Preis, Volumen = @Volumen, Alkoholgehalt = @Alkoholgehalt WHERE ID = @ID"
     Public Shared queryCheckIfPictureExists As String = "SELECT COUNT(*) FROM Pictures WHERE ID = @ID"
     Public Shared queryUpdatePicture As String = "UPDATE Pictures SET Image = @Bild WHERE ID = @ID"
