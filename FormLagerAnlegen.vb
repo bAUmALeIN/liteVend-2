@@ -1,8 +1,9 @@
 ﻿Imports System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder
+Imports Getränke_Automat_V2.Globals
 
 Public Class FormLagerAnlegen
 
-
+    Dim CM As New ConnectionManger
     Dim mouseOffset As Point
 
     Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, PanelControlBr.MouseDown, label_text_am_panelbar.MouseDown
@@ -105,8 +106,61 @@ Public Class FormLagerAnlegen
 
     Private Sub btnSaveLager_Click(sender As Object, e As EventArgs) Handles btnSaveLager.Click
         If TextBoxLagerBez.Text = "" Then
-            MsgBox("Es wurde keine Bezeichnung eingetragen, Soll die standard Bezeichnung verwendet werden ?", MsgBoxStyle.YesNo, "Keine Lager Bezeichnung")
+            If MsgBox("Es wurde keine Bezeichnung eingetragen, Soll die standard Bezeichnung verwendet werden ?", MsgBoxStyle.YesNo, "Keine Lager Bezeichnung") = MsgBoxResult.Yes Then
+
+                Dim nextLagerNummer As Integer = CM.getNextFreeLagerNumner
+                Dim newLager As New Globals.oLager
+                If nextLagerNummer > 0 Then
+                    newLager.Bezeichnung = $"Lager_{nextLagerNummer.ToString}"
+                    newLager.belegt = 0
+                    newLager.Cap = Convert.ToInt32(TextBoxLagergroesse.Text)
+                    newLager.frei = Convert.ToInt32(TextBoxLagergroesse.Text)
+                    newLager.ID = nextLagerNummer
+                End If
+
+
+
+                Try
+                    'Create Lager Table 
+                    ' Create Lager Pos Table
+                    CM.CreateLagerAndPosTable(newLager)
+
+                    'Fill Lager Table 
+                    'Fill Lager Pos Table
+                    Globals.newLagerPositionsListe.Clear()
+                    FillLagerPositionsListeFromDGV(DataGridView1)
+                    CM.InsertInto_Lager_withPos(newLager, Globals.newLagerPositionsListe)
+                Catch ex As Exception
+                    Logger.WriteLine($"SUB btn Save: {ex.Message}")
+                End Try
+
+
+            End If
+
+        Else
 
         End If
+    End Sub
+
+    Public Sub FillLagerPositionsListeFromDGV(dgv As DataGridView)
+
+        newLagerPositionsListe.Clear()
+
+
+        For Each row As DataGridViewRow In dgv.Rows
+
+            If Not row.IsNewRow Then
+
+                Dim pos As New LagerPosition()
+
+
+                pos.ID = Convert.ToInt32(row.Cells("PositionsID").Value)
+                pos.Bez = Convert.ToString(row.Cells("PositionsBez").Value)
+
+                newLagerPositionsListe.Add(pos)
+
+                Logger.WriteLine($"SUB FillLagerPositionsListeFromDGV| ADD posID: {pos.ID.ToString} & posBez{pos.Bez} ")
+            End If
+        Next
     End Sub
 End Class

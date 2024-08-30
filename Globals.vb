@@ -2,6 +2,14 @@
 
 Public Class Globals
 
+
+    Public Shared logger As Logger
+
+    '################ LOGGING ####################
+    Public Shared logging = False
+    '#############################################
+
+
     Public Class Produkt
         Public Property ID As Integer
         Public Property Preis As Double
@@ -21,7 +29,21 @@ Public Class Globals
 
     End Class
 
+    Public Class oLager
+        Public Property ID As Integer
+        Public Property Bezeichnung As String
+        Public Property Cap As Integer
+        Public Property frei As Integer
+        Public Property belegt As Integer
 
+    End Class
+
+    Public Class LagerPosition
+        Public Property ID As Integer
+
+        Public Property Bez As String
+
+    End Class
 
     Public Structure Stats
         Public AnzVG As Integer
@@ -30,35 +52,14 @@ Public Class Globals
         Public GesUmsatz As Double
     End Structure
 
-    ' Monster   X
-    ' diet zuckerfrei   X
-    ' Vilsa X   
-    ' Schwipp Schwapp   X
-    ' Mezzo Mix X
-    ' Paulaner Spezi    X
-    ' Eistee    X
-    ' Augustiner Edelstoff, Münchner Hell,  X
-    ' SevenUP X
-    ' DrPepper X
-    ' Mountain Dew  X
-    ' Powerade X
-    ' Durstlöscher versch. Sorten
-    ' Jägermeister
-    ' Schwepps
-    ' Vodka 
-    ' Kippen
-    ' Orangensaft
-    ' Radler
 
 
-    Public Shared logger As Logger
 
-    '################ LOGGING ####################
-    Public Shared logging = False
-    '#############################################
 
     '############################################## SQL STATEMENTS ###########################################################################
+
     '-----------------------> AUTOMAT
+
     Public Shared queryAllProducts As String = "SELECT * FROM Produkte"
     Public Shared queryIDProducts As String = "SELECT * FROM Produkte where ID = @ID"
     Public Shared queryAddProduct As String = "INSERT INTO Produkte (ID, Bezeichnung, Preis, Volumen, Alkoholgehalt,Lager,LagerOrt,mindBestand,PL1_preis,PL2_preis,PL3_preis,PL4_preis,PLU,Bestand) VALUES (@ID, @Bezeichnung, @Preis, @Volumen, @Alkoholgehalt,@Lager,@LagerOrt,@mindBestand,@PL1_preis,@PL2_preis,@PL3_preis,@PL4_preis,@PLU,@Bestand)"
@@ -74,6 +75,7 @@ Public Class Globals
     Public Shared querySelectProductCount = "SELECT COUNT(*) FROM Produkte"
 
     '-----------------------> Database Manager
+
     Public Shared querySelectTables As String = "SELECT name FROM sqlite_master WHERE type='table'"
     Public Const SelectAll As String = "SELECT * FROM {TableName};"
     Public Const SelectWhere As String = "SELECT {Columns} FROM {TableName} WHERE {Condition};"
@@ -134,22 +136,26 @@ Public Class Globals
 	                                                'LagerOrt_belegt'	INTEGER
                                                     )"
 
-
-
     Public Shared newLagerName As String
+
+    Public Shared standardBezeichnungLager As String = $"Lager_00{standardLagerNummer}"
+
+
+    Public Shared NextLagerNummerQuery As String = "SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'Lager_%';"
+    Public Shared standardLagerNummer As Integer
+
+
+
     Public Shared newLagerCap As Integer
-    Public Shared createNewLagerQuery As String = $"CREATE TABLE {newLagerName} (
-	                                                'ID'	INTEGER NOT NULL,
-	                                                'Name'	TEXT,
-	                                                '{newLagerCap}'	INTEGER NOT NULL,
-	                                                'frei'	INTEGER,
-	                                                'belegt'	INTEGER,
-	                                                PRIMARY KEY('ID')
-                                                    );"
 
 
 
-    '################################################## Variablen #############################################################################
+
+
+
+
+
+
 
     Public Shared openIDinEdit As Integer = 0
 
@@ -201,5 +207,7 @@ Public Class Globals
     }
 
     Public Shared ActiveProductIDs As New List(Of Integer)
+
+    Public Shared newLagerPositionsListe As New List(Of LagerPosition)
 
 End Class

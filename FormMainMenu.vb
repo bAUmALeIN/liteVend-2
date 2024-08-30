@@ -84,6 +84,8 @@ Public Class FormMainMenu
         My.Settings.BasketGesPreis = 0
 
 
+        CM.getNextFreeLagerNumner()
+
         Engine.FillControlsFromDB(Globals.queryAllProducts,, 0, ComboBoxEditID)
         Engine.cleanAppStats()
 

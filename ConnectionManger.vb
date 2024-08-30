@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Runtime.Remoting.Messaging
 Imports Getränke_Automat_V2.FormMainMenu
+Imports Getränke_Automat_V2.Globals
 
 
 Public Class ConnectionManger
@@ -117,7 +118,6 @@ Public Class ConnectionManger
 
         End Using
     End Sub
-
 
     Public Function getProduktByID(ID As Integer) As Globals.Produkt
         Dim produkt As New Globals.Produkt()
@@ -562,6 +562,136 @@ Public Class ConnectionManger
     End Function
 
 
+    '##########################################################################################################
+    'Lagerverwaltung
+
+
+    Public Function getNextFreeLagerNumner() As Integer
+        Dim nextNumber As Integer = 0
+
+        Dim cmd As New SQLiteCommand(Globals.NextLagerNummerQuery, connection)
+
+        Try
+
+            Using connection
+                connection.Open()
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                    Dim tableNumbers As New List(Of Integer)
+
+                    While reader.Read()
+                        Dim tableName As String = reader("name").ToString()
+                        Dim tableNumberStr As String = tableName.Replace("Lager_", "")
+
+                        Dim tableNumber As Integer
+                        If Integer.TryParse(tableNumberStr, tableNumber) Then
+                            tableNumbers.Add(tableNumber)
+                        End If
+                    End While
+
+                    ' Finde die höchste Nummer und bestimme die nächste verfügbare Nummer
+                    If tableNumbers.Count > 0 Then
+                        nextNumber = tableNumbers.Max() + 1
+                    End If
+                    If tableNumbers.Count = 0 Then
+                        nextNumber = 1
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            Logger.WriteLine($"CM.getNextFreeLagerNummer| Fehler: {ex.Message}")
+            Return -1
+        End Try
+        Logger.WriteLine($"CM.getNextFreeLagerNummer| NextLagerNummer: {nextNumber}")
+        Return nextNumber
+    End Function
+
+
+    Public Function CreateLagerAndPosTable(Lager As Globals.oLager)
+
+
+        Dim createNewTable_LagerQuery As String = $"CREATE TABLE '{Lager.Bezeichnung}' (
+	                                                'ID'	INTEGER NOT NULL,
+	                                                'Name'	TEXT,
+	                                                'Cap'	INTEGER NOT NULL,
+	                                                'frei'	INTEGER,
+	                                                'belegt'	INTEGER,
+	                                                PRIMARY KEY('ID')
+                                                    );"
+        Dim createNewTable_Lager_PositionenQuery As String = $"CREATE TABLE '{Lager.Bezeichnung}_Positionen' (
+	                                                'ID'	INTEGER NOT NULL,
+	                                                'Bezeichnung'	TEXT
+                                                     )"
+
+        Using connection As New SQLiteConnection(Globals.ConString)
+            connection.Open()
+            Using transaction As SQLiteTransaction = connection.BeginTransaction()
+                Try
+                    Using cmd As New SQLiteCommand(createNewTable_LagerQuery, connection)
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    Using cmd As New SQLiteCommand(createNewTable_Lager_PositionenQuery, connection)
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    transaction.Commit()
+                Catch ex As Exception
+                    Logger.WriteLine($"CM.CrateLagerAndPosTable | Fehler: {ex.Message}")
+                    transaction.Rollback()
+                End Try
+
+            End Using
+        End Using
+
+
+    End Function
+    Public Function InsertInto_Lager_withPos(Lager As Globals.oLager, posListe As List(Of Globals.LagerPosition))
+
+        Dim InsertIntoLagerQuery As String = $"INSERT INTO '{Lager.Bezeichnung}' ('ID', 'Name', 'Cap', 'frei', 'belegt') VALUES (@ID, '{Lager.Bezeichnung}', @CAP, @FREI, @BELEGT);"
+
+
+        Try
+            Using connection As New SQLiteConnection(Globals.ConString)
+                connection.Open()
+
+                ' Beginne eine Transaktion
+                Using transaction As SQLiteTransaction = connection.BeginTransaction()
+                    Try
+                        ' Füge das Lager ein
+                        Using cmd As New SQLiteCommand(InsertIntoLagerQuery, connection)
+                            cmd.Parameters.AddWithValue("@ID", Lager.ID)
+                            cmd.Parameters.AddWithValue("@CAP", Lager.Cap)
+                            cmd.Parameters.AddWithValue("@FREI", Lager.frei)
+                            cmd.Parameters.AddWithValue("@BELEGT", Lager.belegt)
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        ' Füge die Positionen ein
+                        For Each pos In posListe
+
+                            Dim InsertIntoLagerPositionsQuery As String = $"INSERT INTO '{Lager.Bezeichnung}_Positionen' ('ID', 'Bezeichnung') VALUES (@ID, '{pos.Bez}');"
+                            Using cmd As New SQLiteCommand(InsertIntoLagerPositionsQuery, connection)
+                                cmd.Parameters.AddWithValue("@ID", pos.ID)
+                                cmd.Parameters.AddWithValue("@BEZ", pos.Bez)
+                                cmd.ExecuteNonQuery()
+                                Logger.WriteLine($"CM.createLager_withPos| Position in Lager: {Lager.Bezeichnung} erstellt - {pos.Bez} - ID: {pos.ID.ToString} ")
+                            End Using
+                        Next
+
+                        ' Bestätige die Transaktion
+                        transaction.Commit()
+                        Logger.WriteLine($"CM.createLager_withPos| Lager erstellt - {Lager.Bezeichnung} - ID: {Lager.ID.ToString} ")
+                        Return True
+                    Catch ex As Exception
+                        ' Bei Fehlern rollback der Transaktion
+                        transaction.Rollback()
+                        Logger.WriteLine("CM.createLager_withPos| Fehler: " & ex.Message)
+                        Return False
+                    End Try
+                End Using
+            End Using
+        Catch ex As Exception
+            Logger.WriteLine("Verbindungsfehler: " & ex.Message)
+            Return False
+        End Try
+    End Function
 
 
 End Class
