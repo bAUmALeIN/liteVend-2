@@ -121,6 +121,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -168,6 +169,18 @@
       <DependentUpon>FormDBManager.vb</DependentUpon>
     </Compile>
     <Compile Include="FormDBManager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLagerAnlegen.Designer.vb">
+      <DependentUpon>FormLagerAnlegen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormLagerAnlegen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLagerverwaltung.Designer.vb">
+      <DependentUpon>FormLagerverwaltung.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormLagerverwaltung.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMainMenu.vb">
@@ -241,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDBManager.resx">
       <DependentUpon>FormDBManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLagerAnlegen.resx">
+      <DependentUpon>FormLagerAnlegen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLagerverwaltung.resx">
+      <DependentUpon>FormLagerverwaltung.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMainMenu.resx">
       <DependentUpon>FormMainMenu.vb</DependentUpon>
@@ -323,6 +342,7 @@
     <None Include="Resources\litevend-high-resolution-logo-transparent.png" />
     <None Include="Resources\litevend-high-resolution-logo-white-transparent.png" />
     <None Include="Resources\icons8-suche-24.png" />
+    <None Include="Resources\hakenkreuzfahne_01.png" />
     <Content Include="vending-machine_821356 %282%29.ico" />
   </ItemGroup>
   <ItemGroup>

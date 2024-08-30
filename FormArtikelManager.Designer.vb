@@ -46,10 +46,15 @@ Partial Class FormArtikelManager
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cbSearchID = New System.Windows.Forms.ComboBox()
         Me.labelTextSucheID = New System.Windows.Forms.Label()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.cbLagerOrt = New System.Windows.Forms.ComboBox()
         Me.cbLager = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.labelTextNeu6 = New System.Windows.Forms.Label()
         Me.labelTextNeu7 = New System.Windows.Forms.Label()
         Me.labelTextNeu5 = New System.Windows.Forms.Label()
@@ -81,11 +86,6 @@ Partial Class FormArtikelManager
         Me.btnMinimize = New System.Windows.Forms.Button()
         Me.label_text_am_panelbar = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.PanelBackground.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBoxAM, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -197,7 +197,7 @@ Partial Class FormArtikelManager
         Me.labelTextNeu2.CausesValidation = False
         Me.labelTextNeu2.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labelTextNeu2.ForeColor = System.Drawing.Color.Red
-        Me.labelTextNeu2.Location = New System.Drawing.Point(9, 83)
+        Me.labelTextNeu2.Location = New System.Drawing.Point(41, 79)
         Me.labelTextNeu2.Name = "labelTextNeu2"
         Me.labelTextNeu2.Size = New System.Drawing.Size(11, 16)
         Me.labelTextNeu2.TabIndex = 84
@@ -210,7 +210,7 @@ Partial Class FormArtikelManager
         Me.labelTextNeu3.CausesValidation = False
         Me.labelTextNeu3.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labelTextNeu3.ForeColor = System.Drawing.Color.Red
-        Me.labelTextNeu3.Location = New System.Drawing.Point(77, 145)
+        Me.labelTextNeu3.Location = New System.Drawing.Point(108, 145)
         Me.labelTextNeu3.Name = "labelTextNeu3"
         Me.labelTextNeu3.Size = New System.Drawing.Size(11, 16)
         Me.labelTextNeu3.TabIndex = 83
@@ -271,7 +271,7 @@ Partial Class FormArtikelManager
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(19, 83)
+        Me.Label1.Location = New System.Drawing.Point(50, 83)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(107, 17)
         Me.Label1.TabIndex = 6
@@ -290,9 +290,9 @@ Partial Class FormArtikelManager
         'tbBez
         '
         Me.tbBez.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbBez.Location = New System.Drawing.Point(143, 81)
+        Me.tbBez.Location = New System.Drawing.Point(174, 81)
         Me.tbBez.Name = "tbBez"
-        Me.tbBez.Size = New System.Drawing.Size(184, 25)
+        Me.tbBez.Size = New System.Drawing.Size(228, 25)
         Me.tbBez.TabIndex = 0
         '
         'labelText_Suche
@@ -308,7 +308,7 @@ Partial Class FormArtikelManager
         'tbID
         '
         Me.tbID.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbID.Location = New System.Drawing.Point(144, 113)
+        Me.tbID.Location = New System.Drawing.Point(175, 113)
         Me.tbID.Name = "tbID"
         Me.tbID.ReadOnly = True
         Me.tbID.Size = New System.Drawing.Size(47, 25)
@@ -317,7 +317,7 @@ Partial Class FormArtikelManager
         'tbPLU
         '
         Me.tbPLU.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPLU.Location = New System.Drawing.Point(144, 144)
+        Me.tbPLU.Location = New System.Drawing.Point(175, 144)
         Me.tbPLU.Name = "tbPLU"
         Me.tbPLU.Size = New System.Drawing.Size(47, 25)
         Me.tbPLU.TabIndex = 48
@@ -335,7 +335,7 @@ Partial Class FormArtikelManager
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(85, 147)
+        Me.Label12.Location = New System.Drawing.Point(116, 147)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(41, 17)
         Me.Label12.TabIndex = 50
@@ -355,7 +355,7 @@ Partial Class FormArtikelManager
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(44, 116)
+        Me.Label11.Location = New System.Drawing.Point(75, 116)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(82, 17)
         Me.Label11.TabIndex = 49
@@ -378,6 +378,22 @@ Partial Class FormArtikelManager
         Me.labelTextSucheID.Size = New System.Drawing.Size(28, 17)
         Me.labelTextSucheID.TabIndex = 73
         Me.labelTextSucheID.Text = "ID:"
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel7.Location = New System.Drawing.Point(0, 33)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(483, 8)
+        Me.Panel7.TabIndex = 71
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel6.Location = New System.Drawing.Point(0, 397)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(483, 8)
+        Me.Panel6.TabIndex = 69
         '
         'cbLagerOrt
         '
@@ -416,6 +432,30 @@ Partial Class FormArtikelManager
         Me.Label22.Size = New System.Drawing.Size(51, 17)
         Me.Label22.TabIndex = 64
         Me.Label22.Text = "Lager:"
+        '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel5.Location = New System.Drawing.Point(0, 188)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(483, 8)
+        Me.Panel5.TabIndex = 61
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel4.Location = New System.Drawing.Point(0, 258)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(483, 8)
+        Me.Panel4.TabIndex = 60
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel3.Location = New System.Drawing.Point(481, 1)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(10, 480)
+        Me.Panel3.TabIndex = 59
         '
         'labelTextNeu6
         '
@@ -473,7 +513,7 @@ Partial Class FormArtikelManager
         Me.checkboxSetPicture.AutoSize = True
         Me.checkboxSetPicture.Enabled = False
         Me.checkboxSetPicture.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checkboxSetPicture.Location = New System.Drawing.Point(512, 434)
+        Me.checkboxSetPicture.Location = New System.Drawing.Point(520, 412)
         Me.checkboxSetPicture.Name = "checkboxSetPicture"
         Me.checkboxSetPicture.Size = New System.Drawing.Size(110, 21)
         Me.checkboxSetPicture.TabIndex = 52
@@ -486,7 +526,7 @@ Partial Class FormArtikelManager
         Me.btnAddAddImage.Enabled = False
         Me.btnAddAddImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddAddImage.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddAddImage.Location = New System.Drawing.Point(643, 427)
+        Me.btnAddAddImage.Location = New System.Drawing.Point(641, 404)
         Me.btnAddAddImage.Name = "btnAddAddImage"
         Me.btnAddAddImage.Size = New System.Drawing.Size(123, 34)
         Me.btnAddAddImage.TabIndex = 51
@@ -499,7 +539,7 @@ Partial Class FormArtikelManager
         Me.Label10.AutoSize = True
         Me.Label10.CausesValidation = False
         Me.Label10.Font = New System.Drawing.Font("Arial Narrow", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(377, 153)
+        Me.Label10.Location = New System.Drawing.Point(408, 153)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(16, 16)
         Me.Label10.TabIndex = 47
@@ -509,7 +549,7 @@ Partial Class FormArtikelManager
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(197, 149)
+        Me.Label9.Location = New System.Drawing.Point(228, 149)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(116, 17)
         Me.Label9.TabIndex = 46
@@ -520,7 +560,7 @@ Partial Class FormArtikelManager
         Me.Label29.AutoSize = True
         Me.Label29.CausesValidation = False
         Me.Label29.Font = New System.Drawing.Font("Segoe Script", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(376, 117)
+        Me.Label29.Location = New System.Drawing.Point(407, 117)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(14, 20)
         Me.Label29.TabIndex = 45
@@ -530,7 +570,7 @@ Partial Class FormArtikelManager
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(197, 116)
+        Me.Label8.Location = New System.Drawing.Point(228, 116)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(109, 17)
         Me.Label8.TabIndex = 44
@@ -680,7 +720,7 @@ Partial Class FormArtikelManager
         '
         Me.tbALK.Enabled = False
         Me.tbALK.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbALK.Location = New System.Drawing.Point(324, 148)
+        Me.tbALK.Location = New System.Drawing.Point(355, 148)
         Me.tbALK.Name = "tbALK"
         Me.tbALK.Size = New System.Drawing.Size(47, 25)
         Me.tbALK.TabIndex = 4
@@ -691,7 +731,7 @@ Partial Class FormArtikelManager
         '
         Me.tbInhalt.Enabled = False
         Me.tbInhalt.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbInhalt.Location = New System.Drawing.Point(324, 114)
+        Me.tbInhalt.Location = New System.Drawing.Point(355, 114)
         Me.tbInhalt.Name = "tbInhalt"
         Me.tbInhalt.Size = New System.Drawing.Size(47, 25)
         Me.tbInhalt.TabIndex = 3
@@ -710,10 +750,11 @@ Partial Class FormArtikelManager
         'PictureBoxAM
         '
         Me.PictureBoxAM.BackColor = System.Drawing.Color.LightGray
-        Me.PictureBoxAM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBoxAM.Location = New System.Drawing.Point(512, 30)
+        Me.PictureBoxAM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.PictureBoxAM.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PictureBoxAM.Location = New System.Drawing.Point(520, 32)
         Me.PictureBoxAM.Name = "PictureBoxAM"
-        Me.PictureBoxAM.Size = New System.Drawing.Size(263, 375)
+        Me.PictureBoxAM.Size = New System.Drawing.Size(248, 351)
         Me.PictureBoxAM.TabIndex = 1
         Me.PictureBoxAM.TabStop = False
         '
@@ -749,9 +790,9 @@ Partial Class FormArtikelManager
         Me.label_text_am_panelbar.ForeColor = System.Drawing.SystemColors.Control
         Me.label_text_am_panelbar.Location = New System.Drawing.Point(3, 3)
         Me.label_text_am_panelbar.Name = "label_text_am_panelbar"
-        Me.label_text_am_panelbar.Size = New System.Drawing.Size(179, 24)
+        Me.label_text_am_panelbar.Size = New System.Drawing.Size(169, 24)
         Me.label_text_am_panelbar.TabIndex = 57
-        Me.label_text_am_panelbar.Text = "Artikel Verwaltung"
+        Me.label_text_am_panelbar.Text = "Artikelverwaltung"
         '
         'btnClose
         '
@@ -767,51 +808,11 @@ Partial Class FormArtikelManager
         Me.btnClose.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnClose.UseVisualStyleBackColor = True
         '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.SlateGray
-        Me.Panel6.Location = New System.Drawing.Point(0, 397)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(483, 8)
-        Me.Panel6.TabIndex = 69
-        '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.Color.SlateGray
-        Me.Panel4.Location = New System.Drawing.Point(0, 258)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(483, 8)
-        Me.Panel4.TabIndex = 60
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.SlateGray
-        Me.Panel3.Location = New System.Drawing.Point(481, 1)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(10, 480)
-        Me.Panel3.TabIndex = 59
-        '
-        'Panel7
-        '
-        Me.Panel7.BackColor = System.Drawing.Color.SlateGray
-        Me.Panel7.Location = New System.Drawing.Point(0, 33)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(483, 8)
-        Me.Panel7.TabIndex = 71
-        '
-        'Panel5
-        '
-        Me.Panel5.BackColor = System.Drawing.Color.SlateGray
-        Me.Panel5.Location = New System.Drawing.Point(0, 188)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(483, 8)
-        Me.Panel5.TabIndex = 61
-        '
         'FormArtikelManager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.AliceBlue
+        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(809, 517)
         Me.Controls.Add(Me.Panel9)
         Me.Controls.Add(Me.PanelBackground)

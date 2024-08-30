@@ -19,6 +19,8 @@ Public Class FormMainMenu
 
     Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, Panel2.MouseDown, labelStatusDB.MouseDown, Label13.MouseDown
         mouseOffset = New Point(-e.X, -e.Y)
+        Me.TopLevel = True
+        Me.TopMost = True
     End Sub
 
     Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove, Panel2.MouseMove, labelStatusDB.MouseMove, Label13.MouseMove
@@ -297,6 +299,15 @@ Public Class FormMainMenu
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim dbm As New FormDBManager
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FormDBManager Then
+                frm.TopLevel = True
+                frm.TopMost = True
+                Exit Sub
+
+            End If
+        Next
+        dbm.StartPosition = FormStartPosition.CenterScreen
         dbm.Show()
     End Sub
 
@@ -347,4 +358,18 @@ Public Class FormMainMenu
         FAM.StartPosition = FormStartPosition.CenterScreen
         FAM.Show()
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim FLA As New FormLagerverwaltung
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FormLagerverwaltung Then
+                Return
+
+            End If
+        Next
+        FLA.StartPosition = FormStartPosition.CenterScreen
+        FLA.Show()
+    End Sub
+
+
 End Class

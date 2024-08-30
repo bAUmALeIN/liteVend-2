@@ -16,24 +16,6 @@ Public Class DatabaseManager
         End Try
     End Function
 
-    Public Function GetTableNames() As List(Of String)
-        Dim tableNames As New List(Of String)
-
-        Using connection As New SQLiteConnection(Globals.ConString)
-            connection.Open()
-            Dim querySelectTables As String = "SELECT name FROM sqlite_master WHERE type='table';"
-            Using command As New SQLiteCommand(querySelectTables, connection)
-                Using reader As SQLiteDataReader = command.ExecuteReader()
-                    While reader.Read()
-                        tableNames.Add(reader("name").ToString())
-                    End While
-                End Using
-            End Using
-            connection.Close()
-        End Using
-
-        Return tableNames
-    End Function
 
     Public Function GetTableData(tableName As String) As DataTable
         Dim tableData As New DataTable
@@ -149,7 +131,6 @@ Public Class DatabaseManager
 
         AdjustListViewColumns(lv)
     End Sub
-
 
     Private Sub AdjustListViewColumns(lv As ListView)
         For Each column As ColumnHeader In lv.Columns

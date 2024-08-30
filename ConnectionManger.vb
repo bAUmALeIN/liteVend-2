@@ -121,7 +121,7 @@ Public Class ConnectionManger
 
     Public Function getProduktByID(ID As Integer) As Globals.Produkt
         Dim produkt As New Globals.Produkt()
-        Dim query As String = "SELECT ID, Bezeichnung, Preis, Volumen, Alkoholgehalt FROM Produkte WHERE ID = @ProductID"
+        Dim query As String = "SELECT*FROM Produkte WHERE ID = @ProductID"
 
         Using connection As New SQLiteConnection(connectionString)
             connection.Open()
@@ -134,6 +134,15 @@ Public Class ConnectionManger
                         produkt.Preis = reader.GetDouble(2)
                         produkt.Volumen = reader.GetDouble(3)
                         produkt.Alkoholgehalt = reader.GetDouble(4)
+                        produkt.Lager = reader.GetInt32(5)
+                        produkt.LagerOrt = reader.GetInt32(6)
+                        produkt.mindBestand = reader.GetInt32(7)
+                        produkt.Preis_PL1 = reader.GetDouble(8)
+                        produkt.Preis_PL2 = reader.GetDouble(9)
+                        produkt.Preis_PL3 = reader.GetDouble(10)
+                        produkt.Preis_PL4 = reader.GetDouble(11)
+                        produkt.PLU = reader.GetInt32(12)
+                        produkt.Bestand = reader.GetInt32(13)
                     End If
                 End Using
             End Using
@@ -229,11 +238,14 @@ Public Class ConnectionManger
                         Logger.WriteLine("CM.InsertProduktAsProdukt: Kein Bild")
 
                     Else
+                        'Insert Image 
 
-                        Logger.WriteLine("CM.InsertProduktAsProdukt: Bild vorhanden")
+                        Logger.WriteLine("CM.InsertProduktAsProdukt: Bild vorhanden und wird eingefügt")
+
                     End If
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
-
+                    If SaveImageToDatabase(produkt.Image, produkt.ID) Then
+                    End If
                     ' Return rowsAffected > 0
                 End Using
             End Using
@@ -401,7 +413,6 @@ Public Class ConnectionManger
 
         Return True
     End Function
-
 
     Public Function GetImageFromDatabase(id As Integer) As Image
         Dim query As String = "SELECT Image FROM Pictures WHERE ID = @ID"

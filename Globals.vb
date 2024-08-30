@@ -81,7 +81,6 @@ Public Class Globals
     Public Const Update As String = "UPDATE {TableName} SET {ColumnValuePairs} WHERE {Condition};"
     Public Const Delete As String = "DELETE FROM {TableName} WHERE {Condition};"
 
-
     '################################# CREATE TABLE #############################################
 
     Public Shared createProductsTableQuery As String = "CREATE TABLE 'Produkte' (
@@ -100,7 +99,6 @@ Public Class Globals
                                                         'PLU' INTEGER,
 	                                                    PRIMARY KEY('ID' AUTOINCREMENT)
                                                     )"
-
     Public Shared createTransactionsTableQuery As String = "CREATE TABLE IF NOT EXISTS Transaktionen (" &
                                                          "ID INTEGER PRIMARY KEY AUTOINCREMENT, " &
                                                          "Uhrzeit TEXT NOT NULL, " &
@@ -118,7 +116,7 @@ Public Class Globals
                                                          "GesUmsatz REAL NOT NULL," &
                                                          "Flaschen INTEGER NOT NULL)"
     Public Shared insertDefaultStatsQuery As String = "INSERT INTO Stats (Version, VGZ, anzProdukte, GesUmsatz, Flaschen)
-                                                       VALUES ('2.00', 0, 0, 0.0, 0);"
+                                                       VALUES ('3.00', 0, 0, 0.0, 0);"
 
     Public Shared createLagerListQuery As String = "CREATE TABLE 'LagerList' (
 	                                                'Lager_ID'	INTEGER NOT NULL,
@@ -136,6 +134,18 @@ Public Class Globals
 	                                                'LagerOrt_belegt'	INTEGER
                                                     )"
 
+
+
+    Public Shared newLagerName As String
+    Public Shared newLagerCap As Integer
+    Public Shared createNewLagerQuery As String = $"CREATE TABLE {newLagerName} (
+	                                                'ID'	INTEGER NOT NULL,
+	                                                'Name'	TEXT,
+	                                                '{newLagerCap}'	INTEGER NOT NULL,
+	                                                'frei'	INTEGER,
+	                                                'belegt'	INTEGER,
+	                                                PRIMARY KEY('ID')
+                                                    );"
 
 
 

@@ -121,26 +121,17 @@
   <data name="icons8-erstellen-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-erstellen-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="litevend-high-resolution-logo-white-transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\litevend-high-resolution-logo-white-transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="litevend-high-resolution-logo-black-transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\litevend-high-resolution-logo-black-transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="360_F_119569639_nqyoTMEKhLJ1suZwFJWKUvzj3EtgzHUd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\360_F_119569639_nqyoTMEKhLJ1suZwFJWKUvzj3EtgzHUd.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="6220416" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\6220416.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BBS_ME_4C_OBS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BBS_ME_4C_OBS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="litevend-high-resolution-logo-white-transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\litevend-high-resolution-logo-white-transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coinInsert" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\coinInsert.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_ordner_öffnen_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-ordner-öffnen-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_info_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-info-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,14 +148,20 @@
   <data name="vending-machine_821356 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vending-machine_821356 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SQliteDBcontrollerPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SQliteDBcontrollerPic.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-play-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-play-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_datei_loeschen_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-datei-löschen-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SQliteDBcontrollerPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SQliteDBcontrollerPic.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_ordner_öffnen_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-ordner-öffnen-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_neue_datei_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-neue-datei-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,19 +169,22 @@
   <data name="litevend-high-resolution-logo-transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\litevend-high-resolution-logo-transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon_speichern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_speichern.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-suche-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-suche-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_speichern_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-speichern-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Dose" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dose.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="360_F_119569639_nqyoTMEKhLJ1suZwFJWKUvzj3EtgzHUd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\360_F_119569639_nqyoTMEKhLJ1suZwFJWKUvzj3EtgzHUd.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BBS_ME_4C_OBS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BBS_ME_4C_OBS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon_speichern" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_speichern.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-suche-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-suche-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="litevend-high-resolution-logo-black-transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\litevend-high-resolution-logo-black-transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

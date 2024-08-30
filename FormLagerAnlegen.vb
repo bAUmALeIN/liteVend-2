@@ -1,0 +1,112 @@
+﻿Imports System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder
+
+Public Class FormLagerAnlegen
+
+
+    Dim mouseOffset As Point
+
+    Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, PanelControlBr.MouseDown, label_text_am_panelbar.MouseDown
+        mouseOffset = New Point(-e.X, -e.Y)
+        Me.TopMost = True
+        Me.TopMost = True
+    End Sub
+
+    Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove, PanelControlBr.MouseMove, label_text_am_panelbar.MouseMove
+
+        If e.Button = MouseButtons.Left Then
+            Dim mousePos = Control.MousePosition
+            mousePos.Offset(mouseOffset.X, mouseOffset.Y)
+            Location = mousePos
+
+        End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.Close()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBoxLagergroesse.TextChanged
+
+
+        Try
+
+            If TextBoxLagergroesse.Text IsNot "" Then
+                Dim zahl As Integer = Convert.ToInt32(TextBoxLagergroesse.Text)
+                DataGridView1.Enabled = True
+                Globals.newLagerCap = zahl
+                fillDGVwithIDs()
+                btnSaveLager.Enabled = True
+            Else
+                DataGridView1.Rows.Clear() ' Lösche alle bestehenden Zeilen
+                DataGridView1.Enabled = False
+                btnSaveLager.Enabled = False
+            End If
+        Catch ex As Exception
+            Logger.WriteLine("Fehler Convert.ToInt32:" + ex.Message)
+        End Try
+
+
+    End Sub
+
+    Private Sub fillDGVwithIDs()
+        Dim ids As New List(Of Integer)
+        For counter As Integer = 1 To Globals.newLagerCap
+            ids.Add(counter)
+        Next
+        DataGridView1.Rows.Clear()
+        If CheckBoxStandardBez.Checked Then
+            For Each id In ids
+                Dim rowIndex As Integer = DataGridView1.Rows.Add()
+                DataGridView1.Rows(rowIndex).Cells("PositionsID").Value = id
+                DataGridView1.Rows(rowIndex).Cells("PositionsBez").Value = $"Position_00" + id.ToString
+            Next
+
+        Else
+
+
+            For Each id In ids
+                Dim rowIndex As Integer = DataGridView1.Rows.Add()
+                DataGridView1.Rows(rowIndex).Cells("PositionsID").Value = id
+            Next
+        End If
+
+    End Sub
+
+    Private Sub CheckBoxStandardBez_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxStandardBez.CheckedChanged
+        If DataGridView1.RowCount > 1 Then
+            For Each row As DataGridViewRow In DataGridView1.Rows
+                If Not row.IsNewRow Then
+                    Dim rowindex As Integer = row.Index
+                    DataGridView1.Rows(rowindex).Cells("PositionsBez").Value = $"Position_00{(rowindex + 1).ToString}"
+                End If
+            Next
+        Else
+            For Each row As DataGridViewRow In DataGridView1.Rows
+                If Not row.IsNewRow Then
+                    Dim rowindex As Integer = row.Index
+                    DataGridView1.Rows(rowindex).Cells("PositionsBez").Value = Nothing
+                End If
+            Next
+        End If
+        If CheckBoxStandardBez.CheckState = CheckState.Unchecked Then
+            For Each row As DataGridViewRow In DataGridView1.Rows
+                If Not row.IsNewRow Then
+                    Dim rowindex As Integer = row.Index
+                    DataGridView1.Rows(rowindex).Cells("PositionsBez").Value = Nothing
+                End If
+            Next
+
+        End If
+    End Sub
+
+    Private Sub btnSaveLager_Click(sender As Object, e As EventArgs) Handles btnSaveLager.Click
+        If TextBoxLagerBez.Text = "" Then
+            MsgBox("Es wurde keine Bezeichnung eingetragen, Soll die standard Bezeichnung verwendet werden ?", MsgBoxStyle.YesNo, "Keine Lager Bezeichnung")
+
+        End If
+    End Sub
+End Class

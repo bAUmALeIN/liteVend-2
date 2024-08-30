@@ -5,6 +5,15 @@ Module Engine
     Dim CM As New ConnectionManger
 
 
+
+    Public Function printTime() As String
+        Dim timestr As String = System.DateTime.Now
+        Dim newTimestr As String = timestr.Replace(":", "-")
+        newTimestr = newTimestr.Replace(" ", "-")
+        Return newTimestr
+    End Function
+
+
     Public Sub CleanTBs(TBs As List(Of TextBox))
         For Each tb In TBs
             tb.Text = ""

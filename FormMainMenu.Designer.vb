@@ -29,9 +29,7 @@ Partial Class FormMainMenu
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btnVendingMode = New System.Windows.Forms.Button()
-        Me.Label13 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.labelStatusDB = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.btnShowLog = New System.Windows.Forms.Button()
@@ -112,6 +110,8 @@ Partial Class FormMainMenu
         Me.tbStatsAnzTrans = New System.Windows.Forms.TextBox()
         Me.LabelAnzProd = New System.Windows.Forms.Label()
         Me.tbStatsAnzProd = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.labelStatusDB = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnMinimize = New System.Windows.Forms.Button()
@@ -205,16 +205,6 @@ Partial Class FormMainMenu
         Me.btnVendingMode.Text = "Automat"
         Me.btnVendingMode.UseVisualStyleBackColor = False
         '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(93, 4)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(116, 16)
-        Me.Label13.TabIndex = 15
-        Me.Label13.Text = "Status Datenbank:"
-        '
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.WhiteSmoke
@@ -227,18 +217,6 @@ Partial Class FormMainMenu
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Controller"
         Me.Button1.UseVisualStyleBackColor = False
-        '
-        'labelStatusDB
-        '
-        Me.labelStatusDB.AutoSize = True
-        Me.labelStatusDB.BackColor = System.Drawing.Color.Silver
-        Me.labelStatusDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelStatusDB.ForeColor = System.Drawing.Color.Red
-        Me.labelStatusDB.Location = New System.Drawing.Point(217, 4)
-        Me.labelStatusDB.Name = "labelStatusDB"
-        Me.labelStatusDB.Size = New System.Drawing.Size(11, 16)
-        Me.labelStatusDB.TabIndex = 17
-        Me.labelStatusDB.Text = "-"
         '
         'Panel7
         '
@@ -1081,6 +1059,28 @@ Partial Class FormMainMenu
         Me.tbStatsAnzProd.ReadOnly = True
         Me.tbStatsAnzProd.Size = New System.Drawing.Size(56, 20)
         Me.tbStatsAnzProd.TabIndex = 0
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(93, 4)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(116, 16)
+        Me.Label13.TabIndex = 15
+        Me.Label13.Text = "Status Datenbank:"
+        '
+        'labelStatusDB
+        '
+        Me.labelStatusDB.AutoSize = True
+        Me.labelStatusDB.BackColor = System.Drawing.Color.Silver
+        Me.labelStatusDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelStatusDB.ForeColor = System.Drawing.Color.Red
+        Me.labelStatusDB.Location = New System.Drawing.Point(217, 4)
+        Me.labelStatusDB.Name = "labelStatusDB"
+        Me.labelStatusDB.Size = New System.Drawing.Size(11, 16)
+        Me.labelStatusDB.TabIndex = 17
+        Me.labelStatusDB.Text = "-"
         '
         'Panel2
         '

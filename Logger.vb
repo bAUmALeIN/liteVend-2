@@ -1,10 +1,16 @@
-﻿Public Class Logger
+﻿Imports System.Text.RegularExpressions
+
+Public Class Logger
 
 
     Dim mouseOffset As Point
 
+
+
     Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown
         mouseOffset = New Point(-e.X, -e.Y)
+        Me.TopLevel = True
+        Me.TopMost = True
     End Sub
 
     Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove
@@ -35,7 +41,7 @@
         Dim sfd As New SaveFileDialog
         sfd.Filter = "Text Files (*.txt)|*.txt"
         sfd.Title = "Log speichern unter"
-        sfd.FileName = $"LOG_{System.DateTime.Now.ToString}"
+        sfd.FileName = $"LOG_{Engine.printTime()}"
         sfd.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory
         If sfd.ShowDialog() = DialogResult.OK Then
             Try

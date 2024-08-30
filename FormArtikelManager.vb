@@ -15,6 +15,8 @@ Public Class FormArtikelManager
 
     Private Sub Me_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseDown, Panel9.MouseDown, label_text_am_panelbar.MouseDown
         mouseOffset = New Point(-e.X, -e.Y)
+        Me.TopMost = True
+        Me.TopLevel = True
     End Sub
 
     Private Sub Me_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove, Panel9.MouseMove, label_text_am_panelbar.MouseMove
@@ -45,12 +47,17 @@ Public Class FormArtikelManager
         cbSearchID.Text = ""
         Dim img As Image
         With actProdukt
-            Logger.WriteLine($"cbSearchBez_SelectedValueChanged | Produkt ID: {actProdukt.ID.ToString} | Produkt Bez: {actProdukt.Bezeichnung}")
+            Logger.WriteLine($"cbSearchBez_SelectedValueChanged | Produkt ID: {actProdukt.ID.ToString} | Produkt Bez: {actProdukt.Bezeichnung} | Produkt Lager: {actProdukt.Lager} | Produkt LagerOrt: {actProdukt.LagerOrt} | Produkt Bestand: {actProdukt.Bestand} | Produkt mindbestand: {actProdukt.mindBestand}")
             tbPreis.Text = .Preis.ToString
             tbALK.Text = .Alkoholgehalt.ToString
             tbBez.Text = .Bezeichnung
             tbID.Text = .ID.ToString
             tbInhalt.Text = .Volumen.ToString
+            tbBestand.Text = .Bestand.ToString
+            tbMindBestand.Text = .mindBestand.ToString
+            cbLager.Text = .Lager.ToString
+            cbLagerOrt.Text = .LagerOrt.ToString
+            tbPLU.Text = .PLU.ToString
 
             img = CM.GetImageFromDatabase(.ID)
             If img IsNot Nothing Then
@@ -74,6 +81,11 @@ Public Class FormArtikelManager
             tbBez.Text = .Bezeichnung
             tbID.Text = .ID.ToString
             tbInhalt.Text = .Volumen.ToString
+            tbBestand.Text = .Bestand.ToString
+            tbMindBestand.Text = .mindBestand.ToString
+            cbLager.Text = .Lager.ToString
+            cbLagerOrt.Text = .LagerOrt.ToString
+            tbPLU.Text = .PLU.ToString
             img = CM.GetImageFromDatabase(.ID)
             If img IsNot Nothing Then
                 PictureBoxAM.BackgroundImage = Nothing
@@ -157,6 +169,7 @@ Public Class FormArtikelManager
                 End If
                 If TypeOf ctrl Is ComboBox Then
                     ctrl.Enabled = True
+                    ctrl.ResetText()
                 End If
                 If TypeOf ctrl Is Label Then
                     ctrl.Visible = True
@@ -189,6 +202,7 @@ Public Class FormArtikelManager
             End If
             If TypeOf ctrl Is ComboBox Then
                 ctrl.Enabled = False
+                ctrl.ResetText()
             End If
             If TypeOf ctrl Is Label Then
                 ctrl.Visible = False
@@ -219,9 +233,8 @@ Public Class FormArtikelManager
         labelTextNeu5.Visible = False
         labelTextNeu6.Visible = False
         labelTextNeu7.Visible = False
+        tbID.Text = ""
     End Sub
-
-
 
     Private Sub checkCtrlForList(ctrl As Control)
         Select Case (ctrl.Name)
@@ -297,6 +310,10 @@ Public Class FormArtikelManager
                 ctrlList_TB_newArticle.Add(ctrl)
                 Logger.WriteLine($"checkCtrlForList | {ctrl.Name} in ctrlList_TB_newArticle hinzugefügt")
                 Exit Select
+            Case $"tbID"
+                ctrlList_TB_newArticle.Add(ctrl)
+                Logger.WriteLine($"checkCtrlForList | {ctrl.Name} in ctrlList_TB_newArticle hinzugefügt")
+                Exit Select
             Case Else
         End Select
 
@@ -350,7 +367,10 @@ Public Class FormArtikelManager
 
                 If newProdukt IsNot Nothing Then
                     If CM.InsertProduktAsProdukt(newProdukt, plActive) Then
-                        Logger.WriteLine("FormArtikelManager| Eintrag erstellt")
+                        Logger.WriteLine($"FormArtikelManager| Eintrag erstellt | ID:{newProdukt.ID.ToString}|ALK:{newProdukt.Alkoholgehalt.ToString}|Bestand: {newProdukt.Bestand.ToString}|
+                        mindBestand: {newProdukt.mindBestand.ToString}|Bez: {newProdukt.Bezeichnung.ToString}|Lager: {newProdukt.Lager.ToString}|LagerOrt: {newProdukt.LagerOrt.ToString}|PLU: {newProdukt.PLU.ToString}|
+                        Volumen: {newProdukt.Volumen.ToString}|Preis: {newProdukt.Preis.ToString}| PL1: {newProdukt.Preis_PL1.ToString}| PL2: {newProdukt.Preis_PL2.ToString} PL13: {newProdukt.Preis_PL3.ToString} | PL4: {newProdukt.Preis_PL4.ToString}")
+
                         clearAfterInsert()
                         Exit Sub
                     End If
@@ -389,8 +409,13 @@ Public Class FormArtikelManager
                 End If
             End If
         Next
-
+        Engine.FillControlsFromDB(Globals.queryAllProducts,, 0, cbSearchID)
+        Engine.FillControlsFromDB(Globals.queryAllProducts,, 1, cbSearchBEZ)
     End Sub
+
+
+
+
 
 
 End Class
