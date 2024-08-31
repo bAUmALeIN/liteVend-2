@@ -42,6 +42,7 @@ Public Class Globals
         Public Property ID As Integer
 
         Public Property Bez As String
+        Public Property ProduktID As String
 
     End Class
 

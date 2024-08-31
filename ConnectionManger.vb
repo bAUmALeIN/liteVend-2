@@ -619,7 +619,8 @@ Public Class ConnectionManger
                                                     );"
         Dim createNewTable_Lager_PositionenQuery As String = $"CREATE TABLE '{Lager.Bezeichnung}_Positionen' (
 	                                                'ID'	INTEGER NOT NULL,
-	                                                'Bezeichnung'	TEXT
+	                                                'Bezeichnung'	TEXT,
+                                                    'ProduktID' INTEGER
                                                      )"
 
         Using connection As New SQLiteConnection(Globals.ConString)
@@ -646,13 +647,14 @@ Public Class ConnectionManger
     Public Function InsertInto_Lager_withPos(Lager As Globals.oLager, posListe As List(Of Globals.LagerPosition))
 
         Dim InsertIntoLagerQuery As String = $"INSERT INTO '{Lager.Bezeichnung}' ('ID', 'Name', 'Cap', 'frei', 'belegt') VALUES (@ID, '{Lager.Bezeichnung}', @CAP, @FREI, @BELEGT);"
+        Dim InsertIntoLagerListQuery As String = $"INSERT INTO 'LagerList' ('Lager_ID', 'Lager_Name', 'Lager_cap', 'Lager_frei', 'Lager_belegt') VALUES (@ID, '{Lager.Bezeichnung}', @CAP, @FREI, @BELEGT);"
 
 
         Try
             Using connection As New SQLiteConnection(Globals.ConString)
                 connection.Open()
 
-                ' Beginne eine Transaktion
+                '
                 Using transaction As SQLiteTransaction = connection.BeginTransaction()
                     Try
                         ' Füge das Lager ein
@@ -663,9 +665,16 @@ Public Class ConnectionManger
                             cmd.Parameters.AddWithValue("@BELEGT", Lager.belegt)
                             cmd.ExecuteNonQuery()
                         End Using
+                        ' Füge das Lager in LagerList ein
+                        Using cmd As New SQLiteCommand(InsertIntoLagerListQuery, connection)
+                            cmd.Parameters.AddWithValue("@ID", Lager.ID)
+                            cmd.Parameters.AddWithValue("@CAP", Lager.Cap)
+                            cmd.Parameters.AddWithValue("@FREI", Lager.frei)
+                            cmd.Parameters.AddWithValue("@BELEGT", Lager.belegt)
+                            cmd.ExecuteNonQuery()
+                        End Using
                         ' Füge die Positionen ein
                         For Each pos In posListe
-
                             Dim InsertIntoLagerPositionsQuery As String = $"INSERT INTO '{Lager.Bezeichnung}_Positionen' ('ID', 'Bezeichnung') VALUES (@ID, '{pos.Bez}');"
                             Using cmd As New SQLiteCommand(InsertIntoLagerPositionsQuery, connection)
                                 cmd.Parameters.AddWithValue("@ID", pos.ID)
@@ -675,12 +684,12 @@ Public Class ConnectionManger
                             End Using
                         Next
 
-                        ' Bestätige die Transaktion
+
                         transaction.Commit()
                         Logger.WriteLine($"CM.createLager_withPos| Lager erstellt - {Lager.Bezeichnung} - ID: {Lager.ID.ToString} ")
                         Return True
                     Catch ex As Exception
-                        ' Bei Fehlern rollback der Transaktion
+
                         transaction.Rollback()
                         Logger.WriteLine("CM.createLager_withPos| Fehler: " & ex.Message)
                         Return False
@@ -693,5 +702,32 @@ Public Class ConnectionManger
         End Try
     End Function
 
+
+    Public Function getLagerAsLager(LagerId As Integer) As Globals.oLager
+        Dim Lager As New Globals.oLager
+        Dim query As String = $"SELECT*FROM Lager_{LagerId.ToString}"
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Using cmd As New SQLiteCommand(query, connection)
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                    Try
+                        If reader.Read() Then
+                            Lager.ID = reader.GetInt32(0)
+                            Lager.Bezeichnung = reader.GetString(1)
+                            Lager.Cap = reader.GetInt32(2)
+                            Lager.frei = reader.GetInt32(3)
+                            Lager.belegt = reader.GetInt32(4)
+                            Logger.WriteLine($"CM.getLagerAsLager | Lager: {Lager.ID.ToString}")
+                        End If
+                    Catch ex As Exception
+                        Logger.WriteLine($"CM.getLagerAsLager | Fehler {ex.Message}")
+                        Return Nothing
+                    End Try
+
+                End Using
+            End Using
+        End Using
+        Return Lager
+    End Function
 
 End Class

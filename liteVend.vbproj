@@ -322,6 +322,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-datenkonfiguration-3d-fluency.zip" />
     <None Include="Resources\icons8-löschen-color.zip" />
     <None Include="Resources\vending-machine_821356 %281%29.png" />
     <None Include="Resources\refresh.png" />
@@ -343,6 +344,9 @@
     <None Include="Resources\litevend-high-resolution-logo-white-transparent.png" />
     <None Include="Resources\icons8-suche-24.png" />
     <None Include="Resources\hakenkreuzfahne_01.png" />
+    <None Include="Resources\icons8-datenkonfiguration-24.png" />
+    <None Include="Resources\icons8-datenkonfiguration-94.png" />
+    <None Include="Resources\icons8-datenkonfiguration-94.ico" />
     <Content Include="vending-machine_821356 %282%29.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -155,7 +155,7 @@ Partial Class FormArtikelManager
         '
         Me.labelBestand.AutoSize = True
         Me.labelBestand.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelBestand.Location = New System.Drawing.Point(266, 230)
+        Me.labelBestand.Location = New System.Drawing.Point(279, 231)
         Me.labelBestand.Name = "labelBestand"
         Me.labelBestand.Size = New System.Drawing.Size(69, 17)
         Me.labelBestand.TabIndex = 88
@@ -175,7 +175,7 @@ Partial Class FormArtikelManager
         '
         Me.labelMindBestand.AutoSize = True
         Me.labelMindBestand.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelMindBestand.Location = New System.Drawing.Point(200, 202)
+        Me.labelMindBestand.Location = New System.Drawing.Point(216, 204)
         Me.labelMindBestand.Name = "labelMindBestand"
         Me.labelMindBestand.Size = New System.Drawing.Size(131, 17)
         Me.labelMindBestand.TabIndex = 86
@@ -417,11 +417,11 @@ Partial Class FormArtikelManager
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(22, 233)
+        Me.Label20.Location = New System.Drawing.Point(29, 231)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(78, 17)
+        Me.Label20.Size = New System.Drawing.Size(72, 17)
         Me.Label20.TabIndex = 66
-        Me.Label20.Text = "Lager Ort:"
+        Me.Label20.Text = "Position:"
         '
         'Label22
         '
@@ -591,7 +591,7 @@ Partial Class FormArtikelManager
         Me.checkboxActivatePL.AutoSize = True
         Me.checkboxActivatePL.Enabled = False
         Me.checkboxActivatePL.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checkboxActivatePL.Location = New System.Drawing.Point(217, 272)
+        Me.checkboxActivatePL.Location = New System.Drawing.Point(217, 274)
         Me.checkboxActivatePL.Name = "checkboxActivatePL"
         Me.checkboxActivatePL.Size = New System.Drawing.Size(180, 21)
         Me.checkboxActivatePL.TabIndex = 9
@@ -619,10 +619,10 @@ Partial Class FormArtikelManager
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(113, 2)
+        Me.Label7.Font = New System.Drawing.Font("Lucida Sans", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(136, 3)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(87, 17)
+        Me.Label7.Size = New System.Drawing.Size(88, 17)
         Me.Label7.TabIndex = 9
         Me.Label7.Text = "Preislisten:"
         '
@@ -630,7 +630,7 @@ Partial Class FormArtikelManager
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(178, 54)
+        Me.Label5.Location = New System.Drawing.Point(195, 53)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(38, 17)
         Me.Label5.TabIndex = 16
@@ -639,7 +639,7 @@ Partial Class FormArtikelManager
         'tbPL4
         '
         Me.tbPL4.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPL4.Location = New System.Drawing.Point(238, 52)
+        Me.tbPL4.Location = New System.Drawing.Point(238, 50)
         Me.tbPL4.Name = "tbPL4"
         Me.tbPL4.Size = New System.Drawing.Size(83, 25)
         Me.tbPL4.TabIndex = 15
@@ -650,7 +650,7 @@ Partial Class FormArtikelManager
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(178, 27)
+        Me.Label6.Location = New System.Drawing.Point(195, 27)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(38, 17)
         Me.Label6.TabIndex = 14
@@ -659,7 +659,7 @@ Partial Class FormArtikelManager
         'tbPL3
         '
         Me.tbPL3.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPL3.Location = New System.Drawing.Point(238, 25)
+        Me.tbPL3.Location = New System.Drawing.Point(238, 23)
         Me.tbPL3.Name = "tbPL3"
         Me.tbPL3.Size = New System.Drawing.Size(83, 25)
         Me.tbPL3.TabIndex = 13
@@ -670,7 +670,7 @@ Partial Class FormArtikelManager
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(19, 54)
+        Me.Label4.Location = New System.Drawing.Point(10, 54)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(38, 17)
         Me.Label4.TabIndex = 12
@@ -679,7 +679,7 @@ Partial Class FormArtikelManager
         'tbPL2
         '
         Me.tbPL2.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPL2.Location = New System.Drawing.Point(79, 52)
+        Me.tbPL2.Location = New System.Drawing.Point(54, 50)
         Me.tbPL2.Name = "tbPL2"
         Me.tbPL2.Size = New System.Drawing.Size(83, 25)
         Me.tbPL2.TabIndex = 11
@@ -690,7 +690,7 @@ Partial Class FormArtikelManager
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(19, 27)
+        Me.Label3.Location = New System.Drawing.Point(10, 27)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(38, 17)
         Me.Label3.TabIndex = 10
@@ -699,7 +699,7 @@ Partial Class FormArtikelManager
         'tbPL1
         '
         Me.tbPL1.Font = New System.Drawing.Font("Lucida Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPL1.Location = New System.Drawing.Point(79, 25)
+        Me.tbPL1.Location = New System.Drawing.Point(54, 23)
         Me.tbPL1.Name = "tbPL1"
         Me.tbPL1.Size = New System.Drawing.Size(83, 25)
         Me.tbPL1.TabIndex = 9
@@ -775,7 +775,7 @@ Partial Class FormArtikelManager
         Me.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMinimize.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMinimize.ForeColor = System.Drawing.Color.SteelBlue
-        Me.btnMinimize.Location = New System.Drawing.Point(744, 4)
+        Me.btnMinimize.Location = New System.Drawing.Point(747, 5)
         Me.btnMinimize.Name = "btnMinimize"
         Me.btnMinimize.Size = New System.Drawing.Size(24, 24)
         Me.btnMinimize.TabIndex = 82
@@ -800,7 +800,7 @@ Partial Class FormArtikelManager
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Brown
-        Me.btnClose.Location = New System.Drawing.Point(769, 4)
+        Me.btnClose.Location = New System.Drawing.Point(780, 5)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(24, 24)
         Me.btnClose.TabIndex = 81
@@ -813,7 +813,7 @@ Partial Class FormArtikelManager
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(809, 517)
+        Me.ClientSize = New System.Drawing.Size(809, 519)
         Me.Controls.Add(Me.Panel9)
         Me.Controls.Add(Me.PanelBackground)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

@@ -77,7 +77,7 @@ Module Engine
         ' 2 -> Preis
         ' 3 -> Volumen
         ' 4 -> Alk
-        ' 5 -> Freie Eingabe
+        ' 5 -> Freie Eingabev
         If paraTextBox > -1 Then
 
             Select Case paraTextBox

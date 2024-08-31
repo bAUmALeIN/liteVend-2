@@ -2,7 +2,7 @@
 Imports Getränke_Automat_V2.Globals
 
 Public Class FormLagerAnlegen
-
+    Private ParenForm As FormLagerverwaltung
     Dim CM As New ConnectionManger
     Dim mouseOffset As Point
 
@@ -130,6 +130,20 @@ Public Class FormLagerAnlegen
                     Globals.newLagerPositionsListe.Clear()
                     FillLagerPositionsListeFromDGV(DataGridView1)
                     CM.InsertInto_Lager_withPos(newLager, Globals.newLagerPositionsListe)
+                    Logger.WriteLine($"Lager angelegt | {newLager.Bezeichnung} | Anzahl Positionen:{Globals.newLagerPositionsListe.Count.ToString}")
+                    clearAfterNewLager()
+                    MsgBox("Lager Erstellt", MsgBoxStyle.OkOnly, "Erfolgreich!")
+                    For Each frm As Form In Application.OpenForms
+                        If TypeOf frm Is FormLagerverwaltung Then
+                            Dim lagerForm As FormLagerverwaltung = DirectCast(frm, FormLagerverwaltung)
+                            lagerForm.loadLagerListInComboBox()
+
+                            Return
+
+                        End If
+                    Next
+
+
                 Catch ex As Exception
                     Logger.WriteLine($"SUB btn Save: {ex.Message}")
                 End Try
@@ -162,5 +176,12 @@ Public Class FormLagerAnlegen
                 Logger.WriteLine($"SUB FillLagerPositionsListeFromDGV| ADD posID: {pos.ID.ToString} & posBez{pos.Bez} ")
             End If
         Next
+    End Sub
+
+    Public Sub clearAfterNewLager()
+        TextBoxLagerBez.Text = ""
+        TextBoxLagergroesse.Text = ""
+        CheckBoxStandardBez.Checked = False
+
     End Sub
 End Class

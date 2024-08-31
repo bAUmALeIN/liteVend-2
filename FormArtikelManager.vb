@@ -414,8 +414,4 @@ Public Class FormArtikelManager
     End Sub
 
 
-
-
-
-
 End Class
